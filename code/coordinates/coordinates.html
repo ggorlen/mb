@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coordinate displayer</title>
+    <style>
+      * { font-size: 19px; }
+      body { margin: 0px; } 
+    </style>
+  </head>
+  <body>
+  
+    <img src="example.jpg" id="image"></img> 
+    <div style="padding: 10px;">
+      <input autofocus value="example.jpg" id="in">
+      <button onclick="loadImage();">Load image</button>
+      <br>
+      <div style="font-size: 29px;" id="output"></div>
+    </div>
+    
+    <script>
+
+      document.addEventListener("mousemove", function (e) {
+        document.getElementById("output").innerHTML = "x: " + e.x + ", y: " + e.y;
+      });
+
+      document.getElementById("in").addEventListener("keydown", function (e) {
+        if (e.keyCode === 13) { loadImage(); }
+      });
+
+      function loadImage() {
+        document.getElementById("image").src = document.getElementById("in").value;
+      }
+
+    </script>
+  </body>
+</html>
