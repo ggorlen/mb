@@ -74,8 +74,8 @@
                           <form onsubmit="addAttendee(this);">
                             <input autofocus name="name" type="text">
                             <input type="submit" value="Sign in">
+                            <span id="attendance_confirmation"></span>
                           </form>
-                          <span id="attendance_confirmation"></span>
                         </p>
                         <h4>Week 1: Introduction, community building and HTML</h4>
                         <ul>
@@ -188,13 +188,11 @@
           url: 'https://hills.ccsf.edu/~ggorlen/php/attendance/add_attendee.php',
           crossDomain: true,
           data: $(form).serialize(),
-          success: function(responseData, textStatus, jqXHR) {
-            document.getElementById('attendance_confirmation').innerHTML = 'Thanks!';
+          success: function (responseData, textStatus, jqXHR) {
             form.reset();
+            $('#attendance_confirmation').hide().html("&nbsp;&nbsp;Thanks!").fadeIn(400);
           },
-          error: function (responseData, textStatus, errorThrown) {
-            alert('POST failed.');
-          }
+          error: function (responseData, textStatus, errorThrown) { }
         });
       };
     </script>
