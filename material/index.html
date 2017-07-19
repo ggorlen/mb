@@ -69,14 +69,12 @@
                             web application or game.  Show off your project on <a href="demoday.html">Demo Day</a> at the end of the semester!
                           </blockquote>
                         </p>
-                        <div style="width: 310px;" class="alert alert-info">
+                        <div id="attendance-box" style="width: 310px;" class="alert alert-info">
                           &#x2939; <em>Please sign the attendance sheet!</em> 
-                          <span id="attendance">
-                            <form onsubmit="addAttendee(this);">
-                              <input name="name" type="text">
-                              <input type="submit" value="Sign in">
-                            </form>
-                          </span>
+                          <form onsubmit="addAttendee(this);">
+                            <input name="name" type="text">
+                            <input type="submit" value="Sign in">
+                          </form>
                         </div>
                         <hr>
                         <h4>Week 1: Introduction, community building and HTML</h4>
@@ -192,7 +190,11 @@
           data: $(form).serialize(),
           success: function (responseData, textStatus, jqXHR) {
             form.reset();
-            $('#attendance').hide().html("&nbsp;&nbsp;Thanks!").fadeIn(400);
+            $('#attendance-box')
+              .hide()
+              .toggleClass('alert-info alert-success')
+              .html("Thanks!")
+              .fadeIn(400);
           },
           error: function (responseData, textStatus, errorThrown) { }
         });
