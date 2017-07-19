@@ -69,6 +69,14 @@
                             web application or game.  Show off your project on <a href="demoday.html">Demo Day</a> at the end of the semester!
                           </blockquote>
                         </p>
+                        <p>
+                          <em>Please sign the attendance sheet each class:</em> 
+                          <form onsubmit="addAttendee(this);">
+                            <input autofocus name="name" type="text">
+                            <input type="submit" value="Sign in">
+                          </form>
+                          <span id="attendance_confirmation"></span>
+                        </p>
                         <h4>Week 1: Introduction, community building and HTML</h4>
                         <ul>
                           <li><a href="rules.html">Class rules</a></li>
@@ -166,6 +174,31 @@
     
     <!-- Bootstrap Core Javascript -->
     <script src="../js/bootstrap.min.js"></script>
+
+    <script>
+      $(function () {
+        $('form').on('submit', function (e) {
+          e.preventDefault();
+        });
+      });
+
+      function addAttendee(form) {
+        $.ajax({
+          type: 'POST',
+          url: 'http://hills.ccsf.edu/~ggorlen/php/attendance/add_attendee.php',
+          crossDomain: true,
+          data: $(form).serialize(),
+          success: function(responseData, textStatus, jqXHR) {
+            document.getElementById('attendance_confirmation').innerHTML = 'Thanks!';
+            form.reset();
+          },
+          error: function (responseData, textStatus, errorThrown) {
+            alert('POST failed.');
+          }
+        });
+      };
+    </script>
+
 
 </body>
 
