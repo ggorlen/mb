@@ -69,7 +69,7 @@
                           web application or game.  Show off your project on <a href="demoday.html">Demo Day</a> 
                           at the end of the semester!
                         </blockquote>
-                        <div id="attendance-box" style="width: 280px; height: 100px;" class="panel panel-default">
+                        <div id="attendance-box" style="width: 340px; height: 110px;" class="panel panel-default">
                           <div class="panel-heading">
                             <em>Please sign the attendance sheet!</em> 
                           </div>
@@ -210,6 +210,10 @@
           },
           error: function (responseData, textStatus, errorThrown) { 
             $('#attendance-box').toggleClass('panel-info panel-danger');
+            $('#attendance-box-body')
+              .hide()
+              .html("Server error--try again later!")
+              .fadeIn(400);
           }
         });
       };

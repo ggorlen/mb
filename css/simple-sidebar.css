@@ -4,15 +4,39 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
+
+* {
+  font-family: 'Work Sans', sans-serif;
+}
+
 body {
     overflow-x: hidden;
-    font-size: 16px;
-	font-family: "helvetica", sans-serif;
+    font-size: 17px;
 }
 
 a, a:hover, a:active, a:visited {
-    color: #d3164a;
+    color: #d62008;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
+
+a:hover {
+    border-bottom: 2px solid #d62008;
+}
+
+.sidebar-nav li a {
+    border-bottom: 0px solid transparent;
+    -webkit-transition: all 0s ease;
+    -moz-transition: all 0s ease;
+    -o-transition: all 0s ease;
+    transition: all 0s ease;
+}
+
 
 /* Toggle Styles */
 
