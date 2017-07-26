@@ -5,32 +5,33 @@
     <style>
 
       .exclamation {
-        font-size: 450px; 
-        font-family: 'courier new', 'monospace';
+        font-family: 'courier new', monospace;
+        font-size: 400px; 
+        text-align: center;
       }
       
       .exclamation a {
         text-decoration: none;
         color: #000;
       }
+
+      .exclamation a:hover {
+        color: #f00;
+      }
     </style>
   </head>
   <body>
 
-    <div style="text-align: center">
-      <span class="exclamation" onclick="playSound();">
-        <a href='#'>!</a>
-      </span>
+    <div class="exclamation" onclick="playSound();">
+      <a href='#'>!</a>
     </div>
     
     <script>
       
       var sounds = ["16GameOver.wav", "SMBGameOver.wav", "SMBLostLife.wav"];
       
-      
       function playSound() {
         var randomIdx = sounds.length * Math.random() | 0;
-        
         var audio = new Audio(sounds[randomIdx]);
         audio.play();
       }

@@ -4,28 +4,29 @@
     <title>requestAnimationFrame example</title>
   </head>
   <body>
+    
+    <div id="out"></div>
   
-  <script>
-    /* This is an example of using the requestAnimationFrame() function.
-     * requestAnimationFrame is an optimized version of setTimeout() 
-     * which can be used for animations in a similar manner.  
-     * Note that there is no millisecond cooldown parameter--
-     * the browser determines when the update function will be called.
-     */
+    <script>
+      /* This is an example of using the requestAnimationFrame() function.
+       * requestAnimationFrame is an optimized version of setTimeout() 
+       * which can be used for animations in a similar manner.  
+       * Note that there is no millisecond cooldown parameter--
+       * the browser determines when the update function will be called.
+       */
 
-    // Create a global variable to print
-    let i = 0;
+      // Create a global variable to print
+      let i = 0;
 
-    // Define a function which has a call to requestAnimationFrame in it.
-    // This function is the callback which will be executed by the browser.
-    function update() { 
-      console.log(++i);
-      requestAnimationFrame(update);
-    };
+      // Define a function which has a call to requestAnimationFrame in it.
+      function update() { 
+        document.getElementById("out").innerHTML = "Current animation frame: " + i++;
+        requestAnimationFrame(update); // note that the parameter name is "update"
+      };
 
-    // Begin the animation
-    update();
+      // Begin the animation
+      update();
 
-  </script>
+    </script>
   </body>
 </html>

@@ -64,30 +64,45 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h1>Course Material</h1>
+
                         <blockquote> 
-                          Course goal: Create a personal website and work with a team to build a 
+                          Course goal: Create a website and work with a team to build a 
                           web application or game.  Show off your project on <a href="demoday.html">Demo Day</a> 
                           at the end of the semester!
                         </blockquote>
-                        <div id="attendance-box" style="width: 340px; height: 110px;" class="panel panel-default">
+
+                        <div id="attendance-box" style="width: 65%; font-size: 15px;" class="panel panel-default">
                           <div class="panel-heading">
-                            <em>Please sign the attendance sheet!</em> 
+                            <em>Please sign the attendance sheet</em> 
                           </div>
                           <div id="attendance-box-body" class="panel-body">
                             <form onsubmit="addAttendee(this);">
-                              <span class="input-group">
-                                <span class="input-group-addon">
-                                  <i class="glyphicon glyphicon-user"></i>
-                                </span>
-                                <input name="name" required type="text" class="input form-control" />
-                                <span class="input-group-btn">
-                                  <input type="submit" class="btn btn-default" value="Sign in" />
-                                </span>
-                              </span>
+                              <div class="row">
+
+                                <div class="col-xs-5">
+                                  <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">
+                                      <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                    <input name="name" placeholder="name" required type="text" class="input form-control" />
+                                  </div>
+                                </div>
+
+                                <div class="col-xs-7">
+                                  <div class="input-group input-group-sm">
+                                    <input name="notes" placeholder="comments (optional)" type="text" class="input form-control" />
+                                    <span class="input-group-btn">
+                                      <input type="submit" class="btn btn-default" value="Sign in" />
+                                    </span>
+                                  </div>
+                                </div>
+
+                              </div>
                             </form>
                           </div>
                         </div>
                         <hr>
+
                         <h4>Week 1: Introduction, community building and HTML</h4>
                         <ul>
                           <li><a href="rules.html">Class rules</a></li>
@@ -150,27 +165,6 @@
                             </ul>
                           </li>
                         </ul>
-                            
-                          <!--
-                          <li><a href="#" data-toggle="collapse" data-target="#week07">Weeks 6-12: Work on projects!</a> 
-                            <div id="week07" class="collapse">
-                            <ul>
-                              <li><a href="class11.html">Class 11 outline</a></li>
-                              <li><a href="class12.html">Class 12 outline</a></li>
-                              <li>Important resources:
-                                <ul>
-                                  <li><a href="http://phaser.io/tutorials/making-your-first-phaser-game">Phaser game tutorial</a></li>
-                                  <li><a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">Information on Github pages</a></li>
-                                </ul>
-                              </li>
-                            </ul>
-                            </div>
-                          </li>
-                          <p></p>
-                          <li><strong><a href="demoday.html">Information for Demo Day!</a></strong></li>
-                          <li><strong><a href="https://docs.google.com/forms/d/e/1FAIpQLSf9SUd31DWf5OF15rbGeRYe4ykTpsD2H4T_15myFGgfuFgdaQ/viewform">Student feedback questionnaire</a></strong></li>
-                          -->
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -186,38 +180,8 @@
     <!-- Bootstrap Core Javascript -->
     <script src="../js/bootstrap.min.js"></script>
 
-    <script>
-      $(function () {
-        $('form').on('submit', function (e) {
-          e.preventDefault();
-        });
-      });
-
-      function addAttendee(form) {
-        let name = form.elements.name.value;
-        $.ajax({
-          type: 'POST',
-          url: 'https://hills.ccsf.edu/~ggorlen/php/attendance/add_attendee.php',
-          crossDomain: true,
-          data: $(form).serialize(),
-          success: function (responseData, textStatus, jqXHR) {
-            form.reset();
-            $('#attendance-box').toggleClass('panel-info panel-success');
-            $('#attendance-box-body')
-              .hide()
-              .html("Thanks, " + name + "!")
-              .fadeIn(400);
-          },
-          error: function (responseData, textStatus, errorThrown) { 
-            $('#attendance-box').toggleClass('panel-info panel-danger');
-            $('#attendance-box-body')
-              .hide()
-              .html("Server error--try again later!")
-              .fadeIn(400);
-          }
-        });
-      };
-    </script>
+    <!-- Custom scipts -->
+    <script src="attendance.js"></script>
 
 
 </body>

@@ -4,12 +4,12 @@
     <title>Interval example</title>
   </head>
   <body>
-    <div style="font-family: 'courier new'; font-size: 20px;" id="output"></div>
+    <div style="font-family: 'courier new'; font-size: 45px;" id="output"></div>
     
     <script>
     
       // make an array of 30 .s and create an index variable
-      let arr = Array(30).fill(".");
+      let arr = Array.fill ? Array(20).fill(".") : [".", ".", ".", ".", ".", ".", ".", ".", ".", "."];
       let i = 0;
       
       // create an interval with two parameters: a callback function

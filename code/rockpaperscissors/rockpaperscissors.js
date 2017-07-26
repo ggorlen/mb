@@ -3,7 +3,8 @@
  * 
  * Todos:
  *  - add lizard/spock
- *  - separate doTurn() into smaller functions?
+ *  - separate doTurn() into smaller functions
+ *  - use object to enumerate the relationship between objects
  */
 
 // An array to store the different game options as strings
@@ -33,9 +34,10 @@ function doTurn(humanChoice) {
     }
     
     // Test for human wins
-    else if (humanChoice === "rock" && computerChoice === "scissors"
-          || humanChoice === "scissors" && computerChoice === "paper"
-          || humanChoice === "paper" && computerChoice === "rock") {
+    else if (humanChoice === "rock" && computerChoice === "scissors" ||
+             humanChoice === "scissors" && computerChoice === "paper" ||
+             humanChoice === "paper" && computerChoice === "rock") {
+
         output = "Your " + humanChoice + " beats computer's " + computerChoice + "!<p></p>";
         
         // Increment the counter for human wins by 1
@@ -46,7 +48,7 @@ function doTurn(humanChoice) {
     // by process of elimination and don't need to do any tests
     else { 
         output = "Computer's " + computerChoice + 
-            " beats your " + humanChoice + "!<p></p>";
+                 " beats your " + humanChoice + "!<p></p>";
 
         // Increment the counter for computer wins by 1
         computerWins++; 

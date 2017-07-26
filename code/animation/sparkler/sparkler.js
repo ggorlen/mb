@@ -18,8 +18,7 @@ let particles;
 let speed;
 
 // represents a particle entity
-let Particle = function(x, y, vx, vy, life,
-                        color, size) {
+let Particle = function (x, y, vx, vy, life, color, size) {
   this.x = x;
   this.y = y;
   this.vx = vx;
@@ -30,14 +29,14 @@ let Particle = function(x, y, vx, vy, life,
 };
 
 // move this particle
-Particle.prototype.move = function() {
+Particle.prototype.move = function () {
   this.x += this.vx;
   this.y += this.vy;
   this.vx *= DRAG;
   this.vy += GRAVITY;
   
   // occasionally randomize movement
-  if (Math.random() < .1) {
+  if (Math.random() < 0.1) {
     this.vx = rInt(-10, 10);
     this.vy = rInt(-10, 10);
   }
@@ -53,7 +52,7 @@ Particle.prototype.move = function() {
 };
 
 // draw this particle
-Particle.prototype.draw = function() {
+Particle.prototype.draw = function () {
   ctx.fillStyle = this.color;
   ctx.beginPath();
   ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
@@ -80,7 +79,7 @@ function init() {
 }
 
 // updates the animation state each frame
-let update = function() {
+let update = function () {
     
   // clear screen
   ctx.globalCompositeOperation = "source-over";
