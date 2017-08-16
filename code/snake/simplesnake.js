@@ -26,8 +26,7 @@ function init() {
   kbd = new Keyboard();
   board = new Board(WIDTH, HEIGHT);
   board.draw("");
-  snake = new Snake(Math.floor(WIDTH / 2), 
-                    Math.floor(HEIGHT / 2));
+  snake = new Snake(Math.floor(WIDTH / 2), Math.floor(HEIGHT / 2));
   board.makeApple();
   setId("scorebox", "munched: " + (snake.tail.length - 3));
   setId("sb" + apple.x + "_" + apple.y, "@");
@@ -116,7 +115,7 @@ let Snake = function (x, y) {
     this.tail.push(new Tail(x, y));
   }
   
-  // move the snake forward based on kbd
+  // move the snake forward based on kbd direction
   this.move = function () { 
     for (let i = this.tail.length - 1; i > 0; i--) {
       this.tail[i].x = this.tail[i - 1].x;

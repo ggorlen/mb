@@ -6,11 +6,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
 
-* {
-  font-family: 'Work Sans', sans-serif;
-}
-
 body {
+    font-family: 'Work Sans', sans-serif;
     overflow-x: hidden;
     font-size: 17px;
 }
@@ -27,6 +24,15 @@ a, a:hover, a:active, a:visited {
 
 a:hover {
     border-bottom: 2px solid #d62008;
+}
+
+code {
+    color: #fff;
+    background: #000;
+}
+
+pre > code {
+    font-size: 15px;
 }
 
 .sidebar-nav li a {

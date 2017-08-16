@@ -63,16 +63,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h1>Mission Bit at Gateway HS, Spring 2017</h1>
+                        <h1>Mission Bit at Gateway HS, Fall 2017</h1>
                         <p>Welcome to the course page for <a href="https://www.missionbit.com">Mission Bit</a>'s
                           <strong>Introduction to Web Development</strong> class at 
                           <a href="http://www.gatewaypublicschools.org">Gateway HS</a>!  
-                          Meeting times are 4-6 PM every Tuesday and Thursday between January 30th, 2017 and 
-                          May 2nd, 2017 in room 105.
+                          Meeting times are 4-6 PM every Tuesday and Thursday between September 19th, 2017 and 
+                          December 6th, 2017 in room 105.
                         </p>
                         <p>
                           Please use this website to learn about course goals and student learning outcomes 
-                          and access course materials and resources.
+                          and access <a href="material/">course materials</a> and <a href="resources/">resources</a>.
                         </p>
                         <p>
                           Questions, concerns, and suggestions related to this class can be directed to 
@@ -81,15 +81,15 @@
                           directed to <a href="https://www.missionbit.com/">Mission Bit's homepage</a> or 
                           <a href="mailto:info@missionbit.com">info@missionbit.com</a>.
                         </p>
-                        <p>
-                          <div>
+                        <div style="display: flex; margin-top: 20px;">
+                          <div style="margin: auto;">
                             <img id="puter" src="code/wordplay/ticker/puter.png">
                             <div style="font-family: 'lucida console'; font-size: 12px; 
                               width: 30px; height: 17px; position: relative; top: -42px; left: 10px;" 
                               id="ticker">
                             </div>
                           </div>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,24 +111,25 @@
     
     <script>
     
-      // make a new ticker object and start it
-      var ticker = new Ticker("Welcome to Mission Bit @ " +
+      // Create noise and ticker objects
+      let noise;
+      let ticker = new Ticker("Welcome to Mission Bit @ " +
                               "Gateway HS! ", "ticker", 4);
       ticker.start();
       
-      var noise;
-      
-      // pause and resume for mouse hovers over the computer graphic
-      $(document).ready(function() {
-        $("a").mouseenter(function(){
+      // Pause and resume for mouse hovers over the computer graphic
+      $(document).ready(function () {
+        $("a").mouseenter(function () {
           ticker.pause();
-          
+
           document.getElementById("ticker").innerHTML = 
             "<canvas id=\"staticcnvs\" height=17 width=30></canvas>";
+
           noise = new Static("staticcnvs", 5, 2, 200);
           noise.start();
         });
-        $("a").mouseout(function(){
+
+        $("a").mouseout(function () {
           noise.stop();
           document.getElementById("ticker").innerHTML = "";
           ticker.start();
