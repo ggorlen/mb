@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+
+    <title>Mission Bit at Gateway HS</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="../material/">Course material</a>
+                </li>
+                <li>
+                    <a href="../code/">Example code</a>
+                </li>
+                <li>
+                    <a href="../students/">Student projects</a>
+                </li>
+                <li>
+                    <a href="../resources/">Resources</a>
+                </li>
+                <li>
+                    <a href="../about/">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>Class 2: Meet your group and make a game</h1>
+                        <ol>
+                          <li>
+                            <a href="#game-plan">Game plan</a>
+                          </li>
+                          <li>
+                            <a href="#process">The process</a>
+                          </li>
+                          <li>
+                            <a href="#next-time">Next time</a>
+                          </li>
+                        </ol>
+                        <hr>
+                        <h3 id="game-plan">Game plan</h3>
+                        <div style="margin: 10px; width: 215px; height: 340px; overflow: hidden; float: right; clear: right;">
+                          <img alt="Choose your own adventure meme" 
+                            style="width: 300px; margin-left: -39px;" 
+                            src="http://cdn1.sbnation.com/imported_assets/1015536/choose-your-own-adventure.jpg">
+                        </div>
+                        <p>
+                          Ready to program? Awesome, me too!
+                        </p>
+                        <p>
+                          Today, we'll form teams of four and embark on our warm-up project, a 
+                          <a href="https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure">Choose Your Own Adventure</a>-style
+                          game.
+                        </p>  
+                        <p>
+                          If you're not familiar with the book series, 
+                          the idea is to make a collection of pages for a player to navigate through. On each page, 
+                          the player will choose some kind of action from a list of links, which leads to 
+                          other pages, revealing a story. Each page is either an ending with no further choices
+                          or a transition page with additional choices for the player to make. Here's an 
+                          <a href="http://bob.ippoli.to/mbit-intro-4-game/">example</a>.
+                        </p>
+                        <p>
+                          Feel free to be as creative as you want! The only requirements are
+                          that pages correctly link together and that each member contributes at least three pages.
+                          Projects should be finished by the end of the week.
+                        </p>
+                        <hr style="clear: both;">
+                        <h3 id="process">The process</h3>
+                        <p>
+                          Here's an outline for tackling this project.
+                        </p>  
+                        <ol>
+                          <li>
+                            <p>
+                              Meet your team. Make sure everyone knows everyone else! I'll randomly generate the groups.
+                              All things being equal, this will be your team for the semester, so build a strong rapport.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Spend no more than 20 to 30 minutes planning your game. Planning is important, 
+                              but don't get bogged down to the point where there won't be time left to implement it. 
+                              A good plan should...
+                            </p>
+                            <img alt="Pie chart showing the creative process" 
+                              style="width: 400px; margin: 10px; float: right; clear: right" 
+                              src="https://qph.ec.quoracdn.net/main-qimg-d2581f7dda6834a8e1ca3fcacf5998f2">
+                            <ol>
+                              <li>
+                                <p>
+                                  state the <b>objective</b> of the game. You'll probably want to spend a few minutes 
+                                  writing down any and all ideas that come to mind, then spending a few minutes 
+                                  more working as a group to pick the best idea.
+                                </p>  
+                              </li>
+                              <li>
+                                <p>
+                                  determine the <b>scope</b> of the game. Keep it simple so you'll have 
+                                  time to finish what you set out to do--you can always add more as time permits.
+                                </p>  
+                              </li>  
+                              <li>
+                                <p>
+                                  create a provisional <b>layout</b> of the game states, or different pages a player can visit.
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <b>delegate</b> tasks. Who's responsible for which parts of the game?
+                                </p>
+                              </li>
+                            </ol>  
+                          </li>
+                          <li>
+                            <p>
+                              Start programming! Build a standard HTML template for your group to use, share it on Github,
+                              then start filling in the game states' text and images. Usually, images can wait until the 
+                              basic text content is all in place--it's very easy to get bogged down prematurely in style concerns.
+                              Plan to spend about 60 to 90 minutes to do all your coding. I'm here to assist!
+                            </p>
+                          </li>
+                        </ol>  
+                        <hr style="clear: both;">
+                        <h3 id="next-time">Next time</h3>
+                        <p> 
+                          Awesome job! I'll introduce 
+                          <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a> at the beginning of 
+                          next class, which will be helpful for adding more visual appeal (colors, backgrounds, layout, etc) 
+                          to your game. See you then.
+                        </p>
+                        <img alt="Woman typing gif" style="margin: 15px;" 
+                          src="https://typeset-beta.imgix.net/rehost/2017/5/18/b9729ffd-b463-41cd-8940-2cce0ec82bd0.gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    
+    <!-- Bootstrap Core Javascript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Custom scipts -->
+    <script src="attendance.js"></script>
+
+
+</body>
+
+</html>
+
+
+
