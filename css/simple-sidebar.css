@@ -26,13 +26,14 @@ a:hover {
     border-bottom: 2px solid #d62008;
 }
 
-code {
-    color: #fff;
-    background: #000;
-}
-
 pre > code {
     font-size: 15px;
+}
+
+li > code.hljs,
+p > code.hljs { 
+    padding: 2px;
+    display: inline; 
 }
 
 .sidebar-nav li a {

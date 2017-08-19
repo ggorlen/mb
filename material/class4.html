@@ -72,7 +72,7 @@
                             <a href="#ahead">What's ahead</a>
                           </li>
                           <li>
-                            <a href="#js">Javascript: the programming language of the web</a>
+                            <a href="#js">JavaScript: the programming language of the web</a>
                           </li>
                           <li>
                             <a href="#hello-world">Hello, world!</a>
@@ -128,7 +128,7 @@
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
                         </div>
                         <hr style="clear: both;">
-                        <h2 id="js">Javascript: the programming language of the web</h2>
+                        <h2 id="js">JavaScript: the programming language of the web</h2>
                         <p>
                           JS is one of the easiest programming languages to learn,
                           but is also extremely powerful. It's the only language that runs directly in web browsers.
@@ -275,7 +275,7 @@ let visitorName = prompt("What is your name?");</code></pre>
                           The second line has a lot of action in it. Let's start with <code>prompt("What is your name?");</code>.
                           This line calls a <i><a href="https://www.tutorialspoint.com/javascript/javascript_functions.htm">function</a></i> 
                           that was built into the standard JS library. Functions are bits of code that serve a single, explicit
-                          purpose and can be <i>called</i>, or executed, again and again. The <code>prompt</code> function makes
+                          purpose and can be <i>called</i>, or executed, again and again. The <code class="javascript">prompt</code> function makes
                           a dialog box pop up and waits for the user to input text and press "OK."
                         </p>  
                         <p>
@@ -284,10 +284,11 @@ let visitorName = prompt("What is your name?");</code></pre>
                         <ol>
                           <li>
                             <p>
-                              You can specify <i>parameters</i> which go inside the <code>( )</code> parenthesis after the 
-                              function name. Parameters change something about how the function works. In this case,
-                              <code>prompt()</code> allows the programmer to tell it which <i>string</i>, or bit of text, it should
-                              display in the dialog box. Try changing the <code>"What is your name?"</code> line to something else
+                              You can specify <i>parameters</i> which go inside the <code class="javascript">( )</code> 
+                              parenthesis after the function name. Parameters change something about how the function works. 
+                              In this case, <code class="javascript">prompt()</code> allows the programmer to tell it which 
+                              <i>string</i>, or bit of text, it should display in the dialog box. Try changing the 
+                              <code class="javascript">"What is your name?"</code> line to something else
                               and see what happens. Just make sure to keep the quotes.
                             </p>
                           </li>  
@@ -296,12 +297,14 @@ let visitorName = prompt("What is your name?");</code></pre>
                               Functions can <i>return</i> information from them when they are called. In this case, the function
                               returns a string, which is whatever the user entered into the dialog box.
                             </p>
-                            <img style="margin: 15px;" alt="Yo dawg functional meme" src="https://cdn.meme.am/cache/instances/folder319/500x/63117319/yo-dawg-yo-dawg-i-heard-you-like-functions-so-we-put-a-function-in-your-function-that-can-return-a-f.jpg">
+                            <img style="margin: 15px;" alt="Yo dawg functional meme" 
+                              src="https://cdn.meme.am/cache/instances/folder319/500x/63117319/yo-dawg-yo-dawg-i-heard-you-like-functions-so-we-put-a-function-in-your-function-that-can-return-a-f.jpg">
                           </li>
                         </ol>
                         <p>
-                          Now that the <code>prompt("What is your name?");</code> component is a little clearer, let's discuss the 
-                          <code>let visitorName =</code> part. <code>let</code> is a keyword in JS which creates a new
+                          Now that the <code class="javascript">prompt("What is your name?");</code> 
+                          component is a little clearer, let's discuss the <code class="javascript">let visitorName =</code> 
+                          part. <code class="javascript">let</code> is a keyword in JS which creates a new
                           <i><a href="https://www.tutorialspoint.com/javascript/javascript_variables.htm">variable</a></i>, or
                           named storage space for a piece of data. We can store anything in this variable and retrieve and manipulate it
                           later on in our program. We can name the variable any series of letters, numbers, or underscores we want, provided
@@ -310,15 +313,17 @@ let visitorName = prompt("What is your name?");</code></pre>
                           first word is lowercase and all subsequent words begin with an uppercase letter.
                         </p>  
                         <p>
-                          Another thing to note is that <code>var</code> is another way to declare a variable which you may see
-                          used, and you are welcome to use yourself instead of <code>let</code>. The difference is too small to worry
+                          Another thing to note is that <code class="javascript">var</code> is another way 
+                          to declare a variable which you may see used, and you are welcome to use yourself 
+                          instead of <code class="javascript">let</code>. The difference is too small to worry
                           about just yet.
                         </p>
                         <p>
-                          As for the <code>=</code> equals sign, this isn't a measure of equality, but rather an 
-                          <i>assignment operator</i>. Assignment takes the value on the right of the <code>=</code> and sticks it
-                          into the variable on the left. If I run the program and type "bob" into the prompt, that string gets
-                          stored in the <code>visitorName</code> variable.
+                          As for the <code class="javascript">=</code> equals sign, this isn't a measure of equality, but rather an 
+                          <i>assignment operator</i>. Assignment takes the value on the right of the 
+                          <code class="javascript">=</code> and sticks it into the variable on the left. 
+                          If I run the program and type "bob" into the prompt, that string gets
+                          stored in the <code class="javascript">visitorName</code> variable.
                         </p>
                         <p>
                           OK, it's all smooth sailing for the next bit of code:
@@ -328,16 +333,18 @@ let visitorName = prompt("What is your name?");</code></pre>
 alert("Hello, " + visitorName + "!");</code></pre>
                         </div>
                         <p>
-                          Here's another JS built-in function called <code>alert()</code>, which is the annoying 
-                          pop-up box you've probably encountered before. You (hopefully) won't be using <code>prompt()</code> 
-                          and <code>alert()</code> much, but they're handy for little test code like this. <code>alert()</code> works
+                          Here's another JS built-in function called <code class="javascript">alert()</code>, which is the annoying 
+                          pop-up box you've probably encountered before. You (hopefully) won't be using 
+                          <code class="javascript">prompt()</code> and <code class="javascript">alert()</code> much, 
+                          but they're handy for little test code like this. <code class="javascript">alert()</code> works
                           by taking a string parameter and makes that the text that pops up. It doesn't return any value.
                         </p>
                         <p>
                           The more interesting part of the second line of code is what's going on inside the function's
-                          parameter. The <code>+</code> symbols are <i>concatenating</i>, or joining, the values of three strings,
-                          "Hello, ", "bob", and "!" into one string: "Hello, bob!" (assuming the user entered "bob" into the 
-                          prompt), which is what gets sent into the <code>alert()</code> function for display.
+                          parameter. The <code class="javascript">+</code> symbols are <i>concatenating</i>, or joining, 
+                          the values of three strings, "Hello, ", "bob", and "!" into one string: "Hello, bob!" (assuming 
+                          the user entered "bob" into the prompt), which is what gets sent into the 
+                          <code class="javascript">alert()</code> function for display.
                         </p>
                         <hr style="clear: both;">
                         <h2 id="done">Done!</h2>
@@ -366,11 +373,7 @@ alert("Hello, " + visitorName + "!");</code></pre>
 
     <!-- Highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-
-    <!-- Custom scipts -->
-    <script src="attendance.js"></script>
-
+    <script src="../js/init-highlight-js.js"></script>
 
 </body>
 
