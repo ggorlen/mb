@@ -1,0 +1,20 @@
+$(document).ready(function () {
+
+  // Highlight code with HLJS
+  $('code').each(function (i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  // Animated scrolling effect
+  $(document).on("click", "a", function (event){
+    let destination = $.attr(this, "href");
+  
+    if (destination.startsWith("#")) {
+      event.preventDefault();
+  
+      $("html, body").animate({
+        scrollTop: $(destination).offset().top
+      }, 300);
+    }
+  });
+});

@@ -66,206 +66,296 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h1>Class 5: Begin making a block dodger game in JS Canvas</h1>
+                        <h1>Class 5: Hello, JavaScript!</h1>
                         <ol>
                           <li>
-                            <a href="#getting-started">Getting started</a>
+                            <a href="#ahead">What's ahead</a>
                           </li>
                           <li>
-                            <a href="#hello-canvas">Hello, Canvas!</a>
+                            <a href="#js">JavaScript: the programming language of the web</a>
                           </li>
                           <li>
-                            <a href="#adding-animation">Adding animation</a>
+                            <a href="#hello-world">Hello, world!</a>
+                          </li>
+                          <li>
+                            <a href="#developer-tools">Developer tools</a>
+                          </li>
+                          <li>
+                            <a href="#local-development">Local development</a>
+                          </li>
+                          <li>
+                            <a href="#greeting-explanation">Explanation of the greeting program</a>
+                          </li>
+                          <li>
+                            <a href="#done">Done!</a>
                           </li>
                         </ol>
                         <hr>
-                        <h2 id="getting-started">Getting started</h2>
-                        <img alt="Willy Wonka game programming meme" style="float: right; margin: 10px 10px 10px 30px; clear: right;"
-                          src="http://s2.quickmeme.com/img/f9/f9d39e5365c4640c2248ffc7cf684fd2b1aaf050a98b03069d37174adac11ed1.jpg">
+                        <h2 id="ahead">What's ahead</h2>
                         <p>
-                          Welcome back! Now that we've got a couple of the basics in JavaScript and are getting
-                          comfortable with our development environment, it's time to dive right into game
-                          development. The idea is to introduce the remaining basics of programming in the context
-                          of a graphical game. 
+                          I hope making a game in HTML and CSS was a nice appetizer for the main course: making your
+                          own game in <a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a>! 
+                          Here's the plan for the rest of the semester:
                         </p>  
-                        <p>  
-                          We're going to use JS's built-in graphics library, 
-                          <a href="https://en.wikipedia.org/wiki/Canvas_element">Canvas</a>, to render the graphics.
-                          Canvas is an ideal game framework to use because it's simple and no-frills, forcing us 
-                          to understand and write all of the game mechanics from scratch. Later, we'll
-                          be able to use a more complex game framework that will handle some of the work for us.
-                        </p>  
-                        <p>
-                          A good way to start is to plan out the result on paper. The primary game mechanic works like this:
-                          Using the mouse, a player will move a block left and right along the bottom of the screen, 
-                          dodging falling blocks of different sizes and speeds. Every block that the player
-                          avoids colliding with increases the player's score by 1. The goal of the game is to survive as long as possible. 
-                        </p>
-                        <hr>
-                        <h2 id="hello-canvas">Hello, Canvas!</h2>
-                        <p>
-                          All graphics programs take a little bit of code to set up and show something on screen.
-                          Luckily, canvas is about as minimal as it gets.  Don't worry too much about the specifics 
-                          of the code--it'll make more sense later on, but I'll offer a provisional explanation below. 
-                          Don't forget to copy the HTML and CSS portions. You're welcome to follow along with the code in 
-                          <a href="https://codepen.io/">Codepen</a> or in your local environment. Don't forget to 
-                          reference your <code>.js</code> script and <code>.css</code> stylesheet from your 
-                          <code>.html</code> file if you're working locally.
-                        </p>
-                        <div style="margin: 15px;">
-                        <p data-height="527" data-theme-id="dark" data-slug-hash="YxemRr" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 1)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/YxemRr/">block dodger (part 1)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-                        </div>
-                        <p>
-                          There's a lot going on here! Let's break it down a bit. Don't worry if these explanations
-                          are dense; they'll make more sense later on:
-                        </p>
-                        <h3>The HTML</h3>
+                        <img alt="Drew Carey JS joke" style="width: 350px; float: right; margin: 10px 10px 10px 30px;"
+                          src="https://pics.onsizzle.com/welcome-to-javascript-where-the-objects-are-made-up-and-13411868.png">
                         <ul>
                           <li>
-                            <p>
-                              The HTML component creates a new element we haven't seen yet,
-                              <code>&lt;canvas&gt;</code>. The canvas is then given height and width attributes in HTML
-                              rather than with CSS, which can cause image warping. This canvas element is also given
-                              an ID of "paper" so it can be easily accessed in CSS and JS.
-                            </p>  
-                          </li>  
-                        </ul>  
-                        <h3>The CSS</h3>
-                        <ul>
+                            Spend the next three weeks learning the basics of programming by making a 
+                            "block dodger" game in JS. We'll work in teams and as a class.
+                          </li>
                           <li>
-                            <p>
-                              The CSS component makes the screen colors dark, centers the canvas element, and gives it a border, as 
-                              discussed in <a href="class3.html#flexbox-centering">class 3</a>.
-                            </p>
+                            Spend the remaining seven weeks building your own game (or web app!) in JS, working in groups.
                           </li>
                         </ul>
                         <p>
-                          That's about all we'll really need in terms of HTML and CSS for the remainder of the semester!
+                          JS is going to be a significant increase in difficulty from HTML and CSS, but we're also
+                          going to spend more time on it and ensure everyone understands everything as we go.
                         </p>
-                        <h3>The JS</h3>
-                        <p>Now we begin looking at the JS, which is where all the action is.</p>
+                        <p>
+                          Games can be challenging to program, so getting as solid on the basics as you can
+                          is your best bet: try to spend as much time as possible on 
+                          <a href="https://www.codecademy.com/learn/javascript">Codecademy</a>! 
+                          It's sort of like writing a short story; you want to spend time worrying about the 
+                          high-level stuff like plot and character development and not on low-level stuff like 
+                          spelling, grammar, and punctuation mistakes.
+                        </p>  
+                        <p>
+                          Here's the block dodger game we're going to build together:
+                        </p>
+                        <div style="margin: 15px;">
+                        <p data-height="624" data-theme-id="dark" data-slug-hash="GvJvxq" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/GvJvxq/">block dodger</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        </div>
+                        <hr style="clear: both;">
+                        <h2 id="js">JavaScript: the programming language of the web</h2>
+                        <p>
+                          JS is one of the easiest programming languages to learn,
+                          but is also extremely powerful. It's the only language that runs directly in web browsers.
+                          The cool thing about this is that when you visit a website which has JS, you can read it just like
+                          HTML and CSS using the "view page source" feature on your browser (as discussed in 
+                          <a href="class1.html#html">week 0</a>). It also means that JS has a monopoly on web programming, 
+                          which guarantees that 1) an enormous amount of time and effort goes into making it great, and 2) it 
+                          will likely be relevant for some time to come.
+                        </p>
+                        <img alt="JS for babies book" style="margin: 15px;"
+                          src="https://pbs.twimg.com/media/C6NfQKLVMAEexjg.jpg">
+                        <p>
+                          There is so much theory behind programming, and I love to discuss it and think about how it all works. 
+                          But we don't really have time to get too detailed, unfortunately, so I'll leave it to you to pursue
+                          your own research as you feel inclined. If I get too off-topic, just tell me to get back on track!
+                        </p>
+                        <img alt="JS good parts vs JS" style="margin: 15px;"
+                          src="http://nelsonwells.net/wp-content/uploads/2011/06/javascript_good_and_bad_parts.jpg">
+                        <p>
+                          Oh yeah: you may have heard of this "Java" thing:
+                        </p>
+                        <img alt="JS !== Java" style="margin: 15px;" 
+                          src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/8/005/0b6/1c6/33cffb0.jpg">
+                        <p>
+                          That's true to a large extent; however, once you learn a programming language, all of the basics 
+                          transfer to any other language, so in that sense Java and JS are not all that different. Language choice
+                          boils down to picking the right tool for the job, and for web programming, JS is the only tool.
+                        </p>  
+                        <hr style="clear: both;">
+                        <h2 id="hello-world">Hello, world!</h2>
+                        <p>
+                          With that introduction, let's dive in to doing programming in JS. The first orders of business are 
+                          making sure JS is working and getting comfortable with our development environment(s).
+                        </p>
+                        <p>
+                          <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, world!</a> is the 
+                          first program you'll write in any language, so let's go ahead and write it:
+                        </p>
+                        <div style="margin: 15px;">
+<pre><code class="javascript">console.log("Hello, world!");</code></pre>
+                        </div>
+                        <p>
+                          This program tells JS to print the text "Hello, world!" in the browser's console.
+                          Let's execute this program at <a href="https://repl.it/languages/javascript">repl.it</a>. 
+                          Repl is an easy way to run snippets of JS code, so we'll be using it often. Once you've run 
+                          the program, try changing the text inside the quotation marks, and run it again.
+                        </p>
+                        <hr style="clear: both;">
+                        <h2 id="developer-tools">Developer tools</h2>
+                        <p>
+                          Now that we have a working JS program, let's run it in a few different environments
+                          and learn about our browser's developer tools. Developer tools are included in
+                          every major browser, but opening them is platform- and browser- specific; ask 
+                          <a href="https://www.google.com/">Google</a> "how do i open developer tools in 
+                          <i>os x</i> and <i>browser y</i>?" where <i>x</i> is your operating system (Mac/Windows)
+                          and <i>y</i> is your browser (Chrome, Firefox). In particular, we'll be using the console component of
+                          the dev tools, which is a place that can interactively execute JS code, display errors, 
+                          and show output from <code>console.log()</code> statements.
+                          <img alt="Chrome/Mac console path image" style="margin: 15px;" src="https://i.stack.imgur.com/Ktv4E.png">
+                        </p>
+                        <p>
+                          With your console open, try running the "Hello, world!" program by typing it right into the console.
+                          Once that works, also try running the program on <a href="https://codepen.io/">Codepen</a>. 
+                          The output will be visible in the browser's console as well as Codepen's mini-console.
+                        </p>  
+                        <hr styel="clear: both;">
+                        <h2 id="local-development">Local development</h2>
+                        <p>
+                          Now that we know how to make JS output something in the browser, let's turn our attention to
+                          running JS code inside an HTML file.  As with CSS, we can include JS in a HTML file in a few ways:
+                        </p>
                         <ul>
+                          <li>inside of <code>&lt;script&gt;</code> tags</li>
+                          <li>as an external <code>.js</code> script file</li>
+                          <li>in-line, inside of an HTML element</li>
+                        </ul>
+                        <p>
+                          We'll be using external <code>.js</code> files mostly, and here's how:
+                        </p>
+                        <ol>
                           <li>
                             <p>
-                              First order of business is a comment stating the purpose of the game. This is also a good place
-                              to put lists of team members, helpful links, things to do, etc.
+                              Create two files in the same directory: <code>greeting.html</code> and <code>greeting.js</code>.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Inside of <code>greeting.js</code>, add the following JS code (it uses new syntax which I'll explain shortly):
+                              <div style="margin: 15px;">
+<pre><code class="javascript">// Ask the user for their name
+let visitorName = prompt("What is your name?");
+
+// Greet the user
+alert("Hello, " + visitorName + "!");</code></pre>
+                              </div>
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Inside of <code>greeting.html</code>, add the following code, which includes the JS
+                              script in the HTML code; the script executes when the page is loaded:
+                            </p>  
+                            <div style="margin: 15px;">
+<pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Greeting page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script src="greeting.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                          </li>
+                          <li>
+                            <p>
+                              Open <code>greeting.html</code> in a browser and enter your name into the prompt. 
+                              Consider yourself greeted. 
+                            </p>
+                          </li>  
+                        </ol>  
+                        <p>
+                          If you wish, feel free to try writing this same program on <a href="https://codepen.io/">Codepen</a>.
+                          Codepen fills in the basic <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>
+                          tags automatically and connects the three scripts together, so all you have to write is the JS code.
+                          Same thing on <a href="https://repl.it/languages/javascript">repl.it</a>--just the JS is enough.
+                        </p>
+                        <hr style="clear: both;">
+                        <h2 id="greeting-explanation">Explanation of the greeting program</h2>
+                        <p>
+                          Cool. Now that you've executed a couple of programs in a variety of environments, let's take a moment
+                          to examine how the "greeting" program works, then we'll call it a day. Let's start with the first two
+                          lines:
+                        </p>  
+                        <div style="margin: 15px;">
+<pre><code class="javascript">// Ask the user for their name
+let visitorName = prompt("What is your name?");</code></pre>
+                        </div>
+                        <p>
+                          The first line is a comment, but with a slightly different syntax from the CSS comments. CSS
+                          comments work in JS too; they're called multi-line comments, while the <code>//</code> comment
+                          is a single-line comment.
+                        </p>  
+                        <p>
+                          The second line has a lot of action in it. Let's start with <code>prompt("What is your name?");</code>.
+                          This line calls a <i><a href="https://www.tutorialspoint.com/javascript/javascript_functions.htm">function</a></i> 
+                          that was built into the standard JS library. Functions are bits of code that serve a single, explicit
+                          purpose and can be <i>called</i>, or executed, again and again. The <code class="javascript">prompt</code> function makes
+                          a dialog box pop up and waits for the user to input text and press "OK."
+                        </p>  
+                        <p>
+                          Two cool things about functions which are on display in the above example:
+                        </p>  
+                        <ol>
+                          <li>
+                            <p>
+                              You can specify <i>parameters</i> which go inside the <code class="javascript">( )</code> 
+                              parenthesis after the function name. Parameters change something about how the function works. 
+                              In this case, <code class="javascript">prompt()</code> allows the programmer to tell it which 
+                              <i>string</i>, or bit of text, it should display in the dialog box. Try changing the 
+                              <code class="javascript">"What is your name?"</code> line to something else
+                              and see what happens. Just make sure to keep the quotes.
                             </p>
                           </li>  
                           <li>
                             <p>
-                              Next line has a string, <code class="javascript">"use strict";</code>. This tells the JS 
-                              <i><a href="https://en.wikipedia.org/wiki/JavaScript_engine">interpreter</a></i>, or the program 
-                              built into the browser that executes the JS code, to disallow some common brittle programming 
-                              practices. Be sure to add this line to the top of all of your JS scripts. 
-                              <a href="https://www.w3schools.com/js/js_strict.asp">Read more</a> 
-                              on <code class="javascript">"use strict";</code> if you're curious.
+                              Functions can <i>return</i> information from them when they are called. In this case, the function
+                              returns a string, which is whatever the user entered into the dialog box.
                             </p>
-                          </li> 
-                          <li>
-                            <p>
-                              The following line,
-                              <div style="margin: 15px;">
-                                <pre><code class="javascript">let canvas = document.getElementById("paper");</code></pre>
-                              </div>
-                            <p>
-                              requests some information from the HTML document object using one of its functions,
-                              <code class="javascript">getElementById()</code>, which looks for an element
-                              with an ID matching the parameter string, in this case, <code class="javascript">"paper"</code>.
-                              This function returns a structure called an <i>object</i>, one of the most
-                              important programming concepts, and stores this object in a new variable called 
-                              <code class="javascript">canvas</code>. We'll discuss much more about objects later, but
-                              suffice to say they are collections of pieces of information (variables) and actions (functions) that
-                              work together as a unit.
-                            </p>
+                            <img style="margin: 15px;" alt="Yo dawg functional meme" 
+                              src="https://cdn.meme.am/cache/instances/folder319/500x/63117319/yo-dawg-yo-dawg-i-heard-you-like-functions-so-we-put-a-function-in-your-function-that-can-return-a-f.jpg">
                           </li>
-                          <li>
-                            <p>
-                              The line,
-                            </p>
-                              <div style="margin: 15px;">
-                                <pre><code class="js">let ctx = canvas.getContext("2d");</code></pre>
-                              </div>
-                            </p>
-                            <p>
-                              stores another object in a variable for us to use. This time, we're calling on the 
-                              <code class="js">getContext()</code> function inside of our new 
-                              <code class="js">canvas</code> object. This function returns a canvas context 
-                              object, which is what we will use to draw on the canvas. We call this variable
-                              <code class="js">ctx</code> for short since we'll be typing it frequently.
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              Now that we have a canvas context object to work with, we can begin drawing using its
-                              built-in properties and functions. The line,
-                            </p>  
-                            <div style="margin: 15px;">
-                              <pre><code class="js">ctx.fillStyle = "#ffffff";</code></pre>
-                            </div>
-                            <p>
-                              Sets the drawing color of the canvas to white.
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              And the final line, 
-                            </p>  
-                            <div style="margin: 15px;">
-                              <pre><code class="js">ctx.fillRect(100, 100, 70, 50);</code></pre>
-                            </div>
-                            <p>
-                              draws a filled, white rectangle on the screen. The canvas context <code class="js">fillRect()</code> 
-                              function takes four parameters, something we haven't seen yet. Remember that 
-                              parameters are pieces of data that change the way the function works. These 
-                              parameters are numbers which describe the location and size of the rectangle to be 
-                              drawn. The first two numbers represent the x and y coordinates for the top-left of the 
-                              rectangle. The second two numbers represent the width and height of the rectangle. 
-                              All of these units are in <a href="https://en.wikipedia.org/wiki/Pixel">pixels</a>, the little
-                              dots on the computer screen that form an image.
-                            </p>
-                            <p>
-                              Another thing to note is that the coordinate plane is arranged in canvas in a different
-                              manner than a Cartesian geometric plane:
-                            </p>  
-                            <img alt="Image showing the difference between the traditional and canvas coordinate planes" style="margin: 15px;"
-                              src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/03/1393985491canvas-coordinate-space.png">
-                            <p>    
-                              With this in mind, try changing the four parameters of <code class="js">fillRect()</code> 
-                              to draw rectangles at different locations and of different sizes. Try changing the color
-                              value assigned to <code class="js">fillStyle()</code>. See if you can draw more rectangles by
-                              repeating these two lines multiple times.
-                            </p>
-                            <p>
-                              By the way, I have a <a href="../code/coordinates/">tool</a> which will display the x y coordinates 
-                              of an image. This might come in handy later on when you're trying to put things at
-                              specific places in your game.
-                            </p>
-                          </li>
-                        </ul>  
-                        <hr style="clear: both;">
-                        <h2 id="adding-animation">Adding animation</h2>
+                        </ol>
                         <p>
-                          So now we have a square on our canvas! Let's make it move.
+                          Now that the <code class="javascript">prompt("What is your name?");</code> 
+                          component is a little clearer, let's discuss the <code class="javascript">let visitorName =</code> 
+                          part. <code class="javascript">let</code> is a keyword in JS which creates a new
+                          <i><a href="https://www.tutorialspoint.com/javascript/javascript_variables.htm">variable</a></i>, or
+                          named storage space for a piece of data. We can store anything in this variable and retrieve and manipulate it
+                          later on in our program. We can name the variable any series of letters, numbers, or underscores we want, provided
+                          that it doesn't begin with a number. There are some conventions for naming variables in JS. For now,
+                          write all variable names in <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>--the 
+                          first word is lowercase and all subsequent words begin with an uppercase letter.
                         </p>  
                         <p>
-                          Here's the truth: all animation is a bit of a smoke-and-mirrors game; if you show a picture of a person 
-                          for a split second, then show another picture of that person after they've moved slightly for another split second
-                          and repeat the process, you create the illusion of motion.
+                          Another thing to note is that <code class="javascript">var</code> is another way 
+                          to declare a variable which you may see used, and you are welcome to use yourself 
+                          instead of <code class="javascript">let</code>. The difference is too small to worry
+                          about just yet.
                         </p>
-                        <img alt="Muybridge woman jumping" style="margin: 15px; width: 100%; max-width: 1200px;"
-                          src="https://i.amz.mshcdn.com/0RmR2HTTR_mCndNHNhlGNFOqQio=/http%3A%2F%2Fa.amz.mshcdn.com%2Fwp-content%2Fuploads%2F2015%2F12%2Fmuybridge-26.jpg">
                         <p>
-                          And that's exactly what we'll do on our canvas. To do so, we'll need two tools:
-                          <ol>
-                            <li>
-                              number variables to keep track of the square's x and y position on the screen
-                            </li>
-                            <li>
-                              some kind of way for the program to draw the screen over a period of time
-                            </li>
-                          </ol>
+                          As for the <code class="javascript">=</code> equals sign, this isn't a measure of equality, but rather an 
+                          <i>assignment operator</i>. Assignment takes the value on the right of the 
+                          <code class="javascript">=</code> and sticks it into the variable on the left. 
+                          If I run the program and type "bob" into the prompt, that string gets
+                          stored in the <code class="javascript">visitorName</code> variable.
+                        </p>
+                        <p>
+                          OK, it's all smooth sailing for the next bit of code:
                         </p>  
+                        <div style="margin: 15px;">
+<pre><code class="javascript">// Greet the user
+alert("Hello, " + visitorName + "!");</code></pre>
+                        </div>
+                        <p>
+                          Here's another JS built-in function called <code class="javascript">alert()</code>, which is the annoying 
+                          pop-up box you've probably encountered before. You (hopefully) won't be using 
+                          <code class="javascript">prompt()</code> and <code class="javascript">alert()</code> much, 
+                          but they're handy for little test code like this. <code class="javascript">alert()</code> works
+                          by taking a string parameter and makes that the text that pops up. It doesn't return any value.
+                        </p>
+                        <p>
+                          The more interesting part of the second line of code is what's going on inside the function's
+                          parameter. The <code class="javascript">+</code> symbols are <i>concatenating</i>, or joining, 
+                          the values of three strings, "Hello, ", "bob", and "!" into one string: "Hello, bob!" (assuming 
+                          the user entered "bob" into the prompt), which is what gets sent into the 
+                          <code class="javascript">alert()</code> function for display.
+                        </p>
+                        <hr style="clear: both;">
+                        <h2 id="done">Done!</h2>
+                        <p>
+                          Great! You learned a <b>ton</b> about JS today. Let it all sink in, play with the greeting program, and work on 
+                          basics at <a href="https://www.codecademy.com/learn/javascript">Codecademy</a>. A lot of programming
+                          stuff won't make sense at first, but stick with it and it'll become second nature. See you next time,
+                          when we'll begin working with graphics and start on our block dodger game!
+                        </p>  
+                        <img alt="Game programming vs CS meme" style="margin: 15px;" 
+                          src="https://s-media-cache-ak0.pinimg.com/736x/5b/da/6e/5bda6e27d7749771cd4256f0917f6bdb--computer-science-computer-humor.jpg">
                     </div>
                 </div>
             </div>
@@ -283,7 +373,10 @@
 
     <!-- Highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script src="../js/init-highlight-js.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../js/global.js"></script>
+
 
 </body>
 

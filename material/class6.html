@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+
+    <title>Mission Bit at Gateway HS</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="../material/">Course material</a>
+                </li>
+                <li>
+                    <a href="../code/">Example code</a>
+                </li>
+                <li>
+                    <a href="../students/">Student projects</a>
+                </li>
+                <li>
+                    <a href="../resources/">Resources</a>
+                </li>
+                <li>
+                    <a href="../about/">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>Class 5: Begin making a block dodger game in JS Canvas</h1>
+                        <ol>
+                          <li>
+                            <a href="#getting-started">Getting started</a>
+                          </li>
+                          <li>
+                            <a href="#hello-canvas">Hello, Canvas!</a>
+                          </li>
+                          <li>
+                            <a href="#adding-animation">Adding animation</a>
+                          </li>
+                          <li>
+                            <a href="#out">Over and out</a>
+                          </li>
+                        </ol>
+                        <hr>
+                        <h2 id="getting-started">Getting started</h2>
+                        <img alt="Willy Wonka game programming meme" style="float: right; margin: 10px 10px 10px 30px; clear: right;"
+                          src="http://s2.quickmeme.com/img/f9/f9d39e5365c4640c2248ffc7cf684fd2b1aaf050a98b03069d37174adac11ed1.jpg">
+                        <p>
+                          Welcome back! Now that we've had a small taste of JavaScript and are getting
+                          comfortable with our development environment, it's time to dive right into game
+                          development. We'll introduce the remaining basics of programming in the context
+                          of a graphical game. 
+                        </p>  
+                        <p>  
+                          We're going to use JS's built-in graphics library, 
+                          <a href="https://en.wikipedia.org/wiki/Canvas_element">Canvas</a>, to render the graphics.
+                          Canvas is an ideal game framework to use because it's simple and no-frills, forcing us 
+                          to write all of the game mechanics from scratch. Later, we'll
+                          be able to use a more complex game framework that will handle some of the work for us.
+                        </p>  
+                        <p>
+                          A good way to start is to plan out the result on paper. The primary game mechanic works like this:
+                          Using the mouse, a player will move a block left and right along the bottom of the screen, 
+                          dodging falling blocks of different sizes and speeds. Every block that the player
+                          avoids colliding with increases the player's score by 1. The goal of the game is to survive as long as possible. 
+                        </p>
+                        <hr>
+                        <h2 id="hello-canvas">Hello, Canvas!</h2>
+                        <p>
+                          All graphics programs take a little bit of code to set up and show something on screen.
+                          Don't worry too much about the specifics 
+                          of the code--it'll make more sense later on, but I'll offer a provisional explanation below. 
+                          Don't forget to copy the HTML and CSS portions. You're welcome to follow along with the code in 
+                          <a href="https://codepen.io/">Codepen</a> or in your local environment. Don't forget to 
+                          reference your <code>.js</code> script and <code>.css</code> stylesheet from your 
+                          <code>.html</code> file if you're working locally.
+                        </p>
+                        <div style="margin: 15px;">
+                        <p data-height="527" data-theme-id="dark" data-slug-hash="YxemRr" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 1)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/YxemRr/">block dodger (part 1)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        </div>
+                        <p>
+                          There's a lot going on here! Let's break it down a bit. Don't worry if these explanations
+                          are dense; they'll make more sense later on in the course:
+                        </p>
+                        <h3>The HTML</h3>
+                        <ul>
+                          <li>
+                            <p>
+                              The HTML component creates a new element we haven't seen yet,
+                              <code>&lt;canvas&gt;</code>. The canvas is then given height and width attributes in HTML
+                              rather than with CSS, which can cause image warping. This canvas element is also given
+                              an ID of "paper" so it can be easily accessed in our CSS and JS scripts.
+                            </p>  
+                          </li>  
+                        </ul>  
+                        <h3>The CSS</h3>
+                        <ul>
+                          <li>
+                            <p>
+                              The CSS component makes the screen colors dark, centers the canvas element, and gives it a border, as 
+                              discussed in <a href="class4.html#flexbox-centering">class 3</a>.
+                            </p>
+                          </li>
+                        </ul>
+                        <p>
+                          That's about all we'll really need in terms of HTML and CSS for the remainder of the semester!
+                        </p>
+                        <h3>The JS</h3>
+                        <p>Now we begin looking at the JS, which is where all the action is.</p>
+                        <ul>
+                          <li>
+                            <p>
+                              First order of business is a comment stating the purpose of the game. This is also a good place
+                              to put lists of team members, helpful links, things to do, etc.
+                            </p>
+                          </li>  
+                          <li>
+                            <p>
+                              Next line has a string, <code class="js">"use strict";</code>. This tells the JS 
+                              <i><a href="https://en.wikipedia.org/wiki/JavaScript_engine">interpreter</a></i>, or the program 
+                              built into the browser that executes the JS code, to disallow some common brittle programming 
+                              practices. Be sure to add this line to the top of all of your JS scripts.
+                              <a href="https://www.w3schools.com/js/js_strict.asp">Read more</a> 
+                              on <code class="js">"use strict";</code> if you're curious.
+                            </p>
+                          </li> 
+                          <li>
+                            <p>
+                              The following line,
+                            </p>
+                            <div style="margin: 15px;">
+                              <pre><code class="js">let canvas = document.getElementById("paper");</code></pre>
+                            </div>
+                            <p>
+                              requests some information from the HTML document object using one of its functions,
+                              <code class="js">getElementById()</code>, which looks for an element
+                              with an ID matching the parameter string, in this case, <code class="js">"paper"</code>.
+                              This function returns a structure called an <i>object</i>, one of the most
+                              important programming concepts, and stores this object in a new variable called 
+                              <code class="js">canvas</code>. We'll discuss much more about objects later, but
+                              suffice to say they are collections of pieces of information (variables) and actions (functions) that
+                              work together as a unit.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              The line,
+                            </p>
+                            <div style="margin: 15px;">
+                              <pre><code class="js">let ctx = canvas.getContext("2d");</code></pre>
+                            </div>
+                            </p>
+                            <p>
+                              stores another object in a variable for us to use. This time, we're calling on the 
+                              <code class="js">getContext()</code> function inside of our new 
+                              <code class="js">canvas</code> object. This function returns a canvas context 
+                              object, which is what we will use to draw on the canvas. We call this variable
+                              <code class="js">ctx</code> for short since we'll be typing it frequently.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Now that we have a canvas context object to work with, we can begin drawing using its
+                              built-in properties and functions. The line,
+                            </p>  
+                            <div style="margin: 15px;">
+                              <pre><code class="js">ctx.fillStyle = "#ffffff";</code></pre>
+                            </div>
+                            <p>
+                              Sets the drawing color of the canvas to white.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              And the final line, 
+                            </p>  
+                            <div style="margin: 15px;">
+                              <pre><code class="js">ctx.fillRect(100, 100, 70, 50);</code></pre>
+                            </div>
+                            <p>
+                              draws a filled, white rectangle on the canvas. The canvas context <code class="js">fillRect()</code> 
+                              function takes four parameters, something we haven't seen yet. Recall that 
+                              parameters are pieces of data that change the way the function works. These 
+                              parameters are numbers which describe the location and size of the rectangle to be 
+                              drawn. The first two numbers represent the x and y coordinates for the top-left of the 
+                              rectangle. The second two numbers represent the width and height of the rectangle. 
+                              All of these units are in <a href="https://en.wikipedia.org/wiki/Pixel">pixels</a>, the little
+                              dots on the computer screen that form an image.
+                            </p>
+                            <p>
+                              Another thing to note is that the coordinate plane is arranged in canvas in a different
+                              manner than a Cartesian geometric plane:
+                            </p>  
+                            <img alt="Image showing the difference between the traditional and canvas coordinate planes" style="margin: 15px;"
+                              src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/03/1393985491canvas-coordinate-space.png">
+                            <p>    
+                              With this in mind, try changing the four parameters of <code class="js">fillRect()</code> 
+                              to draw rectangles at different locations and of different sizes. Try changing the color
+                              value assigned to <code class="js">fillStyle()</code>. See if you can draw more rectangles by
+                              repeating these two lines multiple times.
+                            </p>
+                            <p>
+                              By the way, I have a <a href="../code/coordinates/">tool</a> which will display the x y coordinates 
+                              of an image. This might come in handy later on when you're trying to put things at
+                              specific places in your game later on.
+                            </p>
+                          </li>
+                        </ul>  
+                        <hr style="clear: both;">
+                        <h2 id="adding-animation">Adding animation</h2>
+                        <p>
+                          So now we have a square on our canvas! Let's make it move.
+                        </p>  
+                        <p>
+                          Here's the truth: animation is a bit of a smoke-and-mirrors game; if you show a picture of a person 
+                          for a split second, then show another picture of that person after they've moved slightly for another split second
+                          and repeat the process, you create the illusion of motion.
+                        </p>
+                        <img alt="Muybridge woman jumping" style="margin: 15px; width: 100%; max-width: 1200px;"
+                          src="https://i.amz.mshcdn.com/0RmR2HTTR_mCndNHNhlGNFOqQio=/http%3A%2F%2Fa.amz.mshcdn.com%2Fwp-content%2Fuploads%2F2015%2F12%2Fmuybridge-26.jpg">
+                        <p>
+                          And that's exactly what we'll do on our canvas. To do so, we'll need two tools:
+                        </p>  
+                        <ol>
+                          <li>
+                            number variables to keep track of the square's x and y position on the screen
+                          </li>
+                          <li>
+                            some kind of way for the program to draw the screen again and again, a few dozen times a second, over a period of time.
+                          </li>
+                        </ol>
+                        <p>
+                          For the first tool, let's declare two variables and set them to some default values:
+                        </p>
+                        <div style="margin: 15px;">
+<pre><code class="js">// Number variables to hold the x and y position of the rectangle
+let x = 10;
+let y = 10;</code></pre>
+                        </div>
+                        <p>
+                          Then, we'll want to replace our <i>literal</i> numbers in the <code class="js">fillRect()</code>
+                          parameter with our variables:
+                        </p>
+                        <div style="margin: 15px;">
+                          <pre><code class="js">ctx.fillRect(x, y, 70, 50);</code></pre>
+                        </div>
+                        <p>
+                          For the second tool, we're going to write our first ever function. This function will be
+                          called about 60 times every second as long as the animation is running. Each time this function is 
+                          called, it will calculate the latest position of everything on the screen and render the entire
+                          animation on the canvas. This function doesn't require any parameters, nor does it
+                          return any values, so it's very simple. Since it updates the screen, it's common to call
+                          this function update, render, or redraw.
+                        </p>
+                        <div style="margin: 15px;">
+<pre><code class="js">// Updates the animation state and draws a frame
+function update() {
+  
+  // Clear the entire canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Update the position of the rectangle
+  x += 2;
+  y += 2;
+
+  // Draw a rectangle on the screen
+  // top-left corner x, top-left corner y, width, height
+  ctx.fillRect(x, y, 70, 50);
+
+  // Ask the browser to move on to the next frame
+  requestAnimationFrame(update);
+}</code></pre>
+                        </div>
+                        <p>
+                          Other than the function definition, the <code class="js">x += 5;</code> line is new.
+                          This simply adds 5 to the prior value of <code class="js">x</code> and stores this sum
+                          back in <code class="js">x</code>. It's shorthand for <code class="js">x = x + 5;</code>.
+                        </p>
+                        <p>
+                          Last, but not least, we need to actually call the function we just defined:
+                        </p>
+                        <div style="margin: 15px;">
+<pre><code class="js">// Begin the animation
+update();</code></pre>
+                        </div>
+                        <p>
+                          Let's put it all together. As with previous examples, feel free to tweak numbers,
+                          remove/add lines of code and generally experiment until you're sure you have a good grasp
+                          on how it all works.
+                        </p>
+                        <div style="margin: 15px;">
+                        <p data-height="779" data-theme-id="dark" data-slug-hash="YxawZN" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 2)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/YxawZN/">block dodger (part 2)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        </div>
+                        <p>
+                          I hope you caught that. The rectangle flies off the screen pretty quickly, so run the script
+                          again if you missed it.
+                        </p>
+                        <hr>
+                        <h3 id="out">Over and out</h3>
+                        <p>
+                          OK, we're animating! I realize there's a lot of animation magic this time, but for the rest of the tutorial,
+                          most of the animation functions and objects are now in place, so we'll be working on a simpler
+                          and more comprehensible level. Stick with me!
+                        </p>
+                        <img style="margin: 15px;" alt="Nyan cat"
+                          src="http://media.giphy.com/media/CpA8xFyiRfQ2s/giphy.gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../js/global.js"></script>
+
+</body>
+
+</html>

@@ -66,296 +66,306 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h1>Class 4: Hello, JavaScript!</h1>
+                        <h1>Class 4: Add CSS to your adventure game</h1>
                         <ol>
                           <li>
-                            <a href="#ahead">What's ahead</a>
+                            <a href="#css">CSS: adding style to your page</a>
                           </li>
                           <li>
-                            <a href="#js">JavaScript: the programming language of the web</a>
+                            <a href="#css-selectors">CSS selectors</a>
                           </li>
                           <li>
-                            <a href="#hello-world">Hello, world!</a>
+                            <a href="#first-stylesheet">Your very first stylesheet</a>
                           </li>
                           <li>
-                            <a href="#developer-tools">Developer tools</a>
+                            <a href="#comments">Comments: your #1 pal</a>
                           </li>
                           <li>
-                            <a href="#local-development">Local development</a>
+                            <a href="#classes-ids">CSS classes and IDs</a> (optional)
                           </li>
                           <li>
-                            <a href="#greeting-explanation">Explanation of the greeting program</a>
+                            <a href="#google-fonts">Using Google Fonts</a> (optional)
                           </li>
                           <li>
-                            <a href="#done">Done!</a>
+                            <a href="#flexbox-centering">Centering with Flexbox</a> (optional)
+                          </li>
+                          <li>
+                            <a href="#fin">Fin!</a>
                           </li>
                         </ol>
                         <hr>
-                        <h2 id="ahead">What's ahead</h2>
+                        <h2 id="css">CSS: adding style to your page</h2>
                         <p>
-                          I hope making a game in HTML and CSS was a nice appetizer for the main course: making your
-                          own game in <a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a>! 
-                          Here's the plan for the rest of the semester:
+                          I hope all of your games are coming along smoothly! I'm sure you're eager to spice up
+                          your designs to look cooler than plain HTML, though. 
+                          <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a> 
+                          (Cascading Style Sheets) is the tool to take care of that.
+                        </p>
+                        <img alt="CSS mug layout joke" style="float: right; margin: 15px; width: 300px;" 
+                          src="https://www.oxbridgenotes.com/assets/articles/css_refactor/css_is_awesome-fd0d88bd0d83f140953bee16242d8c3f7ef0eee3734fd62e3004ba60da240140.jpg">
+                        <p>
+                          CSS is easy to pick up and can do very cool stuff off the bat. However, there is a 
+                          great deal of depth to CSS as well. Due to the brevity of this course
+                          and its focus on game rather than visual design, we'll only touch the absolute basics of 
+                          CSS. I highly recommend exploring it further on your own!
+                        </p>
+                        <hr style="clear: none;">
+                        <h2 id="css-selectors">CSS selectors</h2>
+                        <p>
+                          CSS works by <i>selecting</i> elements from an HTML document 
+                          and adding properties to these elements. What are "elements?" Well, whenever you create a 
+                          set of tags, like <code>&lt;p&gt;this paragraph&lt;/p&gt;</code>, the browser creates an 
+                          element behind the scenes which can be manipulated by CSS (and, later, JavaScript).
+                        </p>
+                        <p>
+                          The properties CSS allows you to modify range from size to color to positioning 
+                          and to animation. I can only discuss a few basic properties; check w3schools' 
+                          <a href="https://www.w3schools.com/cssref/">CSS reference</a> for a list
+                          of properties you can add to HTML elements and go crazy experimenting.
                         </p>  
-                        <img alt="Drew Carey JS joke" style="width: 350px; float: right; margin: 10px 10px 10px 30px;"
-                          src="https://pics.onsizzle.com/welcome-to-javascript-where-the-objects-are-made-up-and-13411868.png">
-                        <ul>
-                          <li>
-                            Spend the next three weeks learning the basics of programming by making a 
-                            "block dodger" game in JS. We'll work in teams and as a class.
-                          </li>
-                          <li>
-                            Spend the remaining seven weeks building your own game (or web app!) in JS, working in groups.
-                          </li>
-                        </ul>
+                        <hr>
+                        <h2 id="first-stylesheet">Your very first stylesheet</h2>
                         <p>
-                          JS is going to be a significant increase in difficulty from HTML and CSS, but we're also
-                          going to spend more time on it and ensure everyone understands everything as we go.
+                          CSS selectors can be placed in one of three ways: inside <code>&lt;style&gt;</code> tags in
+                          the <code>&lt;head&gt;</code> of an HTML document, as an in-line attribute 
+                          right inside an HTML tag, and in a separate <code>.css</code> file. You're welcome to do whichever you
+                          want, but the most powerful method is the external file because you only need to make one
+                          <code>.css</code> file for your whole project, so that's what I'll focus on here.
                         </p>
                         <p>
-                          Games can be challenging to program, so getting as solid on the basics as you can
-                          is your best bet: try to spend as much time as possible on 
-                          <a href="https://www.codecademy.com/learn/javascript">Codecademy</a>! 
-                          It's sort of like writing a short story; you want to spend time worrying about the 
-                          high-level stuff like plot and character development and not on low-level stuff like 
-                          spelling, grammar, and punctuation mistakes.
-                        </p>  
-                        <p>
-                          Here's the block dodger game we're going to build together:
-                        </p>
-                        <div style="margin: 15px;">
-                        <p data-height="624" data-theme-id="dark" data-slug-hash="GvJvxq" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/GvJvxq/">block dodger</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-                        </div>
-                        <hr style="clear: both;">
-                        <h2 id="js">JavaScript: the programming language of the web</h2>
-                        <p>
-                          JS is one of the easiest programming languages to learn,
-                          but is also extremely powerful. It's the only language that runs directly in web browsers.
-                          The cool thing about this is that when you visit a website which has JS, you can read it just like
-                          HTML and CSS using the "view page source" feature on your browser (as discussed in 
-                          <a href="class0.html#html">week 0</a>). It also means that JS has a monopoly on web programming, 
-                          which guarantees that 1) an enormous amount of time and effort goes into making it great, and 2) it 
-                          will likely be relevant for some time to come.
-                        </p>
-                        <img alt="JS for babies book" style="margin: 15px;"
-                          src="https://pbs.twimg.com/media/C6NfQKLVMAEexjg.jpg">
-                        <p>
-                          There is so much theory behind programming, and I love to discuss it and think about how it all works. 
-                          But we don't really have time to get too detailed, unfortunately, so I'll leave it to you to pursue
-                          your own research as you feel inclined. If I get too off-topic, just tell me to get back on track!
-                        </p>
-                        <img alt="JS good parts vs JS" style="margin: 15px;"
-                          src="http://nelsonwells.net/wp-content/uploads/2011/06/javascript_good_and_bad_parts.jpg">
-                        <p>
-                          Oh yeah: you may have heard of this "Java" thing:
-                        </p>
-                        <img alt="JS !== Java" style="margin: 15px;" 
-                          src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/8/005/0b6/1c6/33cffb0.jpg">
-                        <p>
-                          That's true to a large extent; however, once you learn a programming language, all of the basics 
-                          transfer to any other language, so in that sense Java and JS are not all that different. Language choice
-                          boils down to picking the right tool for the job, and for web programming, JS is the only tool.
-                        </p>  
-                        <hr style="clear: both;">
-                        <h2 id="hello-world">Hello, world!</h2>
-                        <p>
-                          With that introduction, let's dive in to doing programming in JS. The first orders of business are 
-                          making sure JS is working and getting comfortable with our development environment(s).
-                        </p>
-                        <p>
-                          <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, world!</a> is the 
-                          first program you'll write in any language, so let's go ahead and write it:
-                        </p>
-                        <div style="margin: 15px;">
-<pre><code class="javascript">console.log("Hello, world!");</code></pre>
-                        </div>
-                        <p>
-                          This program tells JS to print the text "Hello, world!" in the browser's console.
-                          Let's execute this program at <a href="https://repl.it/languages/javascript">repl.it</a>. 
-                          Repl is an easy way to run snippets of JS code, so we'll be using it often. Once you've run 
-                          the program, try changing the text inside the quotation marks, and run it again.
-                        </p>
-                        <hr style="clear: both;">
-                        <h2 id="developer-tools">Developer tools</h2>
-                        <p>
-                          Now that we have a working JS program, let's run it in a few different environments
-                          and learn about our browser's developer tools. Developer tools are included in
-                          every major browser, but opening them is platform- and browser- specific; ask 
-                          <a href="https://www.google.com/">Google</a> "how do i open developer tools in 
-                          <i>os x</i> and <i>browser y</i>?" where <i>x</i> is your operating system (Mac/Windows)
-                          and <i>y</i> is your browser (Chrome, Firefox). In particular, we'll be using the console component of
-                          the dev tools, which is a place that can interactively execute JS code, display errors, 
-                          and show output from <code>console.log()</code> statements.
-                          <img alt="Chrome/Mac console path image" style="margin: 15px;" src="https://i.stack.imgur.com/Ktv4E.png">
-                        </p>
-                        <p>
-                          With your console open, try running the "Hello, world!" program by typing it right into the console.
-                          Once that works, also try running the program on <a href="https://codepen.io/">Codepen</a>. 
-                          The output will be visible in the browser's console as well as Codepen's mini-console.
-                        </p>  
-                        <hr styel="clear: both;">
-                        <h2 id="local-development">Local development</h2>
-                        <p>
-                          Now that we know how to make JS output something in the browser, let's turn our attention to
-                          running JS code inside an HTML file.  As with CSS, we can include JS in a HTML file in a few ways:
-                        </p>
-                        <ul>
-                          <li>inside of <code>&lt;script&gt;</code> tags</li>
-                          <li>as an external <code>.js</code> script file</li>
-                          <li>in-line, inside of an HTML element</li>
-                        </ul>
-                        <p>
-                          We'll be using external <code>.js</code> files mostly, and here's how:
+                          Here's how to make your first stylesheet:
                         </p>
                         <ol>
                           <li>
                             <p>
-                              Create two files in the same directory: <code>greeting.html</code> and <code>greeting.js</code>.
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              Inside of <code>greeting.js</code>, add the following JS code (it uses new syntax which I'll explain shortly):
-                              <div style="margin: 15px;">
-<pre><code class="javascript">// Ask the user for their name
-let visitorName = prompt("What is your name?");
-
-// Greet the user
-alert("Hello, " + visitorName + "!");</code></pre>
-                              </div>
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              Inside of <code>greeting.html</code>, add the following code, which includes the JS
-                              script in the HTML code; the script executes when the page is loaded:
+                              Create a new file in the same folder as your <code>index.html</code> file 
+                              called <code>style.css</code>.
                             </p>  
+                          </li>
+                          <li>
+                            <p>
+                              Inside of <code>style.css</code>, write your first CSS selector:
+                            </p>
                             <div style="margin: 15px;">
-<pre><code class="html">&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Greeting page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;script src="greeting.js"&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+<pre><code class="css">p {
+  color: red;
+}</code></pre>
                             </div>
                           </li>
                           <li>
                             <p>
-                              Open <code>greeting.html</code> in a browser and enter your name into the prompt. 
-                              Consider yourself greeted. 
+                              Save <code>style.css</code>, and head back to editing your <code>index.html</code> file.
+                              Add the following element inside of the <code>&lt;head&gt;</code> tags. This loads the 
+                              CSS file and applies its selectors to the HTML document. You can reference the same
+                              stylesheet from as many HTML files as you want:
                             </p>
+                            <div style="margin: 15px;">
+<pre><code class="html">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+                            </div>
                           </li>  
-                        </ol>  
+                        </ol>
                         <p>
-                          If you wish, feel free to try writing this same program on <a href="https://codepen.io/">Codepen</a>.
-                          Codepen fills in the basic <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>
-                          tags automatically and connects the three scripts together, so all you have to write is the JS code.
-                          Same thing on <a href="https://repl.it/languages/javascript">repl.it</a>--just the JS is enough.
+                          And you're done! Open your <code>index.html</code> file in a browser and you should see 
+                          all of your paragraphs have a <span style="color: red;">red</span> font color. 
+                          In your <code>style.css</code> file, try changing <code>p</code> to <code>a</code>. 
+                          Refresh the website and see how the results change. Feel free to add as many selectors
+                          as you like, and experiment with different properties. 
                         </p>
-                        <hr style="clear: both;">
-                        <h2 id="greeting-explanation">Explanation of the greeting program</h2>
+                        <hr style="clear: both;">  
+                        <h2 id="comments">Comments: your #1 pal</h2>
                         <p>
-                          Cool. Now that you've executed a couple of programs in a variety of environments, let's take a moment
-                          to examine how the "greeting" program works, then we'll call it a day. Let's start with the first two
-                          lines:
+                          I also need to introduce comments, one of the most important parts of coding. Comments
+                          are mini explanations inside your code which maintain readability for yourself and your teammates.
+                          Here's a little example stylesheet, with comments, to whet your appetite for experimenting
+                          with different CSS properties:
                         </p>  
                         <div style="margin: 15px;">
-<pre><code class="javascript">// Ask the user for their name
-let visitorName = prompt("What is your name?");</code></pre>
+<pre><code class="css">/* The asterisk selector means "select all elements" */
+* {
+  font-family: "Helvetica", sans-serif;
+}
+
+/* The body selector is a good place to add wallpaper */
+body {
+  background: url("https://cdn.tutsplus.com/psd/uploads/legacy/001_WebDesignWeek/02_Layout/pattern_14.jpg");
+}
+
+a {
+  color: #41a6d8;
+  text-decoration: none;
+}
+
+/* :hover is a "pseudoselector" that becomes active 
+ * whenever the mouse is in the element */
+a:hover {
+  text-decoration: underline;
+}
+
+/* border is a somewhat more complex property, taking a 
+ * size, a style, and a color separated by spaces */
+p {
+  border: 1px solid #000000;
+}</code></pre>
                         </div>
                         <p>
-                          The first line is a comment, but with a slightly different syntax from the CSS comments. CSS
-                          comments work in JS too; they're called multi-line comments, while the <code>//</code> comment
-                          is a single-line comment.
-                        </p>  
+                          Note that colors are in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> format. 
+                          I recommend using a 
+                          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool">color picker tool</a>
+                          to generate these hexadecimal values and paste them into your stylesheet.
+                        </p>
+                        <hr style="clear: both;">
+                        <h2 id="classes-ids">CSS classes and IDs</h2>
+                        <p> 
+                          OK, so you now know how to apply CSS styles to <i>all</i> elements of a tag with a selector. But let's say
+                          you want to apply style to only a <i>specific</i> paragraph rather than all of your paragraphs at once, or
+                          want to create a single selector that you can apply to, say, paragraph, header, and anchor elements 
+                          all at once.  To do this, CSS provides classes and IDs, two powerful tools that work in similar ways. 
+                          The only difference between the two is that you never have more than one element set to a given ID, but 
+                          have as many elements sharing a class as you want.
+                        </p>
                         <p>
-                          The second line has a lot of action in it. Let's start with <code>prompt("What is your name?");</code>.
-                          This line calls a <i><a href="https://www.tutorialspoint.com/javascript/javascript_functions.htm">function</a></i> 
-                          that was built into the standard JS library. Functions are bits of code that serve a single, explicit
-                          purpose and can be <i>called</i>, or executed, again and again. The <code class="javascript">prompt</code> function makes
-                          a dialog box pop up and waits for the user to input text and press "OK."
-                        </p>  
+                          In your CSS file, the syntax for making a class or ID is easy: simply make up any word you want and
+                          prefix it with a <code>#</code> to denote an ID and a <code>.</code> to denote a class.
+                        </p>
+                        <div style="margin: 15px;">
+<pre><code class="css">/* A class that centers text */
+.center-text {
+  text-align: center;
+}
+
+/* An id for styling a particular huge button */
+#huge-button {
+  font-size: 40px;
+}</code></pre>
+                        </div>
                         <p>
-                          Two cool things about functions which are on display in the above example:
+                          With IDs and classes under your belt, most deployment of CSS in HTML boils down to two 
+                          tags, <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>, which do nothing on their 
+                          own but act as generic elements to add CSS classes and IDs to. There is only one difference 
+                          between these tags: <code>&lt;div&gt;</code> creates a line break and <code>&lt;span&gt;</code> 
+                          doesn't. Let's deploy the selectors we just made in a sample HTML file. I'll add CSS to the 
+                          header for brevity's sake. Note the <code>class=""</code> and <code>id=""</code> attributes:
+                        </p>
+                        <div style="margin: 15px;">
+<pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;style&gt;
+      .center-text {
+        text-align: center;
+      }
+      
+      #huge-button {
+        font-size: 40px;
+      }
+    &lt;/style&gt;    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="center-text"&gt;
+      &lt;button id="huge-button"&gt;Click me!&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                        <p>
+                          Last bit on IDs and classes: you can add as many classes to an element as you wish 
+                          (separate each class name with a space), and you can combine an ID and classes on the same
+                          element. 
                         </p>  
+                        <hr style="clear: both;">
+                        <h2 id="google-fonts">Using Google Fonts</h2>
+                        <p>
+                          One of the coolest tools for web design is Google Fonts, which gives you instant
+                          access to a huge library of fonts without fuss. Using Google Fonts is a piece of cake.
+                        </p>
                         <ol>
                           <li>
                             <p>
-                              You can specify <i>parameters</i> which go inside the <code class="javascript">( )</code> 
-                              parenthesis after the function name. Parameters change something about how the function works. 
-                              In this case, <code class="javascript">prompt()</code> allows the programmer to tell it which 
-                              <i>string</i>, or bit of text, it should display in the dialog box. Try changing the 
-                              <code class="javascript">"What is your name?"</code> line to something else
-                              and see what happens. Just make sure to keep the quotes.
+                              Head over to <a href="https://fonts.google.com/">Google Fonts</a> and pick out a font you like.
                             </p>
-                          </li>  
+                          </li>
                           <li>
                             <p>
-                              Functions can <i>return</i> information from them when they are called. In this case, the function
-                              returns a string, which is whatever the user entered into the dialog box.
+                              Press the pink "+" icon to select it.
                             </p>
-                            <img style="margin: 15px;" alt="Yo dawg functional meme" 
-                              src="https://cdn.meme.am/cache/instances/folder319/500x/63117319/yo-dawg-yo-dawg-i-heard-you-like-functions-so-we-put-a-function-in-your-function-that-can-return-a-f.jpg">
+                          </li>
+                          <li>
+                            <p>
+                              Expand the "1 Family Selected" toolbar that shows up at the 
+                              bottom of the screen once you select a font.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Click "@IMPORT"
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              Copy and paste the line between the <code>&lt;style&gt;</code> tags and 
+                              paste it at the top of your <code>style.css</code> file, outside of any selectors:
+                            </p>
+                            <div style="margin: 15px;">
+<pre><code class="css">@import url('https://fonts.googleapis.com/css?family=Bitter');</code></pre>
+                            </div>
+                          </li>
+                          <li>
+                            <p>
+                              Copy and paste the <code>font-family</code> line into any selector(s) you wish:
+                            </p>
+                            <div style="margin: 15px;">
+<pre><code class="css">body {
+  font-family: 'Bitter', serif;
+}</code></pre>
+                            </div>
                           </li>
                         </ol>
                         <p>
-                          Now that the <code class="javascript">prompt("What is your name?");</code> 
-                          component is a little clearer, let's discuss the <code class="javascript">let visitorName =</code> 
-                          part. <code class="javascript">let</code> is a keyword in JS which creates a new
-                          <i><a href="https://www.tutorialspoint.com/javascript/javascript_variables.htm">variable</a></i>, or
-                          named storage space for a piece of data. We can store anything in this variable and retrieve and manipulate it
-                          later on in our program. We can name the variable any series of letters, numbers, or underscores we want, provided
-                          that it doesn't begin with a number. There are some conventions for naming variables in JS. For now,
-                          write all variable names in <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>--the 
-                          first word is lowercase and all subsequent words begin with an uppercase letter.
-                        </p>  
-                        <p>
-                          Another thing to note is that <code class="javascript">var</code> is another way 
-                          to declare a variable which you may see used, and you are welcome to use yourself 
-                          instead of <code class="javascript">let</code>. The difference is too small to worry
-                          about just yet.
-                        </p>
-                        <p>
-                          As for the <code class="javascript">=</code> equals sign, this isn't a measure of equality, but rather an 
-                          <i>assignment operator</i>. Assignment takes the value on the right of the 
-                          <code class="javascript">=</code> and sticks it into the variable on the left. 
-                          If I run the program and type "bob" into the prompt, that string gets
-                          stored in the <code class="javascript">visitorName</code> variable.
-                        </p>
-                        <p>
-                          OK, it's all smooth sailing for the next bit of code:
-                        </p>  
-                        <div style="margin: 15px;">
-<pre><code class="javascript">// Greet the user
-alert("Hello, " + visitorName + "!");</code></pre>
-                        </div>
-                        <p>
-                          Here's another JS built-in function called <code class="javascript">alert()</code>, which is the annoying 
-                          pop-up box you've probably encountered before. You (hopefully) won't be using 
-                          <code class="javascript">prompt()</code> and <code class="javascript">alert()</code> much, 
-                          but they're handy for little test code like this. <code class="javascript">alert()</code> works
-                          by taking a string parameter and makes that the text that pops up. It doesn't return any value.
-                        </p>
-                        <p>
-                          The more interesting part of the second line of code is what's going on inside the function's
-                          parameter. The <code class="javascript">+</code> symbols are <i>concatenating</i>, or joining, 
-                          the values of three strings, "Hello, ", "bob", and "!" into one string: "Hello, bob!" (assuming 
-                          the user entered "bob" into the prompt), which is what gets sent into the 
-                          <code class="javascript">alert()</code> function for display.
+                          That's it! You can import as many fonts as you want. Click the "customize" tab to add 
+                          different font styles and weights to your import if you choose. Here's a 
+                          <a href="https://ggorlen.github.io/mb/code/googlefonts/">full example</a>.
                         </p>
                         <hr style="clear: both;">
-                        <h2 id="done">Done!</h2>
+                        <h2 id="flexbox-centering">Centering with Flexbox</h2>
                         <p>
-                          Great! You learned a <b>ton</b> about JS today. Let it all sink in, play with the greeting program, and work on 
-                          basics at <a href="https://www.codecademy.com/learn/javascript">Codecademy</a>. A lot of programming
-                          stuff won't make sense at first, but stick with it and it'll become second nature. See you next time,
-                          when we'll begin working with graphics and start on our block dodger game!
+                          Until a tool called <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a>
+                          was added to CSS a couple years ago, centering items was pretty difficult. Flexbox is 
+                          a fairly technical layout tool, so I'll only show you how to use it for centering purposes,
+                          for example, if you'd like to put content smack in the middle of the screen:
+                        </p>
+                        <div style="margin: 15px;">
+                          <p data-height="379" data-theme-id="dark" data-slug-hash="dzddVj" data-default-tab="css,result" 
+                            data-user="ggorlen" data-embed-version="2" data-pen-title="flex centering" class="codepen">See the Pen 
+                            <a href="https://codepen.io/ggorlen/pen/dzddVj/">flex centering</a> 
+                              by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen
+                            </a>.
+                          </p>
+                          <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        </div>
+
+                        <p>
+                          I won't bog you down with too much of an explanation here--just apply the <code>.main</code> 
+                          class to a <code>&lt;div&gt;</code> and any elements inside of it will be centered
+                          on both axes. The code inside of the <code>body</code> selector ensures that
+                          that container expands to fill the screen. <code>vh</code> and <code>vw</code> are CSS units 
+                          representing percentage of the viewport height and width.
                         </p>  
-                        <img alt="Game programming vs CS meme" style="margin: 15px;" 
-                          src="https://s-media-cache-ak0.pinimg.com/736x/5b/da/6e/5bda6e27d7749771cd4256f0917f6bdb--computer-science-computer-humor.jpg">
+                        <img alt="LeBron flexbox meme" style="margin: 15px;" 
+                          src="http://theitteam.com.au/wp-content/uploads/2015/06/css-center-align-meme.jpg">
+                        <hr style="clear: both;">
+                        <h2 id="fin">Fin!</h2>
+                        <p>
+                          OK, that should give you *plenty* of control over your HTML adventure game's 
+                          design. Go at it for the rest of the class! 
+                        </p>
+                        <p>
+                          Next week, we'll leave HTML and CSS behind and embark on JavaScript, which is 
+                          really the meat of the class. If you have time over the weekend, get a head
+                          start over at <a href="https://www.codecademy.com/learn/javascript">Codecademy</a>!
+                        </p>  
+                        <div style="width: 240px; overflow: hidden; margin: 15px;">
+                          <img alt="Titanic CSS meme" style="width: 280px; margin: -10px -10px -10px -20px;" 
+                            src="https://imagesoffunny.com/wp-content/uploads/2017/01/titanic-float-none-CSS-programming.jpg">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -368,13 +378,17 @@ alert("Hello, " + visitorName + "!");</code></pre>
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
     
-    <!-- Bootstrap Core JavaScript -->
+    <!-- Bootstrap Core Javascript -->
     <script src="../js/bootstrap.min.js"></script>
 
     <!-- Highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script src="../js/init-highlight-js.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../js/global.js"></script>
+
 
 </body>
 
 </html>
+
