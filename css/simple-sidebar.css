@@ -12,7 +12,7 @@ body {
     font-size: 17px;
 }
 
-a, a:hover, a:active, a:visited {
+a:link, a:visited, a:hover, a:active {
     color: #076bc1;
     text-decoration: none;
     border-bottom: 2px solid transparent;
@@ -26,18 +26,20 @@ a:hover {
     border-bottom: 2px solid #000;
 }
 
-blockquote {
+blockquote { }
 
-}
-
-pre > code {
-    font-size: 15px;
+pre > code.hljs {
+    font-size: 16px;
 }
 
 li > code.hljs,
 p > code.hljs { 
     padding: 2px;
     display: inline; 
+}
+
+#page-content-wrapper .container-fluid .row .col-lg-8 {
+    max-width: 950px;
 }
 
 .sidebar-nav li a {
