@@ -21,6 +21,23 @@
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
 
+    <style>
+      @keyframes color-cycle {
+        0%   { color: red;    }
+        14%  { color: orange; }
+        28%  { color: yellow; }
+        42%  { color: green;  }
+        56%  { color: blue;   }
+        70%  { color: indigo; }
+        84%  { color: violet; }
+        100% { color: red;    }
+      }
+      
+      .color-cycling {
+        animation: color-cycle 10s ease 0s infinite;
+      }
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -96,7 +113,7 @@
                             style="margin: 15px;" src="https://i.warosu.org/data/sci/img/0064/30/1395549157651.gif">
                           <p>
                             Get to know each other by meeting a partner.  Collect the following information 
-                            about your new pal, then present it to the class.
+                            about your new pal, then present it to the class:
                           </p>  
                           <ol>
                             <li>Name</li>
@@ -109,8 +126,8 @@
                           </ol>
                         <hr>
                         <h2 id="equity-in-cs">Equity in computer science</h2>
-                        <div style="float: right; width: 220px; margin: 10px 10px 2px 30px;">
-                          <img alt="Picture of Grace Hopper" style="width: 220px;"
+                        <div style="float: right; width: 220px; margin: 10px 10px 10px 30px;">
+                          <img alt="Picture of Grace Hopper" style="width: 210px;"
                             src="http://history-computer.com/ModernComputer/Software/images/Grace_Hopper.jpg">
                         </div>
                         <ul>
@@ -143,14 +160,14 @@
                               </li>
                               <li>
                                 <p>
-                                  A black engineer, <a href="https://en.wikipedia.org/wiki/Jerry_Lawson_(engineer)">
+                                  a black engineer, <a href="https://en.wikipedia.org/wiki/Jerry_Lawson_(engineer)">
                                   Jerry Lawson</a>, invented the video game cartridge?
                                 </p>  
                               </li>
                             </ul>
                           </li>
                         </ul>
-                        <hr>
+                        <hr style="clear: both;">
                         <h2 id="equity-discussion">Let's talk about equity</h2>
                           <p>Break into pairs and discuss equity in computer science. Here are some questions to talk about:</p>
                           <ol>
@@ -214,11 +231,11 @@
                             <p><b>Help your friends</b>; teaching and collaborating are great ways to learn.</p>
                           </li>
                           <li>
-                            <p>Always <b>ask questions</b> when you get stuck.</p>
+                            <p><b>Ask questions</b> when you get stuck.</p>
                           </li>
                           <li>
                             <p>
-                              <b>HAVE FUN!</b> 
+                              Most importantly: <span style="font-weight: bold;" class="rainbow-text">Have fun!</span> 
                             </p>
                             <div style="clear: both;"></div>
                           </li>
@@ -292,10 +309,10 @@
                         <ul>
                           <li>
                             <p>
-                              Spaces and other <a href="https://en.wikipedia.org/wiki/Whitespace_character">whitespace</a> 
-                              are ignored in HTML--indent when opening a new tag and de-indent when closing, unless the 
-                              opening and closing tags fit nicely on a line.  This helps preserve your sanity when coding 
-                              and emphasizes the structure of an HTML document, which is basically a bunch of smaller 
+                              <a href="https://en.wikipedia.org/wiki/Whitespace_character">Whitespace</a> 
+                              is ignored in HTML--indent two or four spaces when opening a new tag and de-indent when closing, 
+                              unless the opening and closing tags fit nicely on a line.  This helps preserve your sanity when 
+                              coding and emphasizes the structure of an HTML document, which is basically a bunch of smaller 
                               containers inside of larger containers.
                             </p>
                           </li>
@@ -360,6 +377,32 @@
 
     <!-- Global JS script -->
     <script src="../js/global.js"></script>
+
+    <script>
+      function rainbowTextify(cls, speed) {
+        let classes = document.getElementsByClassName(cls);
+        
+        for (let i = 0; i < classes.length; i++) {
+          let text = classes[i].innerText
+          let result = "";
+          
+          for (let j = 0; j < text.length; j++) {
+            result += "<span class='color-cycling'>" + 
+                      text[j] + "</span>";
+          }
+        
+          classes[i].innerHTML = result;
+        }
+        
+        let cycleObjs = document.getElementsByClassName("color-cycling");
+        
+        for (let i = 0; i < cycleObjs.length; i++) {
+          cycleObjs[i].style.setProperty("animation-delay", (i * speed) + "s");
+        }
+      }
+      
+      rainbowTextify("rainbow-text", 0.5);
+    </script>
 
 
 </body>

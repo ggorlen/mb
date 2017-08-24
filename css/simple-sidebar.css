@@ -7,26 +7,25 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
 
 body {
+    color: #333;
     font-family: 'Work Sans', sans-serif;
     overflow-x: hidden;
     font-size: 17px;
 }
 
 a:link, a:visited, a:hover, a:active {
-    color: #076bc1;
+    color: #000;
     text-decoration: none;
-    border-bottom: 2px solid transparent;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    border-bottom: 1px solid #333;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 a:hover {
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid transparent;
 }
-
-blockquote { }
 
 pre > code.hljs {
     font-size: 16px;
