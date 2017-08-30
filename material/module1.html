@@ -21,23 +21,6 @@
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
 
-    <style>
-      @keyframes color-cycle {
-        0%   { color: red;    }
-        14%  { color: orange; }
-        28%  { color: yellow; }
-        42%  { color: green;  }
-        56%  { color: blue;   }
-        70%  { color: indigo; }
-        84%  { color: violet; }
-        100% { color: red;    }
-      }
-      
-      .color-cycling {
-        animation: color-cycle 10s ease 0s infinite;
-      }
-    </style>
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -225,33 +208,6 @@
 
     <!-- Global JS script -->
     <script src="../js/global.js"></script>
-
-    <script>
-      function rainbowTextify(cls, speed) {
-        let classes = document.getElementsByClassName(cls);
-        
-        for (let i = 0; i < classes.length; i++) {
-          let text = classes[i].innerText
-          let result = "";
-          
-          for (let j = 0; j < text.length; j++) {
-            result += "<span class='color-cycling'>" + 
-                      text[j] + "</span>";
-          }
-        
-          classes[i].innerHTML = result;
-        }
-        
-        let cycleObjs = document.getElementsByClassName("color-cycling");
-        
-        for (let i = 0; i < cycleObjs.length; i++) {
-          cycleObjs[i].style.setProperty("animation-delay", (i * speed) + "s");
-        }
-      }
-      
-      rainbowTextify("rainbow-text", 0.5);
-    </script>
-
 
 </body>
 
