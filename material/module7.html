@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+
+    <title>Mission Bit at Gateway HS</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/gruvbox-dark.min.css">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="../material/">Course material</a>
+                </li>
+                <li>
+                    <a href="../code/">Example code</a>
+                </li>
+                <li>
+                    <a href="../students/">Student projects</a>
+                </li>
+                <li>
+                    <a href="../resources/">Resources</a>
+                </li>
+                <li>
+                    <a href="../about/">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>Class 7: Player movement and mouse input</h1>
+                        <ol>
+                          <li>
+                            <a href="#first-object">Adding your first object</a>
+                          </li>
+                          <li>
+                            <a href="#mouse-input">Adding mouse input</a>
+                          </li>
+                          <li>
+                            <a href="#moving">Adding a move function to the box</a>
+                          </li>
+                          <li>
+                            <a href="#improvement">Improving the box movement with easing and conditionals</a>
+                          </li>
+                          <li>
+                            <a href="#next">For next time</a>
+                          </li>
+                        </ol>
+                        <hr>
+                        <h2 id="#first-object">Adding your first object</h2>
+                        <p>
+                          Welcome back! When we last looked at our budding block dodger game, we had an animation 
+                          of a shape moving on the screen. Humble beginnings! Before moving forward by adding more 
+                          features to turn the animation into a legitimate game, it's time to do some organization 
+                          that will help keep the code simple in the long haul. Programming involves a lot of this;
+                          it's called <a href="https://en.wikipedia.org/wiki/Code_refactoring">refactoring</a>, or
+                          cleaning up existing code before moving forward.
+                        </p>
+                        <img style="margin: 15px;" alt="Refactoring meme"
+                          src="http://dev.solita.fi/img/when-to-refactor/not-sure-if-refactoring.jpg">
+                        <p>
+                          To do this, we'll use an object. As I hinted at in previous sessions, objects are collections
+                          of properties and actions that are grouped together to represent something in a program. In terms of a 
+                          game, the box we've rendered on screen represents a player, which has an x and y location, a size,
+                          a color, and the ability to move.
+                        </p>
+                        <p>
+                          In JS, objects can be created in a number of ways. For this game, we'll use a pattern that looks a bit like
+                          the <code class="js">update</code> function you wrote last session, but with parameters and 
+                          saved in a variable; we'll discuss other patterns as they arise:
+                        </p>
+<pre><code class="js">// Represents a box, defined by an x and y
+// position, size, and color
+let Box = function (x, y, size, color) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.color = color;
+};
+</code></pre>
+                        <p>
+                          And poof--we have a function that can make boxes, and we've saved it in a variable called <code class="js">Box</code> (note
+                          the capital B, which is standard style to designate a constructor function in JS). 
+                          It works by taking four parameters, <code class="js">x</code>, 
+                          <code class="js">y</code>, <code class="js">size</code>, and <code class="js">color</code> and assigns
+                          them to variables that begin with <code class="js">this.</code>. <code class="js">this.</code> refers to
+                          a variable of a particular object once it's been created. Forgetting to write <code class="js">this.</code>
+                          has to be one of the most common mistakes in JS. Let's see how this works by 
+                          integrating the constructor function into the main script and making a new box using the <code class="js">new</code>
+                          keyword. Once that's done, we can now refer to the <code class="player">player</code> object's 
+                          <code class="js">x</code> and <code class="js">y</code>
+                          properties. Lastly, while I'm at it, I'll position the player at the bottom of the screen using
+                          the <code class="js">canvas</code> object's <code class="js">height</code> and <code class="width">width</code>
+                          properties (but feel free to play with the numbers):
+                        </p>
+                        <p data-height="713" data-theme-id="0" data-slug-hash="MvGWRV" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 3)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/MvGWRV/">block dodger (part 3)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <p>
+                          Don't worry if this isn't all clear yet--we'll be making many more objects, so the purpose of 
+                          going through all this trouble to get essentially the same result will be clear as our program
+                          grows.
+                        </p>
+                        <hr>
+                        <h2 id="mouse-input">Adding mouse input</h2>
+                        <p>
+                          Last session, we added movement to the box, updating its x and y 
+                          position on every frame until it left the screen.
+                        </p>
+                        <p>
+                          However, we can't consider this box truly a representation of the 
+                          person playing the game until we offer the user the ability to control it.
+                          The two common inputs are keyboard and mouse; touch is another input
+                          that JS supports for compatibility with mobile devices (we'll save mobile development
+                          for another course).
+                        </p>
+                        <p>
+                          For this game, let's try mouse input--it's a little bit simpler to 
+                          implement than keyboard, but not by much.
+                        </p>
+                        <p>
+                          To add user interaction in JS, we attach an <i>event listener</i> to an HTML element or 
+                          to the entire webpage.  The event listener function has two parameters: a type of event to listen for
+                          and a function to execute when the specified event occurs. Here's what our listener will
+                          look like:
+                        </p>
+<pre><code class="js">// A variable to keep track of the x coordinate of the mouse
+let mouseX = 0;
+
+// Listen for mouse movements
+document.addEventListener("mousemove", function (e) {
+  mouseX = e.pageX - canvas.getBoundingClientRect().left;
+});
+</code></pre>
+                        <p>
+                          Personally, the first time I saw this, it just messed my head up. Sending a function into a function?
+                          That's insane. However, try thinking of it like this and it should be easier to follow:
+                        </p>
+                        <p>
+                          <i>(Talking to the </i><code class="js">addEventListener()</code><i> function)</i> "Hey 
+                          <code class="js">addEventListener</code>, please wait for the <code class="js">mousemove</code> event, 
+                          then whenever that happens, execute this other function I'm giving you."
+                        </p>
+                          <img src="https://cdn-images-1.medium.com/max/500/1*exgznl7z65gttRxLsMAV2A.png" 
+                            alt="functional programming meme" style="margin: 15px;">
+                        </p>
+                        <p>
+                          This event listener uses a little bit of positioning math to establish the mouse's actual location
+                          unadultered by the flexbox centering. A more comprehensive example of listeners (with keyboard!)
+                          is available <a href="../code/eventlisteners/">here</a>. But don't sweat the details here; this 
+                          is an advanced concept which we'll revisit this later on! The important part is that whenever the mouse
+                          moves, the <code class="js">mouseX</code> variable will be updated to contain the mouse's current
+                          X position along the horizontal axis. Try adding <code class="js">console.log(mouseX);</code>
+                          just after the <code class="js">mouseX =</code> line and watch the value change as you move your
+                          mouse around!
+                        </p>
+                        <hr>
+                        <h2 id="moving">Adding a move function to the box</h2>
+                        <p>
+                          Now that we have a variable representing the mouse position, let's add a function to the Box
+                          class that will enable it to follow the mouse:
+                        </p>
+<pre><code class="js">// Updates the position of the box
+Box.prototype.move = function (x) {
+  
+  // Move to the parameter x position
+  this.x = x;
+};</code></pre>
+                        <p>
+                          Here's some new syntax: <code class="js">Box.prototype.move</code>, which attaches a new function
+                          called <code class="js">move</code> to the Box object prototype. In other words, this function 
+                          definition will belong to all Box objects. I can go to any box and call <code class="js">box.move()</code>
+                          and the code in the function will be executed. As we'll see in the next couple of classes,
+                          it's very handy to write one function that will be shared among dozens of objects.
+                        </p>
+                        <p>
+                          We also need to call this function for it to do anything. Let's wonder out loud: how often
+                          do we want to move the player box? If the answer is "every frame," then we call 
+                          <code class="js">player.move()</code> inside the <code class="js"> update()</code> 
+                          function, which is responsible for updating the game state and redrawing stuff. We'll
+                          send in the <code class="js">mouseX</code> variable, which contains the mouse's x position,
+                          as a parameter. Let's put it all together and see what we've got:
+                        </p>
+                        <p data-height="639" data-theme-id="0" data-slug-hash="xLyGYo" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 4)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/xLyGYo/">block dodger (part 4)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <p>
+                          There are a couple glaring issues here, to my mind. Let's fix them in the next section.
+                        </p>
+                        <h2 id="improvement">Improving the box movement with easing and conditionals</h2>
+                        <p>
+                          The first issue is that the box follows the mouse, but the movement is unsatisfying 
+                          from a gameplay standpoint. Let's simulate realistic movement with a technique called 
+                          easing, which involves a little basic arithmetic:
+                        </p>
+                        
+<pre><code class="js">// Updates the position of the box
+Box.prototype.move = function (x) {
+  
+  // Ease towards the mouse position
+  this.x += (x - this.x) * 0.003;
+};</code></pre>
+                        <p>
+                          The idea is to move the box <i>towards</i> the mouse by a tiny amount proportional to the distance 
+                          between the two instead of just plopping it right on top of the mouse. As always, try tweaking the easing amount of 
+                          <code class="js">0.03</code>.
+                        </p>
+                        <p>
+                          Another problem is that the box goes right off the edge of the screen, which leads us to an important 
+                          programming concept: <i>conditionals</i>. Conditionals determine which parts of a program are actually
+                          executed while a program runs. The programmer decides what conditions need to be present and directs the program's
+                          flow accordingly, depending on whether these conditions evaluate to true or false. In our game, we want to check
+                          every frame whether any part of the box is off screen, and if so, execute some code to put it back on screen.
+                        </p>  
+<pre><code class="js">// Updates the position of the box
+Box.prototype.move = function (x) {
+  
+  // Ease towards the mouse position
+  this.x += (x - this.x) * 0.05;
+  
+  // Make sure the box can't go off the screen
+  if (this.x + this.size &gt; canvas.width) {
+    this.x = canvas.width - this.size;
+  }
+  else if (this.x &lt; 0) {
+    this.x = 0;
+  }
+};</code></pre>
+                        <p>
+                          There's a little math going on here, so feel free to play around with the logic and numbers and 
+                          then restore the code when you've convinced yourself of how it works.
+                        </p>
+                        <p>
+                          Let's put everything from this module together:
+                        </p>
+                        <p data-height="639" data-theme-id="0" data-slug-hash="mMzexx" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 5)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/mMzexx/">block dodger (part 5)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <h2 id="next">For next time</h2>
+                        <p>
+                          Well, that was a heap of information to take in! Again, don't worry if it doesn't stick on first contact;
+                          this stuff is dense! Read through a few times and play with the concepts you're learning as much as possible.
+                          The nice thing is that these basic patterns and concepts are so fundamental, you'll encounter them in nearly
+                          every program you'll write, so they're well worth the energy investment, I promise. Stick with it!
+                        </p>  
+                        <p>
+                          Next module, the game gets interesting--we'll add a ton of enemies!
+                        </p>
+                        <img src="https://i.pinimg.com/736x/d4/f2/00/d4f20041254a0727ddce7cb81be9e68c--penguin-meme-science-penguin.jpg"
+                          style="margin: 15px; width: 400px;" alt="Programming is hard meme">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../js/global.js"></script>
+
+</body>
+
+</html>

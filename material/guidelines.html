@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+
+    <title>Mission Bit at Gateway HS</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/gruvbox-dark.min.css">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <style>
+      @keyframes color-cycle {
+        0%   { color: red;    }
+        14%  { color: orange; }
+        28%  { color: yellow; }
+        42%  { color: green;  }
+        56%  { color: blue;   }
+        70%  { color: indigo; }
+        84%  { color: violet; }
+        100% { color: red;    }
+      }
+      
+      .color-cycling {
+        animation: color-cycle 10s ease 0s infinite;
+      }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="../material/">Course material</a>
+                </li>
+                <li>
+                    <a href="../code/">Example code</a>
+                </li>
+                <li>
+                    <a href="../students/">Student projects</a>
+                </li>
+                <li>
+                    <a href="../resources/">Resources</a>
+                </li>
+                <li>
+                    <a href="../about/">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>Guidelines for success</h1>
+                        <ul>
+                          <li>
+                            <p>
+                              <b>Be present</b>. Mission Bit allows for no more than three absences; however, so much material
+                              will be covered in each class that it's very easy to fall behind missing one or two. If you have any 
+                              concerns about attendance, bring them to the instructor's attention today and we'll work it out!
+                            </p> 
+                          </li>
+                          <li>
+                            <img alt="Meme about how distracting the internet is" style="margin: 10px 10px 10px 30px;
+                              float: right; clear: right;" src="https://tellmethatyoulovemefirst.files.wordpress.com/2011/12/images_thumb.jpg">
+                            <p>
+                              <b>Focus</b> is the key to learning stuff, whatever it may be. We all struggle with constant distractions from 
+                              games, texting, 10-hour <i>Game of Thrones</i> marathons, etc. These things seem fun in the short run, 
+                              but in the long run, the folks who get great at something make time for the important stuff.
+                              It's a bit ironic that consuming computer-based content is one of the biggest barriers to learning how to 
+                              make computer-based content.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <b>Don't worry</b> if you get confused, frustrated, or stuck on a problem. These are completely normal 
+                              parts of the learning process and happen to everyone.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <b>Type in all of the examples by hand</b> instead of copying and pasting. This helps comprehension
+                              enormously.
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <b>Help your friends</b>; teaching and collaborating are great ways to learn. Be supportive, encouraging,
+                              and contribute to the class community.
+                            </p>
+                          </li>
+                          <li>
+                            <p><b>Ask questions</b> when you get stuck.</p>
+                          </li>
+                          <li>
+                            <p>
+                              Most importantly: <span style="font-weight: bold;" class="rainbow-text">Have fun!</span> If you're doing this,
+                              all of the above points happen automatically.
+                            </p>
+                            <div style="clear: both;"></div>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    
+    <!-- Bootstrap Core Javascript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../js/global.js"></script>
+
+    <script>
+      function rainbowTextify(cls, speed) {
+        let classes = document.getElementsByClassName(cls);
+        
+        for (let i = 0; i < classes.length; i++) {
+          let text = classes[i].innerText
+          let result = "";
+          
+          for (let j = 0; j < text.length; j++) {
+            result += "<span class='color-cycling'>" + 
+                      text[j] + "</span>";
+          }
+        
+          classes[i].innerHTML = result;
+        }
+        
+        let cycleObjs = document.getElementsByClassName("color-cycling");
+        
+        for (let i = 0; i < cycleObjs.length; i++) {
+          cycleObjs[i].style.setProperty("animation-delay", (i * speed) + "s");
+        }
+      }
+      
+      rainbowTextify("rainbow-text", 0.5);
+    </script>
+
+
+</body>
+
+</html>

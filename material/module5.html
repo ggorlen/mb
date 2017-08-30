@@ -66,7 +66,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h1>Class 5: Hello, JavaScript!</h1>
+                        <h1>Module 5: Hello, JavaScript!</h1>
                         <ol>
                           <li>
                             <a href="#ahead">What's ahead</a>
@@ -101,7 +101,7 @@
                           src="https://pics.onsizzle.com/welcome-to-javascript-where-the-objects-are-made-up-and-13411868.png">
                         <ul>
                           <li>
-                            Spend the next three weeks learning the basics of programming by making a 
+                            Spend the next few weeks learning the basics of programming by making a 
                             "block dodger" game in JS. We'll work in teams and as a class.
                           </li>
                           <li>
@@ -110,7 +110,7 @@
                         </ul>
                         <p>
                           JS is going to be a significant increase in difficulty from HTML and CSS, but we're also
-                          going to spend more time on it and ensure everyone understands everything as we go.
+                          going to spend more time on it and ensure everyone understands the important concepts as we go.
                         </p>
                         <p>
                           Games can be challenging to program, so getting as solid on the basics as you can
@@ -123,10 +123,15 @@
                         <p>
                           Here's the block dodger game we're going to build together:
                         </p>
-                        <div style="margin: 15px;">
                         <p data-height="624" data-theme-id="dark" data-slug-hash="GvJvxq" data-default-tab="result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/GvJvxq/">block dodger</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-                        </div>
+                        <p>
+                          A word of caution: programming can be complex, and sometimes bits of code I'm going to show you 
+                          have to be taken on faith, at least at first. These bits are generally there to get the app to 
+                          function for us, but might involve a more advanced concept than you may be ready to see. Don't be intimidated--just 
+                          type it in, read a brief explanation, then we'll revisit these concepts again when you'll have the context
+                          and conceptual arsenal for understanding them.
+                        </p>
                         <hr style="clear: both;">
                         <h2 id="js">JavaScript: the programming language of the web</h2>
                         <p>
@@ -134,7 +139,8 @@
                           but is also extremely powerful. It's the only language that runs directly in web browsers.
                           The cool thing about this is that when you visit a website which has JS, you can read it just like
                           HTML and CSS using the "view page source" feature on your browser (as discussed in 
-                          <a href="class1.html#html">week 0</a>). It also means that JS has a monopoly on web programming, 
+                          <a href="module1.html#html">module 1</a>). It also means that JS has a monopoly on
+                          <a href="https://en.wikipedia.org/wiki/Front-end_web_development">front-end</a> programming, 
                           which guarantees that 1) an enormous amount of time and effort goes into making it great, and 2) it 
                           will likely be relevant for some time to come.
                         </p>
@@ -155,7 +161,7 @@
                         <p>
                           That's true to a large extent; however, once you learn a programming language, all of the basics 
                           transfer to any other language, so in that sense Java and JS are not all that different. Language choice
-                          boils down to picking the right tool for the job, and for web programming, JS is the only tool.
+                          boils down to picking the right tool for the job, and for front-end web programming, JS is the only tool.
                         </p>  
                         <hr style="clear: both;">
                         <h2 id="hello-world">Hello, world!</h2>
@@ -167,14 +173,13 @@
                           <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, world!</a> is the 
                           first program you'll write in any language, so let's go ahead and write it:
                         </p>
-                        <div style="margin: 15px;">
 <pre><code class="javascript">console.log("Hello, world!");</code></pre>
-                        </div>
                         <p>
                           This program tells JS to print the text "Hello, world!" in the browser's console.
                           Let's execute this program at <a href="https://repl.it/languages/javascript">repl.it</a>. 
                           Repl is an easy way to run snippets of JS code, so we'll be using it often. Once you've run 
-                          the program, try changing the text inside the quotation marks, and run it again.
+                          the program, try changing the text inside the quotation marks, and run it again. Tip: whenever
+                          you have some new code, always try making a change or three to convince yourself of how it works.
                         </p>
                         <hr style="clear: both;">
                         <h2 id="developer-tools">Developer tools</h2>
@@ -217,13 +222,11 @@
                           <li>
                             <p>
                               Inside of <code>greeting.js</code>, add the following JS code (it uses new syntax which I'll explain shortly):
-                              <div style="margin: 15px;">
 <pre><code class="javascript">// Ask the user for their name
 let visitorName = prompt("What is your name?");
 
 // Greet the user
 alert("Hello, " + visitorName + "!");</code></pre>
-                              </div>
                             </p>
                           </li>
                           <li>
@@ -231,7 +234,6 @@ alert("Hello, " + visitorName + "!");</code></pre>
                               Inside of <code>greeting.html</code>, add the following code, which includes the JS
                               script in the HTML code; the script executes when the page is loaded:
                             </p>  
-                            <div style="margin: 15px;">
 <pre><code class="html">&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Greeting page&lt;/title&gt;
@@ -240,7 +242,6 @@ alert("Hello, " + visitorName + "!");</code></pre>
     &lt;script src="greeting.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                            </div>
                           </li>
                           <li>
                             <p>
@@ -262,10 +263,8 @@ alert("Hello, " + visitorName + "!");</code></pre>
                           to examine how the "greeting" program works, then we'll call it a day. Let's start with the first two
                           lines:
                         </p>  
-                        <div style="margin: 15px;">
 <pre><code class="javascript">// Ask the user for their name
 let visitorName = prompt("What is your name?");</code></pre>
-                        </div>
                         <p>
                           The first line is a comment, but with a slightly different syntax from the CSS comments. CSS
                           comments work in JS too; they're called multi-line comments, while the <code>//</code> comment
@@ -284,12 +283,13 @@ let visitorName = prompt("What is your name?");</code></pre>
                         <ol>
                           <li>
                             <p>
-                              You can specify <i>parameters</i> which go inside the <code class="javascript">( )</code> 
-                              parenthesis after the function name. Parameters change something about how the function works. 
-                              In this case, <code class="javascript">prompt()</code> allows the programmer to tell it which 
+                              You can specify <i>parameters</i> which go inside the <code class="js">( )</code> 
+                              parenthesis after the function name. Parameters change how the function behaves during a call. 
+                              In this case, <code class="js">prompt()</code> allows the programmer to tell it which 
                               <i>string</i>, or bit of text, it should display in the dialog box. Try changing the 
-                              <code class="javascript">"What is your name?"</code> line to something else
-                              and see what happens. Just make sure to keep the quotes.
+                              <code class="js">"What is your name?"</code> line to something else
+                              and see what happens. Just make sure to keep the quotes. Can you identify the parameter
+                              for <code class="js">console.log("Hello, world!");</code>?
                             </p>
                           </li>  
                           <li>
@@ -328,10 +328,8 @@ let visitorName = prompt("What is your name?");</code></pre>
                         <p>
                           OK, it's all smooth sailing for the next bit of code:
                         </p>  
-                        <div style="margin: 15px;">
 <pre><code class="javascript">// Greet the user
 alert("Hello, " + visitorName + "!");</code></pre>
-                        </div>
                         <p>
                           Here's another JS built-in function called <code class="javascript">alert()</code>, which is the annoying 
                           pop-up box you've probably encountered before. You (hopefully) won't be using 

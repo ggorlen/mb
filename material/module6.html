@@ -95,7 +95,7 @@
                           We're going to use JS's built-in graphics library, 
                           <a href="https://en.wikipedia.org/wiki/Canvas_element">Canvas</a>, to render the graphics.
                           Canvas is an ideal game framework to use because it's simple and no-frills, forcing us 
-                          to write all of the game mechanics from scratch. Later, we'll
+                          to write all of the game mechanics from scratch. Later, we'll (optionally)
                           be able to use a more complex game framework that will handle some of the work for us.
                         </p>  
                         <p>
@@ -115,10 +115,8 @@
                           reference your <code>.js</code> script and <code>.css</code> stylesheet from your 
                           <code>.html</code> file if you're working locally.
                         </p>
-                        <div style="margin: 15px;">
                         <p data-height="527" data-theme-id="dark" data-slug-hash="YxemRr" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 1)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/YxemRr/">block dodger (part 1)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-                        </div>
                         <p>
                           There's a lot going on here! Let's break it down a bit. Don't worry if these explanations
                           are dense; they'll make more sense later on in the course:
@@ -169,9 +167,7 @@
                             <p>
                               The following line,
                             </p>
-                            <div style="margin: 15px;">
-                              <pre><code class="js">let canvas = document.getElementById("paper");</code></pre>
-                            </div>
+                            <pre><code class="js">let canvas = document.getElementById("paper");</code></pre>
                             <p>
                               requests some information from the HTML document object using one of its functions,
                               <code class="js">getElementById()</code>, which looks for an element
@@ -187,9 +183,7 @@
                             <p>
                               The line,
                             </p>
-                            <div style="margin: 15px;">
-                              <pre><code class="js">let ctx = canvas.getContext("2d");</code></pre>
-                            </div>
+                            <pre><code class="js">let ctx = canvas.getContext("2d");</code></pre>
                             </p>
                             <p>
                               stores another object in a variable for us to use. This time, we're calling on the 
@@ -204,9 +198,7 @@
                               Now that we have a canvas context object to work with, we can begin drawing using its
                               built-in properties and functions. The line,
                             </p>  
-                            <div style="margin: 15px;">
-                              <pre><code class="js">ctx.fillStyle = "#ffffff";</code></pre>
-                            </div>
+                            <pre><code class="js">ctx.fillStyle = "#ffffff";</code></pre>
                             <p>
                               Sets the drawing color of the canvas to white.
                             </p>
@@ -215,9 +207,7 @@
                             <p>
                               And the final line, 
                             </p>  
-                            <div style="margin: 15px;">
-                              <pre><code class="js">ctx.fillRect(100, 100, 70, 50);</code></pre>
-                            </div>
+                            <pre><code class="js">ctx.fillRect(100, 100, 70, 50);</code></pre>
                             <p>
                               draws a filled, white rectangle on the canvas. The canvas context <code class="js">fillRect()</code> 
                               function takes four parameters, something we haven't seen yet. Recall that 
@@ -273,18 +263,14 @@
                         <p>
                           For the first tool, let's declare two variables and set them to some default values:
                         </p>
-                        <div style="margin: 15px;">
 <pre><code class="js">// Number variables to hold the x and y position of the rectangle
 let x = 10;
 let y = 10;</code></pre>
-                        </div>
                         <p>
                           Then, we'll want to replace our <i>literal</i> numbers in the <code class="js">fillRect()</code>
                           parameter with our variables:
                         </p>
-                        <div style="margin: 15px;">
-                          <pre><code class="js">ctx.fillRect(x, y, 70, 50);</code></pre>
-                        </div>
+                        <pre><code class="js">ctx.fillRect(x, y, 70, 50);</code></pre>
                         <p>
                           For the second tool, we're going to write our first ever function. This function will be
                           called about 60 times every second as long as the animation is running. Each time this function is 
@@ -293,7 +279,6 @@ let y = 10;</code></pre>
                           return any values, so it's very simple. Since it updates the screen, it's common to call
                           this function update, render, or redraw.
                         </p>
-                        <div style="margin: 15px;">
 <pre><code class="js">// Updates the animation state and draws a frame
 function update() {
   
@@ -311,7 +296,6 @@ function update() {
   // Ask the browser to move on to the next frame
   requestAnimationFrame(update);
 }</code></pre>
-                        </div>
                         <p>
                           Other than the function definition, the <code class="js">x += 5;</code> line is new.
                           This simply adds 5 to the prior value of <code class="js">x</code> and stores this sum
@@ -320,19 +304,15 @@ function update() {
                         <p>
                           Last, but not least, we need to actually call the function we just defined:
                         </p>
-                        <div style="margin: 15px;">
 <pre><code class="js">// Begin the animation
 update();</code></pre>
-                        </div>
                         <p>
                           Let's put it all together. As with previous examples, feel free to tweak numbers,
                           remove/add lines of code and generally experiment until you're sure you have a good grasp
                           on how it all works.
                         </p>
-                        <div style="margin: 15px;">
                         <p data-height="779" data-theme-id="dark" data-slug-hash="YxawZN" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 2)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/YxawZN/">block dodger (part 2)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-                        </div>
                         <p>
                           I hope you caught that. The rectangle flies off the screen pretty quickly, so run the script
                           again if you missed it.

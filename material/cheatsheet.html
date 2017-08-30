@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+
+    <title>Mission Bit at Gateway HS</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/gruvbox-dark.min.css">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="../material/">Course material</a>
+                </li>
+                <li>
+                    <a href="../code/">Example code</a>
+                </li>
+                <li>
+                    <a href="../students/">Student projects</a>
+                </li>
+                <li>
+                    <a href="../resources/">Resources</a>
+                </li>
+                <li>
+                    <a href="../about/">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>JavaScript cheat sheet</h1>
+                        <p>
+                          The purpose of this page is to offer quick and dirty JS syntax reference. It's not a substitute
+                          for <a href="../resources">external resources</a> or <a href="../material">lesson modules</a>, 
+                          but might come in handy as a memory refresher in a pinch. It's not expected that you memorize 
+                          syntax--just look it up if you forget!
+                        </p>
+                        <ol>
+                          <li>
+                            <a href="#vars">Variables</a>
+                          </li>
+                          <li>
+                            <a href="#operators">Operators</a>
+                          </li>
+                          <li>
+                            <a href="#functions">Functions</a>
+                          </li>
+                          <li>
+                            <a href="#objects">Objects</a>
+                          </li>
+                          <li>
+                            <a href="#conditionals">Conditionals</a>
+                          </li>
+                          <li>
+                            <a href="#loops">Loops</a>
+                          </li>
+                          <li>
+                            <a href="#arrays">Arrays</a>
+                          </li>
+                        </ol>
+                        <hr>
+                        <h2 id="vars">Variables</h2>
+                        <p>
+                          Variables are used to store pieces of data in your program. Some types of data that can be stored in
+                          variables include numbers, strings, functions, objects, and booleans (true or false).
+                        </p>
+<pre><code class="js">// Declare an undefined variable
+let firstName;
+
+// Initialize a previously declared variable by assigning a string to it
+firstName = "Greg";
+
+// Declare and initialize a number variable
+let age = 31;
+
+// Declare and initialize a boolean variable
+let alive = true;
+</code></pre>
+                        <h2 id="operators">Operators</h2>
+                        <p>
+                          Operators allow you to perform mathematical and logical operations on data. The result of the 
+                          operation is usually assigned to a variable or sent to or returned from a function.
+                        </p>
+<pre><code class="js">// Assign the result of number addition to a variable
+let sum = 5 + 7;
+console.log(sum);  // 12
+
+
+// Perform an operation in a parameter 
+console.log(6 / 2);  // 3
+
+
+// Increment (++) the value of a number variable by 1
+let number = 3;
+number++; 
+console.log(number);  // 4
+
+// Adjust the vale of a number by some amount greater than 1
+number += 60;
+console.log(number);  // 64
+number -= 5;
+console.log(number);  // 59
+number *= 2;
+console.log(number);  // 118
+
+
+// Modulus operator (%) gives the remainder after division
+let age = 31;
+console.log(age % 3);  // 1
+
+
+// Concatenate string variables with +
+let firstName = "Jack";
+let lastName = "Johnson";
+let fullName = firstName + " " + lastName; 
+console.log(fullName);  // "Jack Johnson" 
+
+
+// Logical operation "or" (||) evaluates true if at least one operand is true
+let playerIsAlive = false;
+let highScore = true;
+console.log(playerIsAlive || highScore);  // true
+
+
+// Logical operation "and" (&&) evaluates true if all operands are true
+console.log(playerIsAlive && highScore);  // false 
+
+
+// Greater than, less than, equal to operators work just like in math
+console.log(5 &lt; 5);  // false
+console.log(5 &lt;= 5);  // true
+
+
+// Logical equals is "===" ("=" is assignment and "==" is broken)
+let password = "foobar";
+console.log(password === "foobar");  // true
+</code></pre>
+                        <h2 id="functions">Functions</h2>
+                        <p>
+                          Functions are code that has been grouped together to perform a specific task. Benefits include
+                          code reuse, organization, modularization, easier debugging, and generalization. Functions can
+                          accept parameters, which are pieces of data that modify the function's behavior on the fly.
+                          Functions can return values to the calling code.
+                        </p>
+<pre><code class="js">// Declare a function that accepts two number or string 
+// parameters, sums them, and returns the result
+function sum(num1, num2) {
+  return num1 + num2;
+}
+
+console.log(sum(13, 5));  // 18
+
+
+// Function to generate a random integer between two bounds
+function randInt(lo, hi) {
+  return Math.floor(Math.random() * (hi - lo) + lo);
+}
+
+// Call the function and set its return value to a variable
+let xLocation = randInt(4, 30);
+console.log(xLocation);  // some random number between 4 and 30</code></pre>
+                        <h2 id="objects">Objects</h2>
+                        <p>
+                          Objects are data structures that contain properties and functions which are all related,
+                          and together, represent some programmatical entity, such as a "user," for example. Objects 
+                          in JS are multi-purpose and have many syntaxes for declaration and usage. Here are two simple examples.
+                        </p>
+<pre><code class="js">// Declare an object literal representing a user
+let user = {
+  name: "rocky456",
+  password: "tortoise",
+  email: "rocky@gmail.com"
+};
+
+// Display information about the user object
+console.log(user);
+
+// Display the user's password in two different ways
+console.log(user["password"]);
+console.log(user.password);
+
+
+// Declare an object constructor function for making Users
+let User = function (name, password, email) {
+  this.name = name;
+  this.password = password;
+  this.email = email;
+};
+
+// Instantiate an object using the above object constructor function
+let rocky = new User("rocky456", "tortoise", "rocky@gmail.com");
+console.log(rocky);
+
+// Add a function to the User object prototype
+User.prototype.changePassword = function (password) {
+  this.password = password;
+}
+
+// Call the new function
+rocky.changePassword("hare");
+
+// Change a property directly
+rocky.email = "rocky@hotmail.com";
+
+// See the updated user
+console.log(rocky);</code></pre>
+                        <h2 id="conditionals">Conditionals</h2>
+                        <p>
+                          Conditionals allow your program to choose between different groups of code to execute
+                          or skip. Conditionals use boolean (true/false) expressions or variables to make
+                          this choice.
+                        </p>
+<pre><code class="js">// Simple conditional
+let age = 31;
+
+if (age &gt;= 18) {
+  console.log("You're old enough to vote.");
+}
+
+// Using else if and else
+if (age &gt;= 18) {
+  console.log("You're old enough to vote but not old enough to drink.");
+}
+else if (age &gt;= 21) {
+  console.log("You're old enough to vote and drink.");
+}
+else {  // age &lt; 18
+  console.log("You're not old enough to vote or drink yet.");
+}</code></pre>
+                        <h2 id="loops">Loops</h2>
+                        <p>
+                          Loops enable blocks of code to repeat. There are two primary loop constructs.
+                          The most common loop construct is the <code class="js">for</code> loop, which is 
+                          useful for repeating code some definite number of times, while the 
+                          <code class="js">while</code> loop is better suited for situations when it's 
+                          not clear in advance how many iterations (trips through the loop) will be necessary.
+                        </p>
+<pre><code class="js">// Print numbers from 0 to 19 with a for loop 
+for (let i = 0; i &lt; 20; i++) {
+  console.log(i);
+}
+
+
+// Keep printing random decimals between 0 
+// and 1 until the number is greater than 0.9
+let number = 0;
+while (number &lt; 0.9) {
+  number = Math.random();
+  console.log(number);
+}</code></pre>
+                        <h2 id="arrays">Arrays</h2>
+                        <p>
+                          Arrays are the most basic data structure in computer science. Arrays are containers
+                          which hold a number of related items of data in indexes. Indexes begin at 0 and 
+                          proceed to one less than the size of the container. Arrays generally work well with
+                          <code class="js">for</code> loops, which allow access to the item at each index in the 
+                          array. Arrays also have many properties and functions which are worth knowing about.
+                        </p>
+<pre><code class="js">// Declare an empty array
+let vegetables = [];
+
+// Set the array to a literal array and print it to the console
+vegetables = ["broccoli", "cabbage", "cauliflower", "brussels sprouts"];
+console.log(vegetables);  // [ 'broccoli', 'cabbage', 'cauliflower', 'brussels sprouts' ]
+
+// Print the number of elements in the array
+console.log(vegetables.length);  // 4
+
+// Print the element at index 3 in the array
+console.log(vegetables[3]);  // 'brussels sprouts'
+
+// Remove the last element of the array and print it
+console.log(vegetables.pop());  // 'brussels sprouts'
+
+// Print the number of elements in the array
+console.log(vegetables.length);  // 3
+
+// Print the array
+console.log(vegetables);  // [ 'broccoli', 'cabbage', 'cauliflower' ]
+
+// Add an element to the end of the array
+vegetables.push("carrots");
+
+// Print the array
+console.log(vegetables);  // [ 'broccoli', 'cabbage', 'cauliflower', 'carrots' ]
+
+// Make every element in the array uppercase using a for loop
+for (let i = 0; i &lt; vegetables.length; i++) {
+  vegetables[i] = vegetables[i].toUpperCase();
+}
+
+// Print the array
+console.log(vegetables);  // [ 'BROCCOLI', 'CABBAGE', 'CAULIFLOWER', 'CARROTS' ]
+
+// Remove and print part of the array -- first parameter is the
+// start index, second is the number of elements to remove
+console.log(vegetables.splice(2, 2));  // [ 'CAULIFLOWER', 'CARROTS' ]
+
+// Print the array
+console.log(vegetables);  // [ 'BROCCOLI', 'CABBAGE' ]
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    
+    <!-- Bootstrap Core Javascript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../js/global.js"></script>
+
+
+</body>
+
+</html>

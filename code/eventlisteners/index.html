@@ -27,36 +27,38 @@
        */
 
        
-      // keyevent listeners to track arrow key actions
-      document.addEventListener("keydown", function(e) {
+      /* Keyevent listeners to track arrow key actions */
+
+      document.addEventListener("keydown", function (e) {
       
-        // log some information about the event object
+        // Log some information about the event object
         console.log(e);
         document.getElementById("pressed_out").innerHTML = 
           "Pressed: &nbsp;\"" + e.key + "\"; keyCode: " + e.keyCode;
       }, false);
       
-      document.addEventListener("keyup", function(e) {
+      document.addEventListener("keyup", function (e) {
       
-        // log some information about the event object
+        // Log some information about the event object
         console.log(e);
         document.getElementById("released_out").innerHTML = 
           "Released: \"" + e.key + "\"; keyCode: " + e.keyCode;
       }, false);
 
       
-      // mouse listeners
-      document.addEventListener("click", function(e) {
+      /* Mouse listeners */
 
-        // log some information about the event object
+      document.addEventListener("click", function (e) {
+
+        // Log some information about the event object
         console.log(e);
         document.getElementById("click_out").innerHTML = 
           "Mouse click: X " + e.x + "; Y: " + e.y;
       });
       
-      document.addEventListener("mousemove", function(e) {
+      document.addEventListener("mousemove", function (e) {
 
-        // log some information about the event object
+        // Log some information about the event object
         console.log(e);
         document.getElementById("move_out").innerHTML = 
           "Mouse move: &nbsp;X " + e.x + "; Y: " + e.y;

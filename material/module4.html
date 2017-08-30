@@ -66,7 +66,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h1>Class 4: Add CSS to your adventure game</h1>
+                        <h1>Module 4: Add CSS to your adventure game</h1>
                         <ol>
                           <li>
                             <a href="#css">CSS: adding style to your page</a>
@@ -81,13 +81,13 @@
                             <a href="#comments">Comments: your #1 pal</a>
                           </li>
                           <li>
-                            <a href="#classes-ids">CSS classes and IDs</a> (optional)
+                            <a href="#classes-ids">CSS classes and IDs</a>
                           </li>
                           <li>
-                            <a href="#google-fonts">Using Google Fonts</a> (optional)
+                            <a href="#google-fonts">Using Google Fonts</a>
                           </li>
                           <li>
-                            <a href="#flexbox-centering">Centering with Flexbox</a> (optional)
+                            <a href="#flexbox-centering">Centering with Flexbox</a>
                           </li>
                           <li>
                             <a href="#fin">Fin!</a>
@@ -146,11 +146,9 @@
                             <p>
                               Inside of <code>style.css</code>, write your first CSS selector:
                             </p>
-                            <div style="margin: 15px;">
 <pre><code class="css">p {
   color: red;
 }</code></pre>
-                            </div>
                           </li>
                           <li>
                             <p>
@@ -159,9 +157,7 @@
                               CSS file and applies its selectors to the HTML document. You can reference the same
                               stylesheet from as many HTML files as you want:
                             </p>
-                            <div style="margin: 15px;">
 <pre><code class="html">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
-                            </div>
                           </li>  
                         </ol>
                         <p>
@@ -179,7 +175,6 @@
                           Here's a little example stylesheet, with comments, to whet your appetite for experimenting
                           with different CSS properties:
                         </p>  
-                        <div style="margin: 15px;">
 <pre><code class="css">/* The asterisk selector means "select all elements" */
 * {
   font-family: "Helvetica", sans-serif;
@@ -206,7 +201,6 @@ a:hover {
 p {
   border: 1px solid #000000;
 }</code></pre>
-                        </div>
                         <p>
                           Note that colors are in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> format. 
                           I recommend using a 
@@ -227,7 +221,6 @@ p {
                           In your CSS file, the syntax for making a class or ID is easy: simply make up any word you want and
                           prefix it with a <code>#</code> to denote an ID and a <code>.</code> to denote a class.
                         </p>
-                        <div style="margin: 15px;">
 <pre><code class="css">/* A class that centers text */
 .center-text {
   text-align: center;
@@ -237,7 +230,6 @@ p {
 #huge-button {
   font-size: 40px;
 }</code></pre>
-                        </div>
                         <p>
                           With IDs and classes under your belt, most deployment of CSS in HTML boils down to two 
                           tags, <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>, which do nothing on their 
@@ -246,7 +238,6 @@ p {
                           doesn't. Let's deploy the selectors we just made in a sample HTML file. I'll add CSS to the 
                           header for brevity's sake. Note the <code>class=""</code> and <code>id=""</code> attributes:
                         </p>
-                        <div style="margin: 15px;">
 <pre><code class="html">&lt;html&gt;
   &lt;head&gt;
     &lt;style&gt;
@@ -265,7 +256,6 @@ p {
     &lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                        </div>
                         <p>
                           Last bit on IDs and classes: you can add as many classes to an element as you wish 
                           (separate each class name with a space), and you can combine an ID and classes on the same
@@ -304,19 +294,15 @@ p {
                               Copy and paste the line between the <code>&lt;style&gt;</code> tags and 
                               paste it at the top of your <code>style.css</code> file, outside of any selectors:
                             </p>
-                            <div style="margin: 15px;">
 <pre><code class="css">@import url('https://fonts.googleapis.com/css?family=Bitter');</code></pre>
-                            </div>
                           </li>
                           <li>
                             <p>
                               Copy and paste the <code>font-family</code> line into any selector(s) you wish:
                             </p>
-                            <div style="margin: 15px;">
 <pre><code class="css">body {
   font-family: 'Bitter', serif;
 }</code></pre>
-                            </div>
                           </li>
                         </ol>
                         <p>
@@ -332,15 +318,13 @@ p {
                           a fairly technical layout tool, so I'll only show you how to use it for centering purposes,
                           for example, if you'd like to put content smack in the middle of the screen:
                         </p>
-                        <div style="margin: 15px;">
-                          <p data-height="379" data-theme-id="dark" data-slug-hash="dzddVj" data-default-tab="css,result" 
-                            data-user="ggorlen" data-embed-version="2" data-pen-title="flex centering" class="codepen">See the Pen 
-                            <a href="https://codepen.io/ggorlen/pen/dzddVj/">flex centering</a> 
-                              by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen
-                            </a>.
-                          </p>
-                          <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-                        </div>
+                        <p data-height="379" data-theme-id="dark" data-slug-hash="dzddVj" data-default-tab="css,result" 
+                          data-user="ggorlen" data-embed-version="2" data-pen-title="flex centering" class="codepen">See the Pen 
+                          <a href="https://codepen.io/ggorlen/pen/dzddVj/">flex centering</a> 
+                            by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen
+                          </a>.
+                        </p>
+                        <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
                         <p>
                           I won't bog you down with too much of an explanation here--just apply the <code>.main</code> 
@@ -355,12 +339,12 @@ p {
                         <h2 id="fin">Fin!</h2>
                         <p>
                           OK, that should give you *plenty* of control over your HTML adventure game's 
-                          design. Go at it for the rest of the class! 
+                          design. Go at it! 
                         </p>
                         <p>
-                          Next week, we'll leave HTML and CSS behind and embark on JavaScript, which is 
-                          really the meat of the class. If you have time over the weekend, get a head
-                          start over at <a href="https://www.codecademy.com/learn/javascript">Codecademy</a>!
+                          Next module, we'll leave HTML and CSS behind and embark on JavaScript, which is 
+                          really the meat of the class. If you have time, get a head
+                          start on JS over at <a href="https://www.codecademy.com/learn/javascript">Codecademy</a>!
                         </p>  
                         <div style="width: 240px; overflow: hidden; margin: 15px;">
                           <img alt="Titanic CSS meme" style="width: 280px; margin: -10px -10px -10px -20px;" 
