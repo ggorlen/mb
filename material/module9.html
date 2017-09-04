@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+
+    <title>Mission Bit at Gateway HS</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/gruvbox-dark.min.css">
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="../material/">Course material</a>
+                </li>
+                <li>
+                    <a href="../code/">Example code</a>
+                </li>
+                <li>
+                    <a href="../students/">Student projects</a>
+                </li>
+                <li>
+                    <a href="../resources/">Resources</a>
+                </li>
+                <li>
+                    <a href="../about/">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>Module 9: Randomization, collision detection, and score</h1>
+                        <p>
+                          Objective: explore JS's Math library, create utility functions and optimize code.
+                        </p>
+                        <ol>
+                          <li>
+                            <a href="#wrapping-up">Wrapping up the block dodger</a>
+                          </li>
+                          <li>
+                            <a href="#randomize-it">Randomize it!</a>
+                          </li>
+                          <li>
+                            <a href="#more-random-numbers">More random numbers</a>
+                          </li>
+                          <li>
+                            <a href="#collision-detection">Collision detection</a>
+                          </li>
+                          <li>
+                            <a href="#optimization">Optimization</a>
+                          </li>
+                          <li>
+                            <a href="#score">Last (but not least), adding score</a>
+                          </li>
+                          <li>
+                            <a href="#next-steps">Next steps</a>
+                          </li>
+                        </ol>
+                        <hr>
+                        <h2 id="wrapping-up">Wrapping up the block dodger</h2>
+                        <img src="https://i.pinimg.com/236x/e0/bb/3c/e0bb3c14daf02dfc73de52d00dba0053--conspiracy-writing-inspiration.jpg"
+                          alt="Keanu Reeves programming meme" style="margin: 15px 0px 15px 15px; float: right;">
+                        <p>
+                          Woohoo! Here we are at module 9, the penultimate module of the course, and the
+                          one where we wrap up the block dodger game! Believe it or not, but we've covered 
+                          all of the major points of basic programming, so this last module is less about
+                          introducing new concepts and more about practicing what we've already learned.
+                        </p>
+                        <p>
+                          As you've noticed, we still have a few missing pieces standing in the way
+                          between where we are now and a full-blown block dodger, including generation
+                          of obstacle blocks, collision detection between obstacles and the player box,
+                          and a player score. We'll handle these features by making use of
+                          JS's built-in Math library, a new array function, and adding a few additional 
+                          functions to keep our code organized.
+                        </p>
+                        <hr style="clear: right;">
+                        <h2 id="randomize-it">Randomize it!</h2>
+                        <p>
+                          Random numbers are very important in game design (and programming in general!). They're an
+                          easy way to reduce predictability, simulate chance, and add a natural feel to applications. 
+                          Most programming languages have a variety of handy ways to get random numbers, but JS
+                          offers fairly slim pickings: <code class="js">Math.random()</code>, which returns a random
+                          decimal between 0 and 1. Let's put this to use in generating our falling obstacles:
+                          instead of hard-coding three obstacles to appear in the <code class="js">init()</code> function as we did...
+                        </p>
+<pre><code class="js">// Add a few obstacles to the array
+obstacles.push(new Obstacle(10, 0, 1, 30, "#5959ee"));
+obstacles.push(new Obstacle(100, 0, 1, 20, "#9999ff"));
+obstacles.push(new Obstacle(200, 0, 2, 25, "#8877ef"));
+</code></pre>
+                        <p>
+                          ...we'll remove those lines and head over to the <code class="js">update()</code> function, where
+                          we'll use a conditional and <code class="js">Math.random()</code> to determine whether,
+                          at a given frame, a new <code class="js">obstacle</code> gets created or not:
+                        </p>
+<pre><code class="js">// Generate a new obstacle every so often
+if (Math.random() &gt; 0.98) {
+  obstacles.push(new Obstacle(canvas.width / 2, -20, 2, 20, "#8877ef"));
+}</code></pre>
+                        <p>
+                          If my math is correct, this works out to about a 1 percent chance that on any given frame, 
+                          an obstacle will be created. Try adjusting the <code class="js">0.98</code> number and see 
+                          how the frequency of obstacle generation changes--it's pretty sensitive, so consider
+                          adding decimal places for better precision.
+                        </p>  
+                        <p data-height="714" data-theme-id="0" data-slug-hash="QMoMgV" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 8)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/QMoMgV/">block dodger (part 8)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <hr>
+                        <h2 id="more-random-numbers">More random numbers</h2>
+                        <p>
+                          Now that we're using random numbers, let's take a moment to add a utility function
+                          to our program to produce random integers between two bounds. Random integers will be useful
+                          for randomizing the placement and properties of our obstacles. Utility functions are 
+                          very general and reusable functions that handle simple tasks, saving a lot of trouble.
+                          The below function takes a range of input between a low and high number, and returns
+                          a random whole number between the two. Technically, the lower bound is inclusive
+                          and the upper bound is exclusive, meaning it's possible for the function to return
+                          the low number but not the high number.
+                        </p>
+<pre><code class="js">// Returns a random number between two bounds
+function randInt(lo, hi) {
+  return Math.floor(Math.random() * (hi - lo) + lo);
+}</code></pre>
+                        <p>
+                          If you're curious, the way this works is multiplying <code class="js">Math.random()</code> by an integer <i>x</i>
+                          produces a random decimal between 0 and <i>x</i>. Subtracting the lower bound from the upper bound
+                          before this operation, then re-adding the lower bound to the result puts the number 
+                          in the correct range. At this point, the number is still a decimal, so <code class="js">Math.floor()</code> is used
+                          to chop off that decimal. Try it out with <code class="js">randInt(5, 15);</code> and test the results.
+                        </p>
+                        <p>
+                          But honestly, the details aren't too important here: it works; use it! Most programming languages
+                          offer this function as a standard library feature, so you wouldn't have to worry about the implementation
+                          details in those languages--don't sweat them here either!
+                        </p>
+                        <img src="https://cdn.meme.am/instances/500x/24291984/watch-in-amazement-as-i-pull-random-numbers-from-my-hat.jpg"
+                          alt="Random number meme" style="margin: 15px;">
+                        <p>
+                          Let's put this function to use! But before we do, we're about to be making a mess in our nice,
+                          clean <code class="js">update()</code> function. It's a good idea to extrapolate this burgeoning 
+                          obstacle-making code to a separate function, <code class="js">makeObstacle()</code>, keeping 
+                          the dirty details away from <code class="js">update()</code>.
+                        </p>  
+<pre><code class="js">// Generates some random values for an Obstacle and 
+// adds the new Obstacle to the obstacles array
+function makeObstacle() {
+  let size = randInt(10, 20);
+  let x = randInt(0, canvas.width - size);
+  let y = 0 - size;
+  let color = "hsl(200, " + randInt(0, 100) + "%, 60%)";
+  let vy = (Math.random() + 1) * 30 / size;
+  obstacles.push(new Obstacle(x, y, vy, size, color));
+}</code></pre>
+                        <p>
+                          The above code looks complex, but all of the numbers and operations were found through old fashioned trial 
+                          and error; you'll come up with your own tricks for finding the right "feel" for these kinds of things, 
+                          which is why I'm endlessly encouraging you to tweak my examples (go ahead, play with the above 
+                          code--when it gets too complex, revert to simple literal numbers!).
+                          For example, I wanted smaller objects to move faster than larger objects, so I made the velocity inversely 
+                          proportional to size. The <code class="js">color</code> variable uses <code class="js">hsl()</code>, which 
+                          is just another way to represent color; check the explanation 
+                          <a href="https://www.w3schools.com/colors/colors_hsl.asp">here</a> to learn more.
+                        </p>
+                        <p>
+                          All right; now, we'll call <code class="js">makeObstacle()</code> from the <code class="js">update()</code> 
+                          function, and we've got ourselves a pretty nifty looking near-game:
+                        </p>  
+                        <p data-height="639" data-theme-id="0" data-slug-hash="eEXEjO" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 9)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/eEXEjO/">block dodger (part 9)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <hr>
+                        <h2 id="collision-detection">Collision detection</h2>
+                        <p>
+                          Next, we really need collision detection, or some function that tells us if two boxes are overlapping.
+                          Collision detection can be a very complex topic, but luckily,
+                          it's pretty straightforward as it relates to rectangles. The idea is to check whether each rectangle's
+                          x coordinate is between the other rectangle's bounds on the x axis and repeat the process for the 
+                          y axis. If it passes tests on both axes, they're intersecting somewhere. Here's the code:
+                        </p>
+<pre><code class="js">// Returns true if a and b rectangles 
+// are colliding, false otherwise
+function collides(a, b) {
+  return a.x &lt;= b.x + b.size &&
+         b.x &lt;= a.x + a.size &&
+         a.y &lt;= b.y + b.size &&
+         b.y &lt;= a.y + b.size;
+}</code></pre>
+                        <p>
+                          Looking at this for too long can make your head hurt, and it's written here a little less for readability 
+                          and more for succinctness; this sort of stuff is best handled by a game framework
+                          with pre-written complex collision detection algorithms, by searching a programming
+                          help or reference websites like <a href="https://stackoverflow.com/">Stack Overflow</a>, or avoidng games
+                          that have heavy amounts of collision detection and physics, such as platformers and shooters 
+                          (at least for your first project). That is,
+                          assuming you're not a math buff (power to you if you are!). In the meantime, just plug in the one
+                          above and enjoy!
+                        </p>
+                        <p>
+                          And, of course, we need to actually make a call to the <code class="js">collides()</code> function
+                          and send it two boxes. But where? This is a great job for the loop we're using to move and render our 
+                          obstacles--since we're already doing that, we'll just add a collision check inside the loop 
+                          and re-initialize the game if a collision occurs: 
+                        </p>
+                            
+<pre><code class="js">// Check for a collision between the player and this obstacle.
+// Reinitialize the game if there was a collision.
+if (collides(player, obstacles[i])) {
+  init();
+  break;
+}</code></pre>
+                        <p>
+                          The <code class="js">break;</code> statement simply ends the for loop immediately; once a new game
+                          has been set up in the <code class="js">init()</code> function, there will no longer be any obstacles 
+                          in the newly-cleared <code class="js">obstacles</code>
+                          array, and the game will crash (we'll talk more about bugs in the next module). Let's take a look
+                          at the whole <code class="js">update()</code> function since it's quite large (it's also visible in the 
+                          Codepen below). In all honesty, it might be high time to split this function into smaller helper
+                          functions, but we'll call it sufficient for now.
+                        </p>
+<pre><code class="js">// Updates the animation state and draws a frame
+function update() {
+    
+  // Generate a new obstacle every so often
+  if (Math.random() &gt; 0.95) {
+    makeObstacle();
+  }
+  
+  // Clear the entire canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Update the position of the player
+  player.move(mouseX);
+  
+  // Draw the player box
+  ctx.fillStyle = player.color;
+  ctx.fillRect(player.x, player.y, player.size, player.size);
+  
+  // Update and draw the obstacles
+  for (let i = 0; i &lt; obstacles.length; i++) {
+    
+    // Update this obstacle's position
+    obstacles[i].move();
+    
+    // Check for a collision between the player and this obstacle.
+    // Reinitialize the game if there was a collision.
+    if (collides(player, obstacles[i])) {
+      init();
+      break;
+    }
+    
+    // Draw the obstacle
+    ctx.fillStyle = obstacles[i].color;
+    ctx.fillRect(obstacles[i].x, obstacles[i].y, 
+                 obstacles[i].size, obstacles[i].size);
+  }
+  
+  // Ask the browser to move on to the next frame
+  requestAnimationFrame(update);
+}</code></pre>
+                        <p>
+                          At this point, try playing the game--I think it's pretty close to satisfactory!
+                        </p>
+                        <p data-height="632" data-theme-id="0" data-slug-hash="dzrZRE" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 10)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/dzrZRE/">block dodger (part 10)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <hr>
+                        <h2 id="optimization">Optimization</h2>
+                        <p>
+                          There are only two remaining things we should take care of before calling this game done.
+                          One is a classic arcade game feature whose importance cannot be overstated: score! It's a simple
+                          addition, but putting a number on the player's performance adds a competitive feel and an addictive 
+                          quality that makes it more than worth the small amount of trouble. 
+                        </p>
+                        <p>
+                          The second feature to think about is a very subtle optimization issue. What happens to obstacles that
+                          fly below the bottom of the screen? To find out if they're still there, we can add a <code class="js">console.log()</code>
+                          statement and print the length of our <code class="js">obstacles</code> array every time we make a new one:
+                        </p>
+<pre><code class="js">// Generates some random values for an Obstacle and 
+// adds the new Obstacle to the obstacles array
+function makeObstacle() {
+  let size = randInt(10, 20);
+  let x = randInt(0, canvas.width - size);
+  let y = 0 - size;
+  let color = "hsl(200, " + randInt(0, 100) + "%, 60%)";
+  let vy = (Math.random() + 1) * 30 / size;
+  obstacles.push(new Obstacle(x, y, vy, size, color));
+
+  console.log(obstacles.length);
+}</code></pre>
+                        <p>
+                          If you're skilled enough at the game, you'll notice that the longer the player stays alive, the larger the
+                          <code class="js">obstacles</code> array grows. If the player is really good, there could be hundreds or
+                          thousands of items in this array, every one of which is being moved, rendered (offscreen, mostly), and
+                          checked for collisions. 
+                        </p>
+                        <p>
+                          All of this extra work can slow your game down and bring the player's fun to a 
+                          grinding halt. Luckily, the issue isn't too problematic in this simple game--the player will almost
+                          always lose before it becomes a problem and modern computers can handle these calculations
+                          well. Nonetheless, it illustrates a typical efficiency problem programmers face constantly, 
+                          so let's go ahead and resolve it by removing obstacles from the array as soon as they pass the 
+                          bottom of the screen. Coincidentally, this is also where I'd like to increase the player's score,
+                          which can be thought of as the number of obstacles the player has successfully dodged (you could also make the score
+                          time-based, for example).
+                        </p>  
+                        <p>
+                          JS offers many functions to remove an item from an array, <code class="js">pop()</code> being the most 
+                          common (it removes and returns the last item in the array). However, this won't help in our case,
+                          since the obstacle that just flew off screen could be anywhere in the array, so we'll have to resort
+                          to a somewhat more technical function, <code class="js">splice()</code>, which takes two number parameters,
+                          an index to begin removal at and the number of elements to remove starting from that index. 
+                          <code class="js">splice()</code> also allows for adding items to the array in the same call, but we'll ignore
+                          those optional features. As always, have a look
+                          at a reference site, such as <a href="https://www.w3schools.com/jsref/jsref_splice.asp">this one</a>,
+                          to learn about what these methods are and how they work--memorization isn't necessary!
+                        </p>
+                        <p>
+                          Another subtle thing to note is that inside of a loop, if we splice out an item, the loop counter variable 
+                          <code class="js">i</code> will be off by one and miss updating the next item in the loop. We could
+                          adjust this manually, but my preferred approach is to simply run the for loop backwards; we'll initialize
+                          the <code class="js">i</code> index variable to the length of the array - 1, which points to the last
+                          item in the array, and count backwards to 0. This way, if any element in the array that 
+                          <code class="js">i</code> points to is removed, no problem; <code class="js">i</code> will still
+                          point to the correct item on the next iteration:
+                        </p>  
+<pre><code class="js">for (let i = obstacles.length - 1; i &gt;= 0; i--) { 
+  // etc etc ...
+}</code></pre>                        
+                        <p>
+                          And another handy point: we've got a lot of code in our for loop that refers to <code class="js">obstacles[i]</code>,
+                          so let's beautify our code by saving this current array element in a variable called <code class="js">o</code> (short for 
+                          obstacle) at the beginning of each iteration of the loop:
+                        </p>
+<pre><code class="js">// Update and draw the obstacles
+for (let i = obstacles.length - 1; i &gt;= 0; i--) {
+  
+  // Save the obstacle in a variable
+  let o = obstacles[i];
+
+  // etc etc ...
+}</code></pre>
+                        <p>
+                          Now, anywhere in our code that refers to <code class="js">obstacles[i]</code> in this loop can be replaced 
+                          with simply <code class="js">o</code>. Let's put it together; here's the full loop body as it stands,
+                          complete with code to remove any off-screen obstacles:
+                        </p>
+<pre><code class="js">// Update and draw the obstacles
+for (let i = obstacles.length - 1; i &gt;= 0; i--) {
+  
+  // Save the obstacle in a variable
+  let o = obstacles[i];
+  
+  // Update this obstacle's position
+  o.move();
+  
+  // Draw the obstacle
+  ctx.fillStyle = o.color;
+  ctx.fillRect(o.x, o.y, o.size, o.size);
+  
+  // Remove this obstacle from the obstacles array if off screen 
+  if (o.y - o.size &gt; canvas.height) {
+    obstacles.splice(i, 1);
+  }
+  
+  // Check for a collision between the player and this obstacle.
+  // Reinitialize the game if there was a collision.
+  else if (collides(player, o)) {
+    init();
+    break;
+  }
+}</code></pre>
+                        <p>
+                          Again, this loop code is getting a little large for my taste, but I'll leave refactoring it into its own
+                          function, maybe <code class="js">updateObstacle()</code>, perhaps, for the reader.
+                        </p>
+                        <p data-height="613" data-theme-id="0" data-slug-hash="YxgMox" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 11)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/YxgMox/">block dodger (part 11)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <hr>
+                        <h2 id="score">Last (but not least), adding score</h2>
+                        <p>
+                          We're almost there! To add a score, we need a--you guessed it!--number variable. We'll initialize it to 0,
+                          and whenever an obstacle reaches the bottom of the screen, increment that number by 1. We also need to display
+                          the score; this can be done on canvas, but my preference is to output it as HTML inside a 
+                          <code class="html">&lt;div&gt;</code> element, which avoids obstructing gameplay.
+                        </p>
+                        <p>
+                          To do this, we'll need a new HTML element and some CSS to style it. Here's all of the HTML for the game
+                          (with the new <code class="html">&lt;div&gt;</code> element added with an <code class="html">id</code> of 
+                          <code class="html">"score-container"</code>):
+                        <p>
+<pre><code class="html">&lt;div class="container"&gt;
+  &lt;canvas id="paper" height=500 width=300&gt;&lt;/canvas&gt;
+  &lt;div id="score-container"&gt;score: 0&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <p>
+                          Here's all of the CSS for the game as well:
+                        </p>
+<pre><code class="css">body {
+  display: flex;
+  background-color: #000;
+  height: 95vh;
+  width: 95vw;
+}
+
+.container {
+  margin: auto;
+}
+
+#paper {
+  background-color: #000;
+  border: 1px solid #fff;
+}
+
+#score-container {
+  font-family: monospace;
+  text-align: center;
+  color: #fff;
+}</code></pre>
+                        <p>
+                          With those in place, back in our JS code, we'll need two new variables: a number variable, <code class="js">score</code>,
+                          which keeps track of the score, and an object variable, <code class="js">scoreContainer</code>, which will
+                          represent the <code class="html">score-container</code> element from the HTML document. This object gives us
+                          a function to change its HTML content. Lastly, we'll want to increment the <code class="js">score</code> variable
+                          and display it whenever it changes, which occurs in the <code class="js">init()</code> and <code class="js">update()</code>
+                          functions. Since this code is scattered throughout the application, I'll show you the final version,
+                          then let you find the changed lines and implement them in your version. Try searching for the new variables using
+                          your text editor to locate them. As programs grow larger, it can make good sense to split your JS code into
+                          multiple files!
+                        </p>
+<p data-height="646" data-theme-id="0" data-slug-hash="zdXOJw" data-default-tab="js,result" data-user="ggorlen" data-embed-version="2" data-pen-title="block dodger (part 12)" class="codepen">See the Pen <a href="https://codepen.io/ggorlen/pen/zdXOJw/">block dodger (part 12)</a> by ggorlen (<a href="https://codepen.io/ggorlen">@ggorlen</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                        <h2 id="next-steps">Next steps</h2>
+                        <p>
+                          Congratulations! You made it through quite a challenging tutorial. Please revisit it a few times,
+                          even if skimming, to take in the concepts; there is a LOT going on here. Creating your own
+                          game or application in the remaining weeks will be the best way to internalize everything
+                          you've seen. Another good idea is to find and play with very simple examples of each concept, as we did with loops.
+                        </p>
+                        <img src="https://i.imgflip.com/196006.jpg" style="margin: 15px;" alt="Yet another programming meme">
+                        <p>
+                          While you're welcome to leave this game as-is, I'd also like to suggest a few areas for improvement.
+                          I implemented a couple of these features in the final game, so you can start by copying those and
+                          adjusting them to your liking.
+                          You're welcome to try any of these out or ask for help in adding them to your own game:
+                          <ul>
+                            <li>Make the frequency (and/or size and/or speed) of new boxes increase as the player survives longer.</li>
+                            <li>
+                              Clear the canvas using a solid color and 
+                              alpha/<a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_rgba">rgba</a> to 
+                              add visual trails to the block's movement.
+                            </li>  
+                            <li>Add an animation and momentary pause when the player dies.</li>
+                            <li>Use images or sprites rather than plain squares.</li>
+                            <li>Add particle trails from the falling blocks.</li>
+                            <li>
+                              Adjust game mechanics such as the option for the player or obstacles to move in 2 dimensions
+                              rather than one.
+                            </li>  
+                            <li>Add power-ups or friendly blocks.</li>
+                            <li>Implement a health meter so that being hit once or twice won't be fatal.</li>
+                            <li>Make a two-player version.</li>
+                          </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../js/global.js"></script>
+
+</body>
+
+</html>
