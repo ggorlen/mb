@@ -256,11 +256,11 @@ if (age &gt;= 18) {
 }
 
 // Using else if and else
-if (age &gt;= 18) {
-  console.log("You're old enough to vote but not old enough to drink.");
-}
-else if (age &gt;= 21) {
+if (age &gt;= 21) {
   console.log("You're old enough to vote and drink.");
+}
+else if (age &gt;= 18) {
+  console.log("You're old enough to vote but not old enough to drink.");
 }
 else {  // age &lt; 18
   console.log("You're not old enough to vote or drink yet.");

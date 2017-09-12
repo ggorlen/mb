@@ -5,8 +5,8 @@ $(document).ready(function () {
     hljs.highlightBlock(block);
   });
 
-  // Animated scrolling effect
-  $(document).on("click", "a", function (event){
+  // Animated scrolling effects
+  $(document).on("click", "a", function (event) {
     let destination = $.attr(this, "href");
   
     if (destination.startsWith("#")) {
@@ -17,4 +17,10 @@ $(document).ready(function () {
       }, 300);
     }
   });
+
+  $("a[href='#top']").click(function () {
+    $("html, body").animate({ scrollTop: 0 }, "fast");
+    return false;
+  });
+
 });

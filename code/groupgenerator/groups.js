@@ -54,10 +54,9 @@ let students = [
 ];
 
 let groups = makeGroups(students, 4);
-let groupNum = 1;
 
 for (let i = 0; i < groups.length; i++) {
-  let group = "Group " + groupNum++ + ": ";
+  let group = "Group " + (i + 1) + " : ";
 
   for (let j = 0; j < groups[i].length; j++) {
     group += groups[i][j] + ", ";
