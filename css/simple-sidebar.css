@@ -27,7 +27,7 @@ a:hover {
     border-bottom: 1px solid transparent;
 }
 
-img { max-width: 100%; }
+/* img { max-width: 100%; } */
 
 pre > code {
     font-size: 1.2em;
