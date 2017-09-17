@@ -35,22 +35,26 @@ function makeGroups(arr, groupSize) {
 }
 
 let students = [ 
+  "Amara",      
+  "Anyssa",
+  "Davlin",
   "Dovran",
-  "Eric R.",
-  "Aaron",
-  "Perry",
-  "Bin",
   "Emi",
-  "Faisal",
-  "Mary",
-  "Marshawn",
-  "Nathan",
-  "Ada",
-  "Liana",
-  "Johan",
-  "Christian",
-  "Eric D.",
-  "Vlad"
+  "Eric",
+  "Erika",
+  "Jamal",
+  "Kanin",
+  "Kiera",
+  "Lauren",
+  "Mary Lynn",
+  "Miriam",
+  "Na",
+  "Nasheeb",
+  "Nicholas",
+  "Nikan",
+  "Nuzhat",
+  "Susi",
+  "Victor"
 ];
 
 let groups = makeGroups(students, 4);
