@@ -3,3 +3,6 @@ https://stackoverflow.com/questions/5980237/show-back-to-top-link-element-using-
 Phaser section
 
 navbar appear http://jsfiddle.net/panchroma/nwV2r/ + make "home" a normal highlightable link MB
+
+
+post-class exit survey: https://docs.google.com/forms/d/1rXC5tZ0BW0V5rzW7EminsGzL-OgZ6VnQA7OouXVNlaU/viewform?edit_requested=true
