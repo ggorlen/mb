@@ -84,12 +84,13 @@
                         </p>  
                         <p>
                           HTML is simple! HTML is a <a href="https://en.wikipedia.org/wiki/Markup_language">markup language</a> 
-                          that uses tags to tell the browser how to display a web page. The HTML tags determine the structure of the web page.
+                          that uses tags to tell the browser how to display a web page.
                         </p>
                         <p>
-                          Tags begin with a <a href="https://www.w3schools.com/TAGs/default.asp">tag name</a> inside <code>&lt; 
+                          HTML works by defining elements, which have predefined roles. Elements begin with a 
+                          <a href="https://www.w3schools.com/TAGs/default.asp">tag name</a> inside <code>&lt; 
                           &gt;</code> and end with an identical tag but with a slash before the tag name, like <code>&lt;/ &gt;</code>. 
-                          Tags are "nested," meaning a tag can contain other tags. You'll see what I mean when we look at an example.
+                          Everything between the two tags is the element's content.
                         </p>
                         <p>
                           Here's a simple website (try it yourself in a text editor: save the file as <code>index.html</code> and view the 
@@ -106,10 +107,18 @@
 &lt;/html&gt;
 </code></pre>
                         <p>
-                          <code>&lt;h1&gt;</code> means "<b>h</b>eader <b>1</b>". There are 6 sizes. Try 'em if you don't believe me!
+                          Notice how elements are "nested," meaning an element can contain other elements inside of it in addition to text. 
+                          We can see above that the element defined by the <code>&lt;html&gt;</code> tag is the parent of all other elements, 
+                          because all other elements' opening and closing tags appear before the final <code>&lt;/html&gt;</code> 
+                          closing tag. <code>&lt;head&gt;</code> is a child of the <code>&lt;html&gt;</code> element which contains 
+                          additional information about the page. <code>&lt;body&gt;</code> is where
+                          all of the page content that the user can view and interact with is defined. You'll mostly be doing coding in the body.
                         </p>
-                        <p>A few other basic tags are:</p>
+                        <p>
+                          Let's look at a few basic tags.
+                        </p>
                           <ul>
+                            <li><code>&lt;h1&gt;</code> means "<b>h</b>eader <b>1</b>". There are 6 sizes. Try 'em out!</li>
                             <li><p><code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> for creating <b>u</b>nordered <b>li</b>sts</p></li>
                             <li><p><code>&lt;p&gt;</code> for making <b>p</b>aragraphs</p></li>
                             <li><p><code>&lt;br&gt;</code> for adding line <b>br</b>eaks</p></li>
