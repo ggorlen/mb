@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  background-color: #000;
+  height: 95vh;
+}
+
+.container {
+  margin:auto;
+}
+
+#grid {
+ /* border: 1px solid #fff */
+}
