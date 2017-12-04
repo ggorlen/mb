@@ -1,44 +1,32 @@
 /** 
  * A simple hangman game
  * 
- * 
- * This game illustrates functions, arrays, 
+ * Illustrates functions, arrays, 
  * strings, loops, and conditionals.
  *
- * This version could be simplified in many ways:
- *   - use an internal array to represent possible words
- *   - remove numGuesses
- *   - remove random word selection
- *
  * Ways to improve the game:
- *   - add images for the hangman and improve interface
- *   - create a loss scenario if the user 
- *     doesn't guess the word fast enough
- *   - ??
- *
+ *  - add images for the hangman and improve interface
+ *  - re-design the game in object-oriented style
+ *  - make missed letters array a set (i.e. no duplicates)
  */
  
 "use strict";
  
  
-// An array of possible words for hangman, to be loaded from a text file
-let possibleWords;
-
 // Variables to hold the target word and the hidden word
 let word;
 let hidden;
 
-// Counts the number of guesses the user has made so 
-// far and an array to store missed guesses
+// The number of guesses the user has made and is allowed
+const allowedGuesses = 6;
 let numGuesses;
+
+// Array to store missed guesses
 let missed;
 
-// Limit the maximum number of guesses before the player loses
-const MAX_GUESSES = 6;
 
-
-// Sets up a new game of hangman
-function initialize() {
+// Sets up a new game of hangman based on an array of words
+function initialize(words) {
   
   // Initialize global variables
   hidden = [];
@@ -48,8 +36,9 @@ function initialize() {
   // Find a random word from the possible words, 
   // make it lowercase and trim off whitespace
   word = "";
+
   while (!word.length) {
-    word = sample(possibleWords).toLowerCase().trim();
+    word = words[Math.random()*words.length|0].toLowerCase().trim();
   }
 
   // Load the hidden array with dots up to the length of the word
@@ -57,21 +46,19 @@ function initialize() {
     hidden.push(".");
   }
   
-  // Show the hidden word
-  toDOM("hangmanoutput", hidden.join(""));
+  // Return the hidden word
+  return hidden.join("");
 } // end initialize
 
 
-// Handles user's guess
+// Handles user's guess. Returns the updated hidden word
 function guess(letter) {
 
-  // Clear the victory message
-  toDOM("victorymessage", "");
-  
-  // Validate guess
-  if (letter && isNaN(guess)) {
+  // Make sure there is a valid word and letter before proceeding
+  if (word && letter) {
     
-    // Create a variable to determine if the player's guess was correct
+    // Create a flag to keep track of whether 
+    // the player's guess was correct
     let correct = false;
 
     // Check every letter in the word against the guess
@@ -85,34 +72,15 @@ function guess(letter) {
       }
     }
 
-    // If the player's guess was incorrect, add it to the missed letters array
     if (!correct) {
-        missed.push(letter);
-    }
-    
-    // Increment the total number of guesses
-    numGuesses++;
-    
-    // Write the hidden word to the output, joining the array into a string
-    toDOM("hangmanoutput", hidden.join(""));
 
-    // Do the same for the missed guesses array
-    toDOM("missedoutput", missed.join(" "));
+      // If the player's guess was incorrect, add it to the missed letters array
+      missed.push(letter);
+
+      // Increment the number of guesses missed
+      numGuesses++;
+    }
     
-    // Check if the word was successfully guessed
-    if (hidden.join("") === word) {
-      toDOM("victorymessage", "You guessed " + 
-        word + " in " + numGuesses + " guesses!");
-        
-      // Start a new round
-      initialize();
-    }
-    else if (missed.length >= MAX_GUESSES) {
-      toDOM("victorymessage", "You're out of guesses!  " + 
-        "The word was " + word + ".");
-        
-      // Start a new round
-      initialize();
-    }
+    return hidden.join("");
   }
 } // end guess

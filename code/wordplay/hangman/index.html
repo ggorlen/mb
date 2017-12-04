@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  
+    <title>Hangman</title>
+
     <!-- include jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
     </script>
 
-    <title>Hangman</title>
-    
     <style>
       body {
         font-family: monospace, "lucida console";
@@ -19,48 +18,80 @@
   <body>
     
     <h3>Hangman</h3>
-    
-    <div id="hangmanoutput"></div>
+    <div id="word-output">loading...</div>
     <br />
-    Guess a letter:
-    <input id="guess" size="1" maxlength="1" autofocus required>
+    Guess a letter: <input id="guess" size="1" maxlength="1" autofocus>
     <br />
     <br />
-    Missed letters: <span id="missedoutput"></span>
+    Missed letters: <span id="missed-letters"></span>
     <br />
     <br />
-    <div id="victorymessage"></div>
+    <div id="victory-message"></div>
     
     <!-- Include scripts -->
     <script src="hangman.js"></script>    
-    <script src="utilities.js"></script>    
     <script>
+
+      "use strict";
+
+      // Global variables representing non-game data and HTML document
+      const wordElem = document.getElementById("word-output");
+      const missedElem = document.getElementById("missed-letters");
+      const victoryElem = document.getElementById("victory-message");
+      const guessElem = document.getElementById("guess");
+      const defaultDict = ["cascade", "sunshine", "bananas"];
+      let dictionary;
     
-      $(document).ready(function () {
-      
-        // Allow the user to submit a guess with "enter"
-        let guessInput = document.getElementById("guess");
-        guessInput.addEventListener("keydown", function (e) {
-          if (e.keyCode === 13) {
-          
-            // The user pressed the enter key; call guess
-            guess(guessInput.value);
-            
-            // Clear input value
-            guessInput.value = "";
-            
-            // Prevent the enter key from doing anything else
-            e.preventDefault();
+
+      // Listen for keydown events on the guess input element 
+      guessElem.addEventListener("keydown", function (e) {
+
+        // Wait until the key pushed is the enter key
+        if (e.keyCode === 13) {
+
+           // Clear the victory message element
+          victoryElem.innerText = "";
+        
+          // The user pressed the enter key; submit a guess to the
+          // game and put the new hidden word in the document
+          wordElem.innerText = guess(e.target.value);
+          missedElem.innerText = missed.join(" "); 
+
+          // Handle victory and loss scenarios and start a new round
+          if (word === hidden.join("")) {
+            victoryElem.innerText = "You guessed " + word + "!";
+            wordElem.innerText = initialize(dictionary || defaultDict);
           }
-        });
-      
-        // Populate the possibleWords array with an external word list
-        readFile("dictionary.txt", function (data) { 
-          possibleWords = data.split("\n");
+          else if (numGuesses >= allowedGuesses) {
+            victoryElem.innerText = "You're out of guesses! " + 
+              "The word was " + word + ".";
+            wordElem.innerText = initialize(dictionary || defaultDict);
+          }
           
-          // Start the hangman game!
-          initialize();
-        });
+          // Clear input value
+          e.target.value = "";
+          
+          // Prevent the enter key from doing anything else
+          e.preventDefault();
+        }
+      });
+    
+      // Make an AJAX request to the server for the dictionary.txt file
+      $.ajax({
+        url: "dictionary.txt",
+        type: "get",
+        dataType: "text",
+        success: function (data) {
+
+          // Set the global dictionary value with the dictionary split into an array
+          dictionary = data.split("\n");
+
+          // Initialize the hangman game!
+          wordElem.innerText = initialize(dictionary);
+        },
+        error: function () {
+          wordElem.innerText = initialize(defaultDict);
+        }
       });
     
     </script>
