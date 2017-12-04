@@ -16,8 +16,11 @@ let levelOne =
      "    x                     x",
      "    xxxxxxxxxxxxxxxxxxxxxxx"];
 
-let playerspd = .2;
+
+let playerspd = .1;
 const gridSize = 20;
+const enemySize = 10;
+
 //kbd obj values
 let kbd = {
   u: false,
@@ -26,9 +29,24 @@ let kbd = {
   r: false
 };
 
-let enemies = {
-  doesReset: true
-};
+let enemy = [
+  {
+    x: 10,
+    y: 10
+  },
+  {
+    x: 15,
+    y: 10
+  },
+  {
+    x: 20,
+    y: 10
+  },
+  {
+    x: 25,
+    y: 10
+  }
+];
 
 //player obj
 let player = {
@@ -37,26 +55,27 @@ let player = {
  y: 5.5,
  size: 20,
   move: function(direction, map) {
-    
     const s = this.size / gridSize;
     if(direction === "u" 
        && map[this.y-playerspd|0][this.x|0] !== "x" 
        && map[this.y-playerspd|0][this.x+s|0] !== "x") {
-      player.y -= playerspd;
+       this.y -= playerspd;
+    }
+    else if(direction === "d"
+       && map[this.y+playerspd+s|0][this.x|0] !== "x" 
+       && map[this.y+playerspd+s|0][this.x+s|0] !== "x") {    
+       this.y += playerspd;
+    }
+    else if(direction === "l"
+      && map[this.y-playerspd|0][this.x|0] !== "x" 
+      && map[this.y+s|0][this.x-playerspd|0] !== "x") {
+      this.x -= playerspd
     }
 
-    else if(direction === "d") {
-      player.y += playerspd;
-    }
-
-    else if(direction === "l") {
-      player.x -= playerspd
-    }
-
-    else if(direction === "r") {
-      player.x += playerspd
-      
-   
+    else if(direction === "r"
+      && map[this.y|0][this.x+playerspd+s|0] !== "x" 
+      && map[this.y+s|0][this.x+playerspd+s|0] !== "x") {     
+      this.x += playerspd
     }
   },
   
@@ -66,6 +85,14 @@ let player = {
     ctx.fillRect(this.x*gridSize, this.y*gridSize, this.size, this.size);
  }
 };
+
+  //draw enemies function
+function drawEnemies() {
+    for(let i = 0; i < enemy.length; i++){ 
+      ctx.fillStyle = "#ff0000";
+        ctx.fillRect(enemy[i].x*gridSize, enemy[i].y*gridSize, enemySize, enemySize);
+    }
+ }
 
 //initializes default values for keypresses
 function init() {
@@ -125,6 +152,12 @@ function init() {
   update();
 }
 
+function collides(a, b, gridSize) {
+  return a.x * gridSize < b.x * gridSize + enemySize &&
+         a.y * gridSize < b.y * gridSize + enemySize &&
+         b.x * gridSize < a.x * gridSize + a.size &&
+         b.y * gridSize < a.y * gridSize + a.size;
+};
 //updates  animation 
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -132,13 +165,13 @@ function update() {
     player.move("u", levelOne);
   } 
   if(kbd.d)  {
-    player.move("d");
+    player.move("d", levelOne);
   } 
   if(kbd.l) {
-    player.move("l");
+    player.move("l", levelOne);
   }
   if(kbd.r) {
-    player.move("r");
+    player.move("r", levelOne);
   }  
 
   
@@ -165,7 +198,16 @@ for (let i = 0; i < levelOne.length; i++) {
   } 
 }
   player.draw();
+  drawEnemies();
+  // check for collisions between player and enemies
+  for (let i = 0; i < enemy.length; i++) {
+    if (collides(player, enemy[i], gridSize)) {
+       player.x = 2;
+       player.y = 5.5;
+    }
+  }
   requestAnimationFrame(update);
 }
 
 init();
+
