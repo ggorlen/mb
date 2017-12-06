@@ -140,6 +140,10 @@ Enemy.prototype.move = function () {
 function finishLevel(map){
   if (map[player.y|0][player.x|0] == "~") {
     theEnd = true;
+    ctx.font = "50px Georgia";
+    ctx.fillStyle = "black";
+    ctx.fillText("You win!", 220, 110);
+    setTimeout(function () { location.reload(); }, 5000);
   }
 };
 
