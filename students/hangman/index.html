@@ -49,20 +49,22 @@
 var dict;
 
 // Make an AJAX request to the server for the dictionary.txt file
-$.ajax({
-  url: "dictionary.txt",
-  type: "get",
-  dataType: "text",
-  success: function (data) {
-
-    // Set the global dictionary value with the dictionary split into an array
-    dict = data.split("\n");
-
-    init();
-  },
-  error: function () {
-    console.log("dictionary.txt didn't load properly!");
-  }
+$(function () {
+  $.ajax({
+    url: "https://ggorlen.github.io/mb/students/hangman/dictionary.txt",
+    type: "get",
+    dataType: "text",
+    success: function (data) {
+  
+      // Set the global dictionary value with the dictionary split into an array
+      dict = data.split("\n");
+      init();
+    },
+    error: function () {
+      console.log("dictionary.txt didn't load properly!");
+      init();
+    }
+  });
 });
 
 
@@ -83,7 +85,14 @@ var missed;
 
 function init() {
   missed = [];
-  word = dict[Math.random()*dict.length|0].toLowerCase().trim() || "watermelon";
+
+  if (dict) {
+    word = dict[Math.random()*dict.length|0].toLowerCase().trim();
+  }
+  else {
+     word = ["watermelon", "pineapple", "bread", "sword"][Math.random()*4|0];
+  }
+
   hiddenWord  = word.replace(/./g, "_");
   mistakes = 0;
   hiddenBox.innerText = hiddenWord;
@@ -118,7 +127,7 @@ guessBox.addEventListener("keydown", function (e) {
       output.innerText="YOU WIN!! The word was " + word;
       init();
     } else if (mistakes > 9) {
-      output.innerText="Sorry, you weren't able to guess the" + word + " !";
+      output.innerText="Sorry, you weren't able to guess " + word + " !";
       init();
     }
     else if (missed.length) {
