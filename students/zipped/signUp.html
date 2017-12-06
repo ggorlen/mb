@@ -1,0 +1,109 @@
+<html>
+<head><title>ZOOM_Payment</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form{
+         width: 300px;
+         margin: auto;
+         background-color:antiquewhite;
+         padding:20px;
+         border-color:black;
+            border-width:10px;
+            border-style: solid;
+        }
+        .button button-block{
+            width: 300px;
+            margin: 20px;
+        }
+        input{
+            width: 300px;
+        }
+    </style>
+</head>
+    <body> 
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> 
+    </script>
+        
+        
+        <div class="form">
+      
+      
+      
+      <div class="tab-content">
+        <div id="signup">   
+          <h1>Payment</h1>
+          
+          <form action="index.html" method="get"> 
+          
+</form>
+          <div class="top-row">
+            <div class="field-wrap">
+              <label><h2>
+                  First Name*</h2>
+              </label>
+              <input type="text" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                  <h2>Last Name*</h2>
+              </label>
+              <input type="text"required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+                <h2>Address*</h2>
+            </label>
+            <input type="text"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+                <h2>Bank Account Number*</h2>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+              
+              <div class="field-wrap">
+            <label>
+                <h2>CVV*</h2>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+          
+              <button type="submit" id="pay" class="button button-block"/><h1>Pay</h1></button>
+          
+          </form>
+
+        </div>
+        
+        
+          
+          </form>
+
+        </div>
+        
+      </div><!-- tab-content -->
+
+</div> <!-- /form -->
+        
+        
+        
+    <script src="signIn.js">
+     </script>
+
+    <script type="text/javascript">
+    $(function () {
+      $('#pay').click(function () {
+        window.location = 'index.html';
+        return false;
+      });
+    });
+    </script>
+
+    </body>
+</html>

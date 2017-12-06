@@ -1,19 +1,21 @@
-canvas{
+canvas {
   margin: auto;
- border-bottom: 5px solid black;
+  border: 5px solid black;
 }
 
-body{
+body {
   display: flex;
-  height:9vh;
+  height: 99vh;
+  justify-content: center;
+  align-items: center;
 }
-body{
+
+body {
   background: #ffffff
 }
 
-
 #score-container {
-  font-family: monospace;
+  font-family: Verdana;
   text-align: center;
-  color: #fff;
+  color: #002EFF;
 }

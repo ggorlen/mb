@@ -19,7 +19,6 @@ var keyboard = {
       }
       else if (e.keyCode == 87) {
           keyboard.w = true;
-          console.log('Keycode 87 pressed')
       }
       else if (e.keyCode == 68) {
           keyboard.d = true;
@@ -73,6 +72,3 @@ var keyboard = {
           keyboard.downArrow = false;
       }
   });
-
-
-

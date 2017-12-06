@@ -37,32 +37,88 @@
                     <em>a Mission Bit Semester Project by</em>
                 </h3>
                 <h2 class="center">
-                    <span class="emi">Emi Arriola</span>, 
-                    <br><span class="mary">Mary Lynn Tom</span>, 
-                    <br><span class="nasheeb">Nasheeb Adhikari</span>, 
+                    <span class="emi">Emi Arriola</span>,
+                    <br><span class="mary">Mary Lynn Tom</span>,
+                    <br><span class="nasheeb">Nasheeb Adhikari</span>,
                     <br><span class="nicholas">Nicholas Lam</span>
                 </h2>
+                
+                <div id="derpScore" style="color: white; text-align: center; margin-bottom: 10px; font-size: 20px;"></div>
+				<div id="potatoScore" style="color: white; text-align: center; font-size: 20px;"></div>
             </div>
+
+			
 
             <!-- Create a canvas -->
             <canvas id="paper"></canvas>
             
+            
         </div>
         
         <!-- Link JavaScript files -->
+        
+        <script>
+        
+            var derpImg = new Image();
+            derpImg.src = "images/derpyAppleShrunk.png";
+            var potatoImg = new Image();
+            potatoImg.src = "images/happyPotato.png";
+            var bgImg = new Image();
+            bgImg.src = "images/startScreen.png";
+            var bgImg2 = new Image();
+            bgImg2.src = "images/startScreen2.png";
+            
+        </script>
+        
         <script src="js/start.js"></script>
         <script src="js/derp.js"></script>
         <script src="js/controls.js"></script>
         <script src="js/movement.js"></script>
         <script src="js/collision.js"></script>
         
-        <!-- Music
+        <script>
+            var derp;
+            var potato;
+            let interval;
+            let derpScore = 0;
+            let potatoScore = 0;
+           
+            function init() {
+                document.getElementById("derpScore").innerHTML = "Derpy Apple Score: " + derpScore;
+                document.getElementById("potatoScore").innerHTML = "Happy Potato Score: " + potatoScore;
+                // Create new player, Derpy Apple
+                derp = new Player(0, canvas.height / 2 | 0, derpImg, "#c11313", 20 , "r");
+
+                // Create new player, Happy Potato
+                potato = new Player(canvas.width, canvas.height / 2 | 0, potatoImg, "#e2bf93", 20, "l");
+                clearInterval(interval);
+                
+                //ctx.fillStyle = "red";
+                //ctx.fillRect(0,0,canvas.width, canvas.height);
+                if ((Math.random()) <= 0.5) {
+	                ctx.drawImage(bgImg, -100, 0);
+                } else {
+                	ctx.drawImage(bgImg2, -100, -40);
+                }
+
+                setTimeout(function () {
+                    interval = setInterval(update, 100);
+                }, 3000);
+
+            }
+            
+            
+            bgImg2.onload = init;
+        </script>
+        
+        <!-- Music -->
         <audio autoplay loop>
             <source src="https://marylynntom.github.io/missionbit2/music/Heaven.mp3" type="audio/mpeg">
             <source src="https://marylynntom.github.io/missionbit2/music/Heaven.ogg" type="audio/ogg">
-        </audio> -->
+        </audio>
         
     </div>
         
     </body>
 </html>
+ 

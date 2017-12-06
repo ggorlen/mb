@@ -1,12 +1,23 @@
 "use strict";
 
+const playerImg = new Image();
+
+playerImg.src = "pac.png";
+
+
 let canvas = document.getElementById("paper");
 let ctx = canvas.getContext("2d");
 
 let box;
 let obstacles;
-
+let scoreContainer = document.getElementById("score-container");
+let score;
 const GRAVITY = 0.3;
+const kbd = {
+  u: false, 
+  l: false,
+  r: false
+};
 
 
 let Box = function (x, y, size, color) {
@@ -38,8 +49,16 @@ Box.prototype.move = function () {
   this.y += this.vy;
   this.vx *=0.9
    this.x += this.vx;
+   
+  if (this.x + this.size > canvas.width) {
+    this.x = canvas.width - this.size;  
+  }
+   else if (this.x < 0) {
+     this.x = 0;
+    };
+    
   
- 
+  
   if (this.y + this.size > canvas.height) {
     this.landed = true;
     this.y = canvas.height - this.size;
@@ -52,6 +71,8 @@ let Obstacle = function (x, y, vx, size, color) {
   this.vx = vx;
   this.size = size;
   this.color = color;
+  
+  
 };
 
 Obstacle.prototype.move = function () {
@@ -59,10 +80,10 @@ Obstacle.prototype.move = function () {
 };
 
 function makeObstacle() {
-  let size = randInt(20, 20);
+  let size = randInt(20, 80);
   let x = randInt(canvas.width, canvas.width + 100);
   let y = canvas.height - size;
-  let color = ["white", "white", "white", "white"][Math.random() * 4 | 0];
+  let color = ["red", "pink", "blue", "orange"][Math.random() * 4 | 0];
   let vx = randInt(-4, -2);
   obstacles.push(new Obstacle(x, y, vx, size, color));
 }
@@ -72,6 +93,16 @@ function randInt(lo, hi) {
 }
 
 function update() {
+  
+  if (kbd.u) {
+      box.jump('u');
+  }
+  if (kbd.r) {
+      box.right('r');
+  }
+  if (kbd.l) {
+      box.left('l');
+  }
   
   // Generate a new obstacle every so often
   if (Math.random() > 0.987) {
@@ -86,7 +117,9 @@ function update() {
   
   // Draw the box
   ctx.fillStyle = box.color;
-  ctx.fillRect(box.x, box.y, box.size, box.size);
+ // ctx.fillRect(box.x, box.y, box.size, box.size);
+  
+  ctx.drawImage(playerImg, box.x, box.y);
   
   // Update and draw the obstacles
   for (let i = obstacles.length - 1; i >= 0; i--) {
@@ -102,8 +135,10 @@ function update() {
     // Remove this obstacle from the obstacles array if off screen 
     if (o.x + o.size < 0) {
       obstacles.splice(i, 1);
-    }
+    console.log(score);
     
+    score++;
+        scoreContainer.innerHTML = "score: " + score}
     // Check for a collision between the player and this obstacle.
     // Reinitialize the game if there was a collision.
     else if (collides(box, o)) {
@@ -132,9 +167,11 @@ function collides(a, b) {
 
 // Initializes the game
 function init() {
+  score = 0;
+  scoreContainer.innerHTML = "score: " + score;
   
   // Make a new box
-  box = new Box(0, 180, 20, "red");
+  box = new Box(0, 180, 50, "red");
   
   // Make an array of obstacles and add the first obstacle
   obstacles = [];
@@ -144,29 +181,45 @@ function init() {
   document.addEventListener("keydown", function (e) {
       e.preventDefault();
     if (e.keyCode === 38) {
-      box.jump('u');
+      kbd.u = true;
+      
     }
-    if (e.keyCode === 39) {
-      box.right('r');
+    else if (e.keyCode === 39) {
+      kbd.r = true;
+      
    }
-    if(e.keyCode === 37){
-     box.left('l'); 
+   else if(e.keyCode === 37){
+      kbd.l = true;
+      
     }
+     //
   });
+  
+    document.addEventListener("keyup", function (e) {
+      e.preventDefault();
+    if (e.keyCode === 38) {
+      kbd.u = false;
+      
+    }
+    else if (e.keyCode === 39) {
+      kbd.r = false;
+      
+   }
+   else if(e.keyCode === 37){
+      kbd.l = false;
+      
+    }
+     //
+} 
+  );
+
 }
 
 
 
 init();
-  
-
 update();
 
-
-
-
-document.body.style.backgroundImage = "url('https://sumedh.files.wordpress.com/2013/11/background.png')";
+canvas.style.backgroundImage = "url('f2KTKjr.png')";
 ctx.fillStyle = "#ffhjkl";
 ctx.fillRect(0, 469, 30, 30);
-
- 

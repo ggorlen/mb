@@ -1,8 +1,10 @@
 use = "strict";
 var products;
 const data = [];
-const productsElem = document.getElementById("Name");
-const inputBox = document.getElementById("search-box").children[0];
+const productsElem = document.getElementById("products");
+const inputBox = document.getElementById("search-box");
+
+
 
 $.getJSON( "products.json", function(data) {
     products = data.products;
@@ -19,17 +21,19 @@ inputBox.addEventListener("keydown", function (e) {
     // Clear previous list of products
     productsElem.innerHTML = "";
 
+      console.log();
+      
     // Show the newly filtered list
-    showProducts(filter(data, inputBox.value));
+    show(filter(products, inputBox.value));
   }, 1);
 });
 
 function show(products) {
     for(let i = 0; i < products.length; i++) {
-        console.log(products[i]);
+        //console.log(products[i]);
         const elem = document.createElement("div");
-        elem.innerHTML = "<div id='contain'><span class='product'><img src='" + products[i].Image + "'><span class='description'><h3>" + products[i].Name + "</h3>" + products[i].Genre + "<p>" + products[i].Price + "</p>" + "<p>" + products[i].Description + "</p></span></span></div>";
-        document.getElementById("products").appendChild(elem);
+        elem.innerHTML = "<div id='contain'><span class='product'><img src='" + products[i].Image + "'><span class='description'><h3>" + products[i].Name + "</h3>" + products[i].Genre + "<p>" + products[i].Price + "</p>" + "<p>" + products[i].Description + "</p><a href='signUp.html' type='button' class='shisui'>Buy</button></span></span></div>";
+        productsElem.appendChild(elem);
     }
     
     
@@ -84,4 +88,4 @@ registration.addEventListener('click', function () {
   
 })();
 
-showName(data);
+show(data);

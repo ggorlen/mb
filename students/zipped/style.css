@@ -3,15 +3,16 @@ body {
     background-color:black;
     z-index:2;
     font-size:1.2vw;
+    background-image:url('assets/pdf-1.jpg');
+    background-attachment:fixed;
+    background-size:cover;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-body{
-    background-image:url('http://i307.photobucket.com/albums/nn288/el-ementrix/handpainted_wall2.jpg');
-    background-blend-mode:  opacity:0.6;
-    z-index:1;
-}
-
-/* Style the logo */
+/* Style the logo 
 div.logo {
     color: rgba(255,255,255,0.6);
     font-size:40px;
@@ -23,6 +24,8 @@ div.logo {
     font-weight:bolder;
     text-shadow:4px 4px rgba(0,0,0,0.4);
 }
+
+*/
 
 /* Style the tab */
 
@@ -41,8 +44,8 @@ div.tab button {
     padding: 1px 38px;
     transition: 0.3s;
     font-size: 15px;
-    color: rgba(255,255,255,0.6);
-    background-color:black;
+    color: black;
+    background-color:rgba(255,255,255,0.8);
     font-size:120%;
     margin-left:5px;
     transition:.1s;
@@ -56,15 +59,13 @@ div.tab button {
 
 /* Change background color of buttons on hover */
 div.tab button:hover {
-    background-color: red;
-    border:7px solid black;
+    background-color: white;
     transition:.1s;
 }
 
 /* Create an active/current tablink class */
 div.tab button.active {
-    background-color: red;
-    border:7px solid black;
+    background-color: white;
     transition:.1s;
 }
 
@@ -86,31 +87,35 @@ div.tab button.active {
 {
 width: 400px;
 height: 34px;
-    margin-left:10px;
+    margin-left:450px;
     font-size:120%;
-    background:black;
-    color:rgba(255,255,255,0.8);
+    background-color:rgba(255,255,255,0.8);
+    color:black;
     padding:6px;
     border-radius:15px;
     border:none;
     text-align:center;
     text-transform:uppercase;
+    transition:.1s;
 }
 
-/* holds x2 product tiles per container */
+.search:hover{
+    background:white;
+    transition:.1s;
+}
+
+/* holds x1 product tile per container */
 #contain {
     width:100vw;
     display:flex;
     margin-top:20px;
-    display:1px solid red;
+    display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* product listing */
 #contain .product {
-    padding-bottom:0px;
-    display:inline;
-    width:48vw;
-    padding-right:10vw;
 }
 
 /* product "tile" image */
@@ -138,16 +143,16 @@ height: 34px;
 /* product description */
 
 #contain .product .description {
-    color:rgba(255,255,255,0.6);
+    color:black;
     font-weight:lighter;
     flex-grow:1;
-    width:21vw;
+    width:30vw;
     height:11vw;
     padding:1vw;
     padding-top:0px;
     padding-bottom:1vw;
     padding-right:1vw;
-    background:rgba(0,0,0,1);
+    background:white;
     overflow-y:scroll;
     border-top-right-radius:15px;
     border-bottom-right-radius:15px;
@@ -191,9 +196,7 @@ height: 34px;
 }
 
 #search-box {
-  font-size: 1.4em;
-  max-width: 90%;
-  padding: 2em 0 2em 0;
+  font-size: 120%;
   text-align: center;
 }
 
@@ -211,3 +214,10 @@ height: 34px;
   padding: 1em;
   margin: 0.5em;
 }
+.shisui{
+         background-color:antiquewhite;
+         padding:5px;
+         border-color:black;
+            border-width:3px;
+            border-style: solid;
+        }
