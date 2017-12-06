@@ -1,75 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
-  </script>
-
-  <title>Hangman</title>
-  <style>
-
-    @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch:400,700');
-
-    body { 
-      font-family: 'Cabin Sketch', 'Helvetica', sans-serif;
-      font-size: 2.2em;
-      background-color: #eee;
-      display:flex;
-      flex-direction:column;
-      align-items: center;
-      justify-content: center;
-      height: 97vh;
-      overflow-y: scroll;
-      margin: 0;
-    }
-    
-    #guessbox {
-      border: 2px solid #777;
-      padding: 7px;
-      outline: none;
-      font-size: 0.9em;
-    }
-
-  </style>
-</head>
-<body>
-  
-  <h1 style= "text-align:center; padding: 0; margin: 0;">Welcome To Hangman!!</h1>
-  <h5 style="color:#b00; padding: 0;"> We were nice enough to give you 10 guesses!</h5>
-
-  <canvas id="myCanvas"></canvas>
-
-  <div id="hidden-word"></div>
-  <div style="margin: 0.5em;">Guess a letter: <input size="1" maxlength="1" autofocus id="guessbox">
-  </div>
-  <div id="output"><br>
-  </div>
-
-  <script>
-
-var dict;
-
-// Make an AJAX request to the server for the dictionary.txt file
-$.ajax({
-  url: "dictionary.txt",
-  type: "get",
-  dataType: "text",
-  success: function (data) {
-
-    // Set the global dictionary value with the dictionary split into an array
-    dict = data.split("\n");
-
-    init();
-  },
-  error: function () {
-    console.log("dictionary.txt didn't load properly!");
-  }
-});
-
-
 var c = document.getElementById("myCanvas");
 var output = document.getElementById("output");
 var guessBox = document.getElementById("guessbox");
 var hiddenBox = document.getElementById("hidden-word");
+var loser = document.getElementById("loser");
+var winner = document.getElementById("winner");
 c.width=170;
 c.height=220;
 var ctx = c.getContext("2d");
@@ -79,16 +13,17 @@ ctx.lineWidth = 3;
 var word;
 var hiddenWord;
 var mistakes;
-var missed;
 
 function init() {
-  missed = [];
-  word = dict[Math.random()*dict.length|0].toLowerCase().trim() || "watermelon";
-  hiddenWord  = word.replace(/./g, "_");
+  word = "ilikewordstotalkandjustyoueverything";
+  hiddenWord  = word.replace(/./g, ".");
   mistakes = 0;
   hiddenBox.innerText = hiddenWord;
   drawPerson(mistakes);
 }
+
+init();
+
 
 function guess(letter) {
   let correct = false;
@@ -105,27 +40,21 @@ function guess(letter) {
   return correct;
 }
 
-guessBox.addEventListener("keydown", function (e) {
-  if (e.keyCode === 13 && e.target.value.length === 1) {
+document.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) {
 
     if (!guess(e.target.value)) {
       mistakes++;
-      missed.push(e.target.value);
       drawPerson(mistakes);
     }
     
     if (word === hiddenWord) {
-      output.innerText="YOU WIN!! The word was " + word;
       init();
+     output.innerText="YOU WIN!!";
     } else if (mistakes > 9) {
-      output.innerText="Sorry, you weren't able to guess the" + word + " !";
       init();
-    }
-    else if (missed.length) {
-      output.innerText = "Missed letters: " + missed.join(" ");
-    }
-    else {
-      output.innerHTML = "<br>";
+      output.innerText="Sorry, you weren't able to guess the" + word + " !";
+      console.log("Sorry, you weren't able to guess the" + word + " !")
     }
     
     e.target.value = "";
@@ -213,7 +142,3 @@ function drawPerson(amount) {
     ctx.stroke();
   }
 }
-
-  </script>
-</body>
-</html>

@@ -1,10 +1,22 @@
-drawPerson(10);
-function drawPerson(amount) {   
- 
-  var c = document.getElementById("myCanvas");
-  var ctx = c.getContext("2d");
-  ctx.lineWidth = 3;
+var c = document.getElementById("myCanvas");
+var output = document.getElementById("output");
+var guessBox = document.getElementById("guessbox");
+
+c.width=170;
+c.height=220;
+var ctx = c.getContext("2d");
+ctx.lineWidth = 3;
   
+
+document.addEventListener("keydown", function (e) {
+  console.log(e);
+  output.innerHTML = e.key;
+  if ()
+});
+
+
+drawPerson(10);
+function drawPerson(amount) { 
   
   //the line that connects the head to hang 
   if (amount >= 1){

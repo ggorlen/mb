@@ -1,0 +1,11 @@
+body { 
+  background-color: #9B869E;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  height: 97vh;
+}
+
+#guessbox {
+}
