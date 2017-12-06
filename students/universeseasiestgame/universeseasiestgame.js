@@ -140,9 +140,9 @@ Enemy.prototype.move = function () {
 function finishLevel(map){
   if (map[player.y|0][player.x|0] == "~") {
     theEnd = true;
-    ctx.font = "50px Georgia";
+    ctx.font = "Bold 50px Courier New";
     ctx.fillStyle = "black";
-    ctx.fillText("You win!", 220, 110);
+    ctx.fillText("You win!", 205, 110);
     setTimeout(function () { location.reload(); }, 5000);
   }
 };
@@ -153,7 +153,7 @@ function drawEnemies() {
       ctx.fillStyle = "#0000ff";
       ctx.strokeStyle = "000000"
       ctx.lineWidth = 3;
-        ctx.fillRect(enemies[i].x*gridSize, enemies[i].y*gridSize, enemySize, enemySize);
+      ctx.fillRect(enemies[i].x*gridSize, enemies[i].y*gridSize, enemySize, enemySize);
       ctx.strokeRect(enemies[i].x*gridSize, enemies[i].y*gridSize, enemySize, enemySize);
     }
  }
@@ -266,7 +266,7 @@ for (let i = 0; i < levelOne.length; i++) {
     else if (levelOne[i][j] === "~") {
       ctx.fillStyle = "#99ff99";
     }
-        else {
+    else {
       ctx.fillStyle = "transparent";
     }
 
@@ -279,15 +279,17 @@ for (let i = 0; i < levelOne.length; i++) {
   
   // check for collisions between player and enemies
   for (let i = 0; i < enemies.length; i++) {
-    if (!theEnd) {
-      enemies[i].move()
-    }
+    enemies[i].move();
+
     if (collides(player, enemies[i], gridSize)) {
        player.x = 2;
        player.y = 5.5;
     }
   }
-  requestAnimationFrame(update);
+
+  if (!theEnd) {
+    requestAnimationFrame(update);
+  }
 }
 
 init();
