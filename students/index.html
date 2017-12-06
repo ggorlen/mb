@@ -130,7 +130,7 @@
                           </tr>
                         </table>
 
-                        <div style="height: 150px;"></div> <!-- Spacer for thumbnail expansion -->
+                        <div style="height: 120px;"></div> <!-- Spacer for thumbnail expansion -->
 
                     </div>
                 </div>
@@ -173,13 +173,13 @@
           var thumb = document.createElement("div");
           thumb.style.background = "url('" + dir + "/" + dir + "-gameplay-sm.gif')";
           thumb.style.position = "absolute";
-          thumb.style.width = "150px";
-          thumb.style.height = "150px";
           thumb.style.opacity = 0;
-          thumb.style.transition = "all 0.2s";
+          thumb.style.transition = "all 0.16s";
+          thumb.style.display = "none";
           document.body.appendChild(thumb);
 
           e.addEventListener("mouseover", function (e) {
+            thumb.style.display = "block";
             thumb.style.opacity = 1;
             thumb.style.border = "1px solid #555";
             thumb.style.width = "150px";
@@ -187,10 +187,11 @@
             thumb.style.top = e.pageY + "px";
             thumb.style.left = e.pageX + 50 + "px";
           });
+
           e.addEventListener("mouseout", function (e) {
             thumb.style.border = 0;
-            thumb.style.width = "0px";
-            thumb.style.height = "0px";
+            thumb.style.width = 0;
+            thumb.style.height = 0;
             thumb.style.opacity = 0;
           });
         });
