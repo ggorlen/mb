@@ -3,23 +3,23 @@ let ctx = canvas.getContext("2d")
 
 //28 by 12 
 let levelOne = 
-    ["    xxxxxxxxxxxxxxxxxxxxxxx",
-     "    x                     x",
-     "    x                     x   ", 
-     "    x                     x   ", 
+    ["@@@@xxxxxxxxxxxxxxxxxxxxxxx",
+     "@@@@x                     x",
+     "@@@@x                     x", 
+     "@@@@x                     x", 
      "xxxxx                     xxxxx", 
      "x####                     ~~~~x", 
      "x####                     ~~~~x", 
      "xxxxx                     xxxxx", 
-     "    x                     x   ", 
-     "    x                     x",
-     "    x                     x",
-     "    xxxxxxxxxxxxxxxxxxxxxxx"];
+     "@@@@x                     x", 
+     "@@@@x                     x",
+     "@@@@x                     x",
+     "@@@@xxxxxxxxxxxxxxxxxxxxxxx"];
 
 
 let playerspd = .1;
 const gridSize = 20;
-const enemySize = 10;
+const enemySize = 15;
 
 //kbd obj values
 let kbd = {
@@ -29,24 +29,48 @@ let kbd = {
   r: false
 };
 
-let enemy = [
+let enemyData = [
+  {
+    x: 5.1,
+    y: 1
+  },
+  {
+    x: 7.5, 
+    y: 4.5
+  },
   {
     x: 10,
-    y: 10
+    y: 9
+  },
+  {
+    x: 12.5,
+    y: 4.5
   },
   {
     x: 15,
-    y: 10
+    y: 1
+  },
+  {
+    x: 17.5,
+    y: 4.5
   },
   {
     x: 20,
-    y: 10
+    y: 9
+  },
+  {
+    x: 22.5,
+    y: 4.5
   },
   {
     x: 25,
-    y: 10
+    y: 1
   }
 ];
+
+const enemies = [];
+
+let theEnd = false;
 
 //player obj
 let player = {
@@ -67,7 +91,7 @@ let player = {
        this.y += playerspd;
     }
     else if(direction === "l"
-      && map[this.y-playerspd|0][this.x|0] !== "x" 
+      && map[this.y|0][this.x-playerspd|0] !== "x" 
       && map[this.y+s|0][this.x-playerspd|0] !== "x") {
       this.x -= playerspd
     }
@@ -81,46 +105,82 @@ let player = {
   
   //draw function
   draw: function() {
-    ctx.fillStyle = "#8CE8FF";
+    ctx.fillStyle = "#ff0000";
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 3;
     ctx.fillRect(this.x*gridSize, this.y*gridSize, this.size, this.size);
+    ctx.strokeRect(this.x*gridSize, this.y*gridSize, this.size, this.size);
  }
+};
+
+
+const Enemy = function (x, y, color, size, speed) {
+  this.x = x; 
+  this.y = y;
+  this.dir = 1;
+  this.color = color;
+  this.size = size;
+  this.speed = speed;;
+};
+
+Enemy.prototype.draw = function (ctx) {
+  ctx.fillRect(this.x, this.y, this.size, this.size);
+};
+
+  
+  
+Enemy.prototype.move = function () { 
+  this.y += this.dir * this.speed;
+
+  if (this.y > 10 || this.y < 1) {
+    this.dir *= -1;
+  }
+};
+
+function finishLevel(map){
+  if (map[player.y|0][player.x|0] == "~") {
+    theEnd = true;
+  }
 };
 
   //draw enemies function
 function drawEnemies() {
-    for(let i = 0; i < enemy.length; i++){ 
-      ctx.fillStyle = "#ff0000";
-        ctx.fillRect(enemy[i].x*gridSize, enemy[i].y*gridSize, enemySize, enemySize);
+    for(let i = 0; i < enemies.length; i++){ 
+      ctx.fillStyle = "#0000ff";
+      ctx.strokeStyle = "000000"
+      ctx.lineWidth = 3;
+        ctx.fillRect(enemies[i].x*gridSize, enemies[i].y*gridSize, enemySize, enemySize);
+      ctx.strokeRect(enemies[i].x*gridSize, enemies[i].y*gridSize, enemySize, enemySize);
     }
  }
 
 //initializes default values for keypresses
 function init() {
   document.addEventListener('keydown', function(e) {
-//left move    
-  if(e.keyCode === 37) {
-        kbd.l = true;
+  //left move    
+    if(e.keyCode === 37) {
+          kbd.l = true;
+          e.preventDefault();
+      }
+
+    //right move
+      else if(e.keyCode === 39) {       
+        kbd.r = true;
         e.preventDefault();
-    }
-  
-  //right move
-    else if(e.keyCode === 39) {       
-      kbd.r = true;
+      }
+
+    //up move
+      else if(e.keyCode === 38) {
+        kbd.u = true;
+        e.preventDefault();
+      }
+
+    //down move
+    else if(e.keyCode === 40) {
+      kbd.d = true;
       e.preventDefault();
     }
-  
-  //up move
-    else if(e.keyCode === 38) {
-      kbd.u = true;
-      e.preventDefault();
-    }
-  
-  //down move
-  else if(e.keyCode === 40) {
-    kbd.d = true;
-    e.preventDefault();
-  }
-});
+  });
 
   document.addEventListener('keyup', function(e) {
 //left move    
@@ -149,6 +209,10 @@ function init() {
   });
 
   
+  for (i = 0; i < enemyData.length; i++) {
+    enemies.push(new Enemy(enemyData[i].x, enemyData[i].y, "blue", 15,.13));
+  }
+ 
   update();
 }
 
@@ -157,7 +221,8 @@ function collides(a, b, gridSize) {
          a.y * gridSize < b.y * gridSize + enemySize &&
          b.x * gridSize < a.x * gridSize + a.size &&
          b.y * gridSize < a.y * gridSize + a.size;
-};
+}
+  
 //updates  animation 
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -181,27 +246,39 @@ for (let i = 0; i < levelOne.length; i++) {
     let x = j * gridSize;
     
     if (levelOne[i][j] === "#") {
-      ctx.fillStyle = "blue";
+      ctx.fillStyle = "#99ff99";
     }
     
     else if (levelOne[i][j] === "x") {
-      ctx.fillStyle = "#de0dd5";      
+      ctx.fillStyle = "#000000";
     }
     
+    else if (levelOne[i][j] === " " && ((i + j) & 1)) {
+      ctx.fillStyle = "#99ccff";
+    }
     else if (levelOne[i][j] === " ") {
-      ctx.fillStyle = "transparent";
+      ctx.fillStyle = "white";
     }
     else if (levelOne[i][j] === "~") {
-      ctx.fillStyle = "green";
+      ctx.fillStyle = "#99ff99";
     }
+        else {
+      ctx.fillStyle = "transparent";
+    }
+
     ctx.fillRect(x,y,gridSize,gridSize);
   } 
 }
   player.draw();
   drawEnemies();
+  finishLevel(levelOne);
+  
   // check for collisions between player and enemies
-  for (let i = 0; i < enemy.length; i++) {
-    if (collides(player, enemy[i], gridSize)) {
+  for (let i = 0; i < enemies.length; i++) {
+    if (!theEnd) {
+      enemies[i].move()
+    }
+    if (collides(player, enemies[i], gridSize)) {
        player.x = 2;
        player.y = 5.5;
     }
@@ -210,4 +287,3 @@ for (let i = 0; i < levelOne.length; i++) {
 }
 
 init();
-
