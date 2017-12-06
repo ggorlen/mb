@@ -139,6 +139,50 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
+    <!-- Add thumbnail hover effect on project links -->
+    <script>
+      "use strict";
+
+      function findAllLinks(elem) {
+        if (elem && elem.nodeName === "A") { return [elem]; }
+
+        var links = [];
+
+        for (var i = 0; i < elem.children.length; i++) {
+          links = links.concat(findAllLinks(elem.children[i]));
+        }
+
+        return links;
+      }
+
+
+      var projs = document.getElementsByClassName("projects");
+
+      findAllLinks(projs[0]).forEach(function (e) {
+        var thumb = document.createElement("div");
+        thumb.style.position = "absolute";
+        thumb.style.width = "150px";
+        thumb.style.height = "150px";
+        var href = e.href.split("/");
+        var dir = href[href.length-1];
+        thumb.style.background = "url('" + dir + "/" + dir + "-gameplay-sm.gif')";
+        thumb.style.border = "1px solid #555";
+        thumb.style.opacity = 0;
+        thumb.style.transition = "all 0.21s";
+        document.body.appendChild(thumb);
+
+        e.addEventListener("mouseover", function (e) {
+          thumb.style.opacity = 1;
+          thumb.style.top = e.pageY + "px";
+          thumb.style.left = e.pageX + 50 + "px";
+        });
+        e.addEventListener("mouseout", function (e) {
+          thumb.style.opacity = 0;
+        });
+      });
+
+    </script>
+
 </body>
 
 </html>
