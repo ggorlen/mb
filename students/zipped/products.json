@@ -39,36 +39,36 @@
       
       {
          "Name":"Grand Theft Auto 5 ",
-         "Genre":"Action ",
-         "Price":"$59.99 ",
+         "Genre":"Genre: Action ",
+         "Price":"Price: $59.99 ",
          "Image":"assets/grandtheftautoV.jpeg" ,
          "Description":"Grand Theft Auto V is an action-adventure video game developed by Rockstar North and published by Rockstar Games. Set within the fictional state of San Andreas, based on Southern California, the single-player story follows three criminals and their efforts to commit heists while under pressure from a government agency."
       },
       {
          "Name":"Battlefield 4 ",
-         "Genre":"Action ",
-         "Price":"$14.99 ",
+         "Genre":"Genre: Action ",
+         "Price":"Price: $14.99 ",
          "Image":"assets/battlefield4.png" ,
          "Description":"Battlefield 4 is a first-person shooter video game developed by video game developer EA DICE and published by Electronic Arts."
       },
       {
          "Name":"Miasmata ",
-         "Genre":"Survival ",
-         "Price":"$19.99 ",
+         "Genre":"Genre: Survival ",
+         "Price":"Price: $19.99 ",
          "Image":"assets/miasmata.jpg" ,
          "Description":"Miasmata is a survival indie video game developed by brothers Joe and Bob Johnson under the studio name IonFX."
       },
       {
          "Name":"Layers of Fear ",
-         "Genre":"Horror ",
-         "Price":"$14.99 ",
+         "Genre":"Genre: Horror ",
+         "Price":"Price: $14.99 ",
          "Image":"assets/layersoffear.jpg" ,
          "Description":"Layers of Fear is a psychological horror video game developed and published by Bloober Team. "
       },
       {
          "Name":"Invisible, Inc. ",
-         "Genre":"Puzzle ",
-         "Price":"$9.99 ",
+         "Genre":"Genre: Puzzle ",
+         "Price":"Price: $9.99 ",
          "Image":"assets/invisibleinc.jpg" ,
          "Description":"Invisible, Inc. is a turn-based tactics stealth video game incorporating elements of roguelike gameplay, developed by Canadian independent studio Klei Entertainment.  "
       }
