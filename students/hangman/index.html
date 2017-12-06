@@ -51,7 +51,7 @@ var dict;
 // Make an AJAX request to the server for the dictionary.txt file
 $(function () {
   $.ajax({
-    url: "https://ggorlen.github.io/mb/students/hangman/dictionary.txt",
+    url: "./dictionary.txt",
     type: "get",
     dataType: "text",
     success: function (data) {
