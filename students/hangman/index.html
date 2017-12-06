@@ -51,7 +51,7 @@ var dict;
 // Make an AJAX request to the server for the dictionary.txt file
 $(function () {
   $.ajax({
-    url: "./dictionary.txt",
+    url: "dict.txt",
     type: "get",
     dataType: "text",
     success: function (data) {
@@ -61,7 +61,7 @@ $(function () {
       init();
     },
     error: function () {
-      console.log("dictionary.txt didn't load properly!");
+      console.log("dict.txt didn't load properly!");
       init();
     }
   });
