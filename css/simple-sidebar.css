@@ -4,19 +4,19 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,500,600,700|Source+Code+Pro:400,600');
 
 body {
     color: #333;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Muli', sans-serif;
     overflow-x: hidden;
-    font-size: 1.65em;
+    font-size: 1.7em;
 }
 
 a:link, a:visited, a:hover, a:active {
     color: #000;
     text-decoration: none;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #511;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -29,13 +29,24 @@ a:hover {
 
 /* img { max-width: 100%; } */
 
-pre > code {
-    font-size: 1.2em;
+pre {
+    border: 0;
+    outline: 0;
+    margin: 1em 0em 1em 0em;
+    padding: 0;
+    border-radius: 0;
+}
+
+pre > code.hljs {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.1em;
+    padding: 1em;
 }
 
 li > code.hljs,
 p > code.hljs { 
-    padding: 2px;
+    padding: 0.1em;
+    border-radius: 0;
     display: inline; 
 }
 
