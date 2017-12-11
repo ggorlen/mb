@@ -5,9 +5,14 @@
     <style>
       body {
         background-image: url("simplesnakewallpaper.png");
-        font-family: monospace, "courier new", "lucida console";
+        font-family: "courier new", "lucida console", monospace;
         font-size: 13px;
         color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 97vh;
       }
       
       #snakebox table {
@@ -34,8 +39,7 @@
       }
     </style>
   </head>
-  <body onload="init();">
-    <h3 class="center">snake</h3>
+  <body>
     <div id="snakebox"></div>
     <div class="center" id="scorebox"></div>  
     <script src="simplesnake.js"></script>
