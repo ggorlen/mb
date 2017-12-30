@@ -21,6 +21,22 @@ body {
   /*line-height: 1.4em;*/
 }
 
+blockquote {
+  background: #f9f9f9;
+  font-size: 0.9em;
+  border-left: 3px solid #ddd;
+  padding: 1em;
+}
+
+blockquote footer {
+  font-style: italic;
+}
+
+hr {
+  border-top: 1px solid #444;
+  border-bottom: 0;
+}
+
 img {
   max-width: 100%;
 }
@@ -28,12 +44,12 @@ img {
 a, a:link, a:visited, a:hover, a:active, a:focus {
   text-decoration: none;
   color: #000;
-  border-bottom: 1px solid #444;
+  border-bottom: 2px solid #509df4;
   transition: border-bottom 0.3s;
 }
 
 a:hover {
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
 }
 
 pre {
@@ -67,7 +83,7 @@ ul.no-bullet {
 
 main {
   padding: 0.3em;
-  margin: 0 0 0 9em;
+  margin: 0 0 0 10em;
   max-width: 900px;
 }
 
@@ -146,7 +162,7 @@ nav.sticky {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   main {
     margin: 0;
     display: block;
