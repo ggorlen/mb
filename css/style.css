@@ -82,6 +82,7 @@ ul.no-bullet {
 }
 
 main {
+  display: block;
   padding: 0.3em;
   margin: 0 0 0 10em;
   max-width: 900px;
@@ -102,6 +103,7 @@ header > h1 {
 }
 
 nav {
+  display: block;
   transition: all 0.4s;
 }
 
