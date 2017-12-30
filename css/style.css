@@ -3,12 +3,11 @@
 
 body {
   font-family: "Noto Sans", sans-serif;
-  /*
-  background: url("http://www.earlyworksartgallery.com/blog/wp-content/uploads/the-aqueduct-woodcut.jpg");
+  background: url("https://i.pinimg.com/736x/5a/15/73/5a1573941b0c8ddec81aae6af935e753--wabi-sabi-beautiful-things.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  */
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   color: #000;
@@ -22,18 +21,32 @@ body {
 }
 
 blockquote {
-  background: #f9f9f9;
+  margin: 0;
   font-size: 0.9em;
-  border-left: 3px solid #ddd;
+  border-left: 3px solid #bbb;
   padding: 1em;
 }
 
 blockquote footer {
   font-style: italic;
+  font-size: 0.9em;
+  color: #777;
+}
+
+h1 {
+  font-size: 2.3em;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+h3 {
+  font-size: 1.3em;
 }
 
 hr {
-  border-top: 1px solid #444;
+  border-top: 1px solid #888;
   border-bottom: 0;
 }
 
@@ -59,6 +72,7 @@ pre {
   padding: 0;
   border-radius: 3px;
   font-family: "Source Code Pro", monospace;
+  font-size: 1.1em;
 }
 
 pre > code.hljs {
@@ -70,7 +84,7 @@ pre > code.hljs {
 
 li > code.hljs,
 p > code.hljs { 
-  padding: 0.1em;
+  padding: 0.2em;
   border-radius: 3px;
   display: inline; 
   font-size: 1.1em;
@@ -82,8 +96,9 @@ ul.no-bullet {
 }
 
 main {
+  background: #fff;
   display: block;
-  padding: 0.3em;
+  padding: 0.3em 2em 0.3em 2em;
   margin: 0 0 0 10em;
   max-width: 900px;
 }

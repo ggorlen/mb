@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   for (let i = 0; i < navBtns.length; i++) {
     if (navBtns[i].tagName === "A") {
-      navBtns[i].style.background = "hsl(" + (360 - i * 80) + ", 80%, 50%)";
+      navBtns[i].style.background = "hsl(" + (360 - (i + 20) * 12) + ", 50%, 60%)";
     }
   }
 
