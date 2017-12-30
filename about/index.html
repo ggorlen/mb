@@ -50,6 +50,11 @@
                           He also works as a teacher's assistant and tutor while leading Mission Bit classes. 
                         </p>
                         <img alt="Computer science professor meme" style="margin: 15px;" src="https://i.imgflip.com/fjxo5.jpg"> -->
+                        
+                        <img id="puter" src="../code/wordplay/ticker/puter.png">
+                        <div style="font-family: 'lucida console', monospace; font-size: 12px; 
+                          width: 30px; height: 17px; position: relative; top: -45px; left: 10px;" id="ticker">
+                        </div>
                         <ol>
                           <li>
                             <a href="#goal">Goal</a>
@@ -290,7 +295,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
     <!-- Global JS script -->
-    <script src="../../js/global.js"></script>
+    <script src="../js/global.js"></script>
 
     <script>
       var rainbowElems = document.getElementsByClassName("rainbow-text");
@@ -308,6 +313,39 @@
           rainbowElems[i].appendChild(character);
         }
       }
+    </script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../code/wordplay/ticker/ticker.js"></script>
+    <script src="../code/animation/static/static.js"></script>
+    
+    <script>
+    
+      // Create noise and ticker objects
+      let noise;
+      let ticker = new Ticker("Welcome to Mission Bit @ " +
+                              "Gateway HS! ", "ticker", 4);
+      ticker.start();
+      
+      // Pause and resume for mouse hovers over the computer graphic
+      $(document).ready(function () {
+        $("a").mouseenter(function () {
+          ticker.pause();
+
+          document.getElementById("ticker").innerHTML = 
+            "<canvas id=\"staticcnvs\" height=14 width=30></canvas>";
+
+          noise = new Static("staticcnvs", 5, 2, 200);
+          noise.start();
+        });
+
+        $("a").mouseout(function () {
+          noise.stop();
+          document.getElementById("ticker").innerHTML = "";
+          ticker.start();
+        });
+      });
+      
     </script>
 
   </body>
