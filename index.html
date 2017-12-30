@@ -6,15 +6,73 @@
     <meta name="description" content="Course page for Mission Bit at Gateway HS">
     <meta name="author" content="Greg Gorlen">
     <meta name="keywords" content="mission, bit, gateway">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Mission Bit at Gateway HS</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-  </head>
-  <body style="background: url(https://i.pinimg.com/736x/5a/15/73/5a1573941b0c8ddec81aae6af935e753--wabi-sabi-beautiful-things.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed;">
+    <noscript>
+      <style>body { display: block; opacity: 1; }</style>
+    </noscript>
 
+    <style>
+
+      h1 {
+        display: block;
+        flex-shrink: 1;  // trying to fix wrapping in ie
+        box-sizing: border-box; /* 2 */
+        max-width: 100%; /* 1 */
+      }
+
+      html, body {
+        height: 100%;
+      }
+
+      main {  
+        flex: 1 0 0;
+      }
+
+      footer i {
+        margin: 0.4em;
+        color: #444;
+      }
+
+      footer a, 
+      footer a:link,
+      footer a:visited,
+      footer a:hover,
+      footer a:active,
+      footer a:focus { 
+        border: 0;
+        font-size: 1em;
+      }
+
+      #wrapper {
+       display: flex; flex-direction: column; align-items: center; flex-wrap: wrap; height: 100%;
+      }
+
+      @media screen and (max-width: 900px) {
+        main {
+          flex: 0 1 auto;
+        }
+
+        div#wrapper {
+          height: 80%;
+        }
+      }
+
+
+    </style>
+
+  </head>
+
+  <body style="background: url(https://i.pinimg.com/736x/5a/15/73/5a1573941b0c8ddec81aae6af935e753--wabi-sabi-beautiful-things.jpg); background-size: cover; background-position: center center; background-attachment: fixed;">
 
     <nav>
       <a href="modules/">Modules</a>
@@ -23,9 +81,16 @@
       <a href="about/">About</a>
     </nav>
 
-    <main style="background: transparent;"> 
-      <h1 style="color: #444;">Mission Bit at Gateway HS</h1>
-    </main>
+    <div id="wrapper">
+      <main style="background: transparent; margin: 0;"> 
+        <h1 style="color: #444;">Mission Bit at Gateway HS</h1>
+      </main>
+
+      <footer>
+        <a href="https://www.github.com/ggorlen" title="github"><i class="fa fa-github fa-2x"></i></a>
+        <a href="https://www.codepen.io/ggorlen/" title="codepen"><i class="fa fa-codepen fa-2x"></i></a>
+      </footer>  
+    </div>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
