@@ -3,7 +3,7 @@
 
 body {
   font-family: "Noto Sans", sans-serif;
-  background: url("https://i.pinimg.com/736x/5a/15/73/5a1573941b0c8ddec81aae6af935e753--wabi-sabi-beautiful-things.jpg");
+  /*background: url("https://i.pinimg.com/736x/5a/15/73/5a1573941b0c8ddec81aae6af935e753--wabi-sabi-beautiful-things.jpg");*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -141,6 +141,7 @@ nav > a:active {
 
 nav > a:hover {
   transform: translate(10px, 0);
+  transition-timing-function: ease-in-out;
 }
 
 nav.sticky {
