@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Source+Code+Pro:400,600');
+
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  /*
+  background: url("http://www.earlyworksartgallery.com/blog/wp-content/uploads/the-aqueduct-woodcut.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  */
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-size: 1.1em;
+  overflow-y: scroll;
+  width: 100%;
+  min-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.3s;
+  /*line-height: 1.4em;*/
+}
+
+img {
+  max-width: 100%;
+}
+
+a, a:link, a:visited, a:hover, a:active, a:focus {
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #444;
+  transition: border-bottom 0.3s;
+}
+
+a:hover {
+  border-bottom: 1px solid transparent;
+}
+
+pre {
+  border: 0;
+  outline: 0;
+  margin: 1em 0em 1em 0em;
+  padding: 0;
+  border-radius: 3px;
+  font-family: "Source Code Pro", monospace;
+}
+
+pre > code.hljs {
+  font-family: "Source Code Pro", monospace;
+  border-radius: 5px;
+  padding: 0.7em;
+  font-size: 0.9em;
+}
+
+li > code.hljs,
+p > code.hljs { 
+  padding: 0.1em;
+  border-radius: 3px;
+  display: inline; 
+  font-size: 1.1em;
+}
+
+ul.no-bullet {
+  list-style: none;
+  padding-left: 0;
+}
+
+main {
+  padding: 0.3em;
+  margin: 0 0 0 9em;
+  max-width: 900px;
+}
+
+header {
+  /*
+  background-image: url();
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-attachment: fixed;
+  */
+}
+
+header > h1 {
+  margin: 0.5em;
+}
+
+nav {
+  transition: all 0.4s;
+}
+
+nav > a,
+nav > a:link,
+nav > a:visited,
+nav > a:hover, 
+nav > a:active {
+  display: block;
+  margin-left: -10px;
+  font-weight: 700;
+  color: #fff;
+  padding: 0.8em;
+  padding-left: 20px;
+  font-size: 1.1em;
+  border: 0;
+  transition: all 0.3s;
+  text-align: right;
+}
+
+nav > a:hover {
+  transform: translate(10px, 0);
+}
+
+nav.sticky {
+  position: fixed;
+  z-index: 100;
+}
+
+#projects table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+#projects table td {
+  padding: 0.3em;
+}
+
+#projects table th {
+  text-align: left;
+  font-size: 1.3em;
+  padding: 1em 0 1em 0;
+}
+
+@keyframes color-cycle {
+  0%   { color: red;    }
+  14%  { color: orange; }
+  28%  { color: yellow; }
+  42%  { color: green;  }
+  56%  { color: blue;   }
+  70%  { color: indigo; }
+  84%  { color: violet; }
+  100% { color: red;    }
+}
+
+.color-cycling {
+  animation: color-cycle 6s ease 0s infinite;
+}
+
+
+@media screen and (max-width: 800px) {
+  main {
+    margin: 0;
+    display: block;
+  }
+
+  nav, nav.sticky {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: stretch;
+  }
+
+  nav > a,
+  nav > a:link,
+  nav > a:visited,
+  nav > a:hover, 
+  nav > a:active {
+    margin: 0;
+    padding: 0.5em;
+    flex: 1 0 0;
+    text-align: center;
+  }
+
+  nav > a:hover {
+    opacity: 0.7;
+    transform: none;
+  }
+
+  #projects table td:last-child {
+    display: none;
+  }
+}

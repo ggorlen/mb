@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Course page for Mission Bit at Gateway HS">
+    <meta name="author" content="Greg Gorlen">
+    <meta name="keywords" content="mission, bit, gateway">
+    <link rel='shortcut icon' href='../favicon.ico' type='image/x-icon'/>
+    <title>Mission Bit at Gateway HS</title>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+      .projects td, th {
+        padding: 25px;
+      }
+
+      .projects td:first-child {
+        width: 37%;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <nav>
+      <a href="../modules/">Modules</a>
+      <a href="../resources/">Resources</a>
+      <a href="../projects/">Projects</a>
+      <a href="../about/">About</a>
+    </nav>
+
+    <main>
+
+                        <h1>Student Projects</h1>
+                        <p>
+                          This gallery contains work of previous Mission Bit @ Gateway HS students. Enjoy!
+                        </p>
+                        <p class="alert alert-warning">
+                          Please note: some projects are large and may take awhile to load.
+                        </p>
+  
+                        <h3>Fall 2017</h3>
+                        <table class="table projects">
+                          <tr>
+                            <td><a href="hangman">Hangman</a></td> <td> Nuzhat, Erika, Miriam </td>
+                          </tr>
+                          <tr>
+                            <td><a href="derpyapplevshappypotato">Derpy Apple Vs Happy Potato</a></td> <td> Nasheeb, Nicholas, Mary, Emi </td>
+                          </tr>
+                          <tr>
+                            <td><a href="universeseasiestgame">Universe's Easiest Game</a></td> <td> Jamal, Kanin, Nikolaj </td>
+                          </tr>
+                          <tr>
+                            <td><a href="endlessrunner2">Endless Runner</a></td> <td> Amara, Eric </td>
+                          </tr>
+                          <tr>
+                            <td><a href="zipped">Zoom</a></td> <td> Davlin, Dovran, Jorge </td>
+                          </tr>
+                        </table>
+  
+                        <h3>Spring 2017</h3>
+                        <table class="table projects">
+                          <tr>
+                            <td><a href="formulasolo">Formula Solo</a></td> <td> Amara, Eric D., Dovran </td>
+                          </tr>
+                          <tr>
+                            <td><a href="firstcontact">First Contact</a></td> <td> Vlad, Aaron, Faisal, Eric R. </td>
+                          </tr>
+                          <tr>
+                            <td><a href="happypotato">Happy Potato</a></td> <td> Liana, Mary, Emi, Ada, Christian </td>
+                          </tr>
+                          <tr>
+                            <td><a href="do-or-die">Do or Die</a></td> <td> Marty, Nathan, Perry, Bin </td>
+                          </tr>
+                        </table>
+                        
+                        <h3>Fall 2016</h3>
+                        <table class="table projects">
+                          <tr>
+                            <td><a href="flappybird">Flappy Bird</a></td> <td> Caitlin, Lila, Anthony, Liam, Kyle, Deion </td>
+                          </tr>
+                          <tr>
+                            <td><a href="asteroids">Asteroids</a></td> <td> Amara, Lynelle, Joseph, Manuel, Emilio </td>
+                          </tr>
+                          <tr>
+                            <td><a href="endlessrunner">Endless Runner</a></td> <td> Hannah, Nushan, Faisal, Jason, Christian, Willie </td>
+                          </tr>
+                        </table>
+
+                        <div style="height: 120px;"></div> <!-- Spacer for thumbnail expansion -->
+    </main>
+
+    <!-- Add thumbnail hover effect on project links -->
+    <script>
+      "use strict";
+
+      function findAllLinks(elem) {
+        if (elem && elem.nodeName === "A") { return [elem]; }
+
+        var links = [];
+
+        for (var i = 0; i < elem.children.length; i++) {
+          links = links.concat(findAllLinks(elem.children[i]));
+        }
+
+        return links;
+      }
+
+
+      var projs = document.getElementsByClassName("projects");
+
+      for (var i = 0; i < projs.length; i++) {
+        findAllLinks(projs[i]).forEach(function (e) {
+          var href = e.href.split("/");
+          var dir = href[href.length-1];
+          var thumb = document.createElement("div");
+          thumb.style.background = "url('" + dir + "/" + dir + "-gameplay-sm.gif')";
+          thumb.style.position = "absolute";
+          thumb.style.opacity = 0;
+          thumb.style.transition = "all 0.16s";
+          thumb.style.display = "none";
+          document.body.appendChild(thumb);
+
+          e.addEventListener("mouseover", function (e) {
+            thumb.style.display = "block";
+            thumb.style.opacity = 1;
+            thumb.style.border = "1px solid #555";
+            thumb.style.width = "150px";
+            thumb.style.height = "150px";
+            thumb.style.top = e.pageY + "px";
+            thumb.style.left = e.pageX + 50 + "px";
+          });
+
+          e.addEventListener("mouseout", function (e) {
+            thumb.style.border = 0;
+            thumb.style.width = 0;
+            thumb.style.height = 0;
+            thumb.style.opacity = 0;
+          });
+        });
+      }
+
+
+      /*
+      // newer:
+
+      function findAllLinks(elem) {
+        if (elem && elem.nodeName === "A") { return [elem]; }
+        if (!elem) { return; }
+
+        var links = [];
+
+        for (var i = 0; i < elem.children.length; i++) {
+          links = links.concat(findAllLinks(elem.children[i]));
+        }
+
+        return links;
+      }
+
+
+      var projs = document.getElementById("projects");
+
+      if (projs) {
+        findAllLinks(projs).forEach(function (e) {
+          var href = e.href.split("/");
+          var dir = href[href.length-1];
+          var thumb = document.createElement("div");
+          thumb.style.background = "url('./students/" + dir + "/" + dir + "-gameplay-sm.gif')";
+          thumb.style.position = "absolute";
+          thumb.style.opacity = 0;
+          thumb.style.transition = "all 0.16s";
+          thumb.style.display = "none";
+          document.body.appendChild(thumb);
+
+          e.addEventListener("mouseover", function (e) {
+            thumb.style.display = "block";
+            thumb.style.opacity = 1;
+            thumb.style.border = "1px solid #555";
+            thumb.style.width = "150px";
+            thumb.style.height = "150px";
+            thumb.style.top = e.pageY + "px";
+            thumb.style.left = e.pageX + 50 + "px";
+          });
+
+          e.addEventListener("mouseout", function (e) {
+            thumb.style.border = 0;
+            thumb.style.width = 0;
+            thumb.style.height = 0;
+            thumb.style.opacity = 0;
+          });
+        });
+      }
+      */
+
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../../js/global.js"></script>
+
+  </body>
+</html>

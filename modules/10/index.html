@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Course page for Mission Bit at Gateway HS">
+    <meta name="author" content="Greg Gorlen">
+    <meta name="keywords" content="mission, bit, gateway">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <title>Mission Bit at Gateway HS</title>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+  </head>
+  <body>
+
+    <nav>
+      <a href="../../modules/">Modules</a>
+      <a href="../../resources/">Resources</a>
+      <a href="../../projects/">Projects</a>
+      <a href="../../about/">About</a>
+    </nav>
+
+    <main>
+
+                        <h1>Module 10: Debugging, using Git and beginning your own project</h1>
+                        <p>
+                          Objective: a quick look at a few strategies and tools that may help you with your project.
+                        </p>
+                        <ol>
+                          <li>
+                            <a href="#embarking-on-your-project">Embarking on your project</a>
+                          </li>
+                          <li>
+                            <a href="#planning">Planning</a>
+                          </li>
+                          <li>
+                            <a href="#finding-resources">Finding resources</a>
+                          </li>
+                          <li>
+                            <a href="#writing-your-app">Writing your app</a>
+                          </li>
+                          <li>
+                            <a href="#debugging">Debugging</a>
+                          </li>
+                          <li>
+                            <a href="#git">Git and terminal</a> (coming soon)
+                          </li>
+                        </ol>
+                        <hr>
+                        <h2 id="embarking-on-your-project">Embarking on your project</h2>
+                        <p>
+                          A common scenario: you've learned something new and unfamiliar with guidance,
+                          then you're cut loose and asked to make a project! The big question is: how to move from that
+                          structured environment and forge ahead under your own power? This module will hopefully
+                          offer some guidance in that regard, but importantly, I (your instructor), your peers, and MB staff
+                          and volunteers will be here to keep you on track, so as long as you're engaged, you'll be just fine!
+                        </p>
+                        <img src="http://memeshappen.com/media/created/2017/05/morgan-freeman-says-you-can-do-it.jpg"
+                          alt="Morgan Freeman meme" style="max-width: 500px;">
+                        <p>
+                          Think back to the Choose Your Own Adventure game your group made at the beginning of the semester.
+                          First, you planned out your game, then gathered necessary skills and resources, and coded it up.
+                          Along the way, you may have run into a situation or two that forced you to change plans a bit, and 
+                          you adapted. That's pretty much the plan here, too--plan, find resources, build, repeat (as necessary). 
+                        </p>
+                        <hr>
+                        <h2 id="planning">Planning</h2>
+                        <p>
+                          Start by spending an hour or so to do intensive planning with your team.
+                          Some questions to ask (it's OK if you can only make a partial answer for starters):
+                        </p>
+                        <ul>
+                          <li>Do we want to make a game or web application?</li>
+                          <li>What is the purpose/goal of our game or application?</li>
+                          <li>What type of features do you want your game or app to have?</li>
+                          <li>What parts of the project is each group member interested in doing?</li>
+                        </ul>
+                        <p>
+                          Your group may also benefit from a brainstorming session. An effective approach to brainstorming involves
+                          everyone in the group writing down as many ideas as possible for 5 minutes in silence. Do not filter your
+                          ideas at this stage--crazy is OK. After the idea-generating stage, the group will reconvene and discuss
+                          the ideas to filter out the most engaging and practical of them. Voting, using a
+                          process of elimination, or ranking system may be useful in this filtering stage. 
+                        </p>
+                        <img src="http://s2.quickmeme.com/img/aa/aa84668dcca563c1956e9ace76a1e88f09347b1b5fa50cff38f88fe71ad85312.jpg"
+                          alt="Lil Wayne meme">
+                        <p>
+                          Once you have an idea, try to simplify the idea as much as possible. You'll always be able to add new
+                          features to whatever it is you make, but if the scope of your ideas is vast, it'll be much
+                          harder to get momentum going and feel like you're making progress.
+                        </p>
+                        <p>
+                          Another easy way to go about choosing a project is by doing your own version of a standard, classic
+                          game or app. This more or less eliminates the problem of planning right away, and your
+                          team can go right into finding resources and writing code. Check the <a href="../resources">resources page</a>
+                          to get connected with some ideas.
+                        </p>
+                        <p>
+                          I'd also like to speak frankly here: platformers and games with heavy physics components tend to be popular,
+                          but these can be <i>very</i> challenging first projects, so I try to discourage them.
+                          However, students tend to go for them anyway. One way to make a successful physics-based project
+                          is to use a game framework, so I'll introduce one later in this module. Either way, we'll make it 
+                          happen, but know that platformer usually means serious coding ahead!
+                        </p>
+                        <p>
+                          Don't forget to use Google Docs or create a text file in your group's Github repository to organize
+                          your ideas, resources, and todos as you work on the project.
+                        </p>  
+                        <hr>
+                        <h2 id="finding-resources">Finding resources</h2>
+                        <p>
+                          Once you have a project goal, you can begin gathering resources. Are there any tutorials 
+                          that apply to your game or application or to something similar? What technologies will be 
+                          necessary? This can be a difficult task at first, since there are so many unknowns in the 
+                          field, but I'll help you filter your research to hone in on valuable resources. The important
+                          thing is working on your ability to collect, evaluate, filter, and utilize these resources; you'll be doing it
+                          constantly throughout your programming journey. This website's <a href="../resources">resources</a>
+                          page is a good place to start exploring!
+                        </p>
+                        <img src="https://i.pinimg.com/originals/a5/51/d6/a551d685623508da950e55b76e2bdcfd.jpg" alt="Googling joke">
+                        <hr>
+                        <h2 id="writing-your-app">Writing your app</h2>
+                        <p>
+                          And now, the fun part! Dive into writing your app as soon as you're confident with your plan
+                          and have a few basic resources on hand. Getting started is the hardest part, and the key to getting ahead
+                          is getting started. And, of course, the key to getting started is breaking the large task into smaller 
+                          tasks and working on the easiest one.
+                        </p>
+                        <img alt="Kobe meme" style="margin-left: 15px; float: right;"
+                          src="http://1.bp.blogspot.com/-kuMj0hhXYBg/UAdploozEPI/AAAAAAAAAPU/TdlIG27er-I/s1600/3ot0c0.jpg">
+                        <p>
+                          A very important part of this process is ensuring everyone in the group is contributing!
+                          Remember, your group is counting on you to step up and offer to help out every day. If you're not able
+                          to find something to do at a given moment, head over to 
+                          <a href="https://www.codecademy.com/learn/introduction-to-javascript">Codecademy</a> to improve your JS.
+                          This will be helpful to your team later on. Playing games or surfing the net is going to distract
+                          your teammates, so schedule a time outside of class to kick it with them to do that stuff.
+                        </p>
+                        <p>
+                          And don't even think about procrastinating!
+                        </p>
+                        <hr style="clear: both;">
+                        <h2 id="debugging">Debugging</h2>
+                        <p>
+                          All right, let's talk technically from here out. First topic: debugging. I'm sure you've encountered
+                          some error in your code so far--it's normal! The truth is, almost every program doesn't work at first. 
+                          Debugging is a huge topic and, like computer programming itself, is just as much of an art as a science.
+                        </p>  
+                        <p>
+                          The best way to debug is to avoid bugs in the first place. This means following clear logic,
+                          planning, naming variables descriptively, organizing your project's logic in clear function and classes,
+                          using comments, etc. Easy to say, hard to do.
+                        </p>
+                        <p>
+                          But when bugs inevitably do show up, they are a great opportunity to learn. The three kinds of bugs are 
+                          syntax errors, runtime errors, and logic errors. Syntax errors are generally easy to fix: the browser's console (see
+                          <a href="../05/index.html#developer-tools">module 5</a>) will show you the error explaining the problem 
+                          and the line number it occured on. Your job is to go fix it. Often, it's a simple typo, although sometimes
+                          it's a bit more involved, but basically it boils down to JS plain not understanding what you typed in. 
+                          As you know by now, every letter matters, case sensitivity matters; it's totally unlike English, where you 
+                          can pretty much misspell everything and folks generally know what you mean.
+                        </p>
+                        <p>
+                          Runtime errors are when everything is typed to the language's syntactical standards, but at some point in the program,
+                          the code attempts to do something that is disallowed. For example, if I pass strings into a
+                          function that requires number input or I attempt to access an array element that doesn't exist, the program 
+                          will crash. These errors can be trickier to navigate than syntax errors and require an understanding 
+                          of your program's state--what values the variables
+                          contain and what conditions are present when the error occurred. Resolving runtime errors uses techniques discussed
+                          below, but with the advantage of JS providing a line number where the error was thrown.
+                        </p>
+                        <img src="http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg"
+                          alt="Debugging meme" style="max-width: 500px;">
+                        <p>
+                          Logic errors, on the other hand, occur when JS says your program is fine and dandy, no errors show in
+                          the developer console, but your program still isn't behaving as you expect. Maybe a variable you're expecting
+                          to have some value at some point in the code's execution doesn't have that value, or a conditional
+                          you expect to be true is evaluating false. Resolving these types of bugs requires a bit of detective work
+                          and problem-solving. These bugs are great because they force you to understand your program logic on a deeper level
+                          than you do, and facing them head-on will really improve your programming skills. 
+                        </p>
+                        <p>
+                          Some concrete strategies for resolving these logic errors include inserting <code class="js">console.log()</code>
+                          statements in your code and re-running your program to see if the value of variables and conditionals matches
+                          your expectations. Sometimes, entire blocks of code aren't even executing, and a simple 
+                          <code class="js">console.log("Is this even working?");</code> call in the code block in question
+                          will tell you a lot about your program's state. The console also offers the ability to interactively type in a variable
+                          name that exists in your program's global scope (i.e. isn't inside a function) and see information about it or 
+                          execute test code. The console also allows breakpoints to be set (for Chrome, this feature is in the Sources tab
+                          under "Show debugger"). This means that your code will stop running on the line(s) you've told it to, and you can
+                          poke around and check variable values, conditionals, and so forth to diagnose your logic problem.
+                        </p>
+                        <p>
+                          All in all, debugging is a very big topic, so this is just a taste of the agony and ecstacy in store for you.
+                          Since this is an introductory course, as mentioned, we've got folks on hand to make these debugging procedures
+                          as painless and educational as possible, so let a mentor or the instructor know if something is going
+                          wrong, and we'll walk you through it!
+                        </p>
+                        <img src="http://memeshappen.com/media/created/That-look-when-You-turn-debugging-on-meme-40316.jpg"
+                          alt="Debugging meme" style="max-width: 500px;">
+                          <!--
+                        <hr>
+                        <h2 id="git">Git and terminal</h2>
+                        <p>
+                          Last topic: using Github and the command line. As with debugging, these are complex topics,
+                          so I'm only offering a small taste of these tools. You know by now that Github can
+                          host your website and store your code. You may also know that each time you upload code,
+                          you've made something called a "commit," which is a version of a repository. Github is
+                          basically an interface for a tool called git, which is operated by typing commands on
+                          a text-only screen called a command prompt. This command prompt, without getting too technical,
+                          is based on Unix, a really old and powerful operating system that Mac's OS is built on top of.
+                        </p>
+                        <p>
+                          Using a prompt, you can navigate through folders and perform actions on files just like you can by clicking
+                          on folders. To start a terminal session on Mac, click the magnifying glass in the top-right corner and type 
+                          "terminal," or click on the shortcut link in your dock. When the screen appears, you'll see a command prompt
+                          which shows your current directory (folder). You can show a list of the files in your directory by typing 
+                          <code>ls</code> and you can change to another folder by typing <code>cd foldername</code>. If there are 
+                          spaces in the folder name, use quotes. Feel free to check a basic course on terminal commands to learn
+                          more useful things you can do on the command line.
+                        </p>
+                        https://github.com/juemura/summer17-android
+                        https://gist.github.com/juemura/c354421701cd9d8c1e934f4c0932f4cb
+                        https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/
+                        -->
+    </main>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../../js/global.js"></script>
+
+  </body>
+</html>

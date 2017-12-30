@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Course page for Mission Bit at Gateway HS">
+    <meta name="author" content="Greg Gorlen">
+    <meta name="keywords" content="mission, bit, gateway">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <title>Mission Bit at Gateway HS</title>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+  </head>
+  <body>
+
+    <nav>
+      <a href="../../modules/">Modules</a>
+      <a href="../../resources/">Resources</a>
+      <a href="../../projects/">Projects</a>
+      <a href="../../about/">About</a>
+    </nav>
+
+    <main>
+
+      <h1>Module 1: HTML</h1>
+      <p>Objective: learn HTML, the structure language of webpages.</p>
+      <ol>
+        <li>
+          <a href="#html">HTML: let's make websites!</a>
+        </li>
+        <li>
+          <a href="#outro">See you next time</a>
+        </li>
+      </ol>
+      <hr>
+      <h2 id="html">HTML: let's make websites!</h2>
+      <p>
+        <a href="https://en.wikipedia.org/wiki/Computer_programming">Coding</a>: what is it? 
+        <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>: what is it?  Let's discuss.
+      </p>  
+      <p>
+        HTML is simple! HTML is a <a href="https://en.wikipedia.org/wiki/Markup_language">markup language</a> 
+        that uses tags to tell the browser how to display a web page.
+      </p>
+      <p>
+        HTML works by defining elements, which have predefined roles. Elements begin with a 
+        <a href="https://www.w3schools.com/TAGs/default.asp">tag name</a> inside <code>&lt; 
+        &gt;</code> and end with an identical tag but with a slash before the tag name, like <code>&lt;/ &gt;</code>. 
+        Everything between the two tags is the element's content.
+      </p>
+      <p>
+        Here's a simple website (try it yourself in a text editor: save the file as <code>index.html</code> and view the 
+        results in a browser, or pop it into <a href="https://codepen.io/">Codepen</a>--type it out instead of 
+        copying and pasting so it sticks better):
+      </p>  
+<pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My website has a title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello world!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      <p>
+        Notice how elements are "nested," meaning an element can contain other elements inside of it in addition to text. 
+        We can see above that the element defined by the <code>&lt;html&gt;</code> tag is the parent of all other elements, 
+        because all other elements' opening and closing tags appear before the final <code>&lt;/html&gt;</code> 
+        closing tag. <code>&lt;head&gt;</code> is a child of the <code>&lt;html&gt;</code> element which contains 
+        additional information about the page. <code>&lt;body&gt;</code> is where
+        all of the page content that the user can view and interact with is defined. You'll mostly be doing coding in the body.
+      </p>
+      <p>
+        Let's look at a few basic tags.
+      </p>
+        <ul>
+          <li><code>&lt;h1&gt;</code> means "<b>h</b>eader <b>1</b>". There are 6 sizes. Try 'em out!</li>
+          <li><p><code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> for creating <b>u</b>nordered <b>li</b>sts</p></li>
+          <li><p><code>&lt;p&gt;</code> for making <b>p</b>aragraphs</p></li>
+          <li><p><code>&lt;br&gt;</code> for adding line <b>br</b>eaks</p></li>
+          <li><p><code>&lt;a&gt;</code> (<b>a</b>nchor) for adding links to other pages</p></li>
+          <li><p><code>&lt;img&gt;</code> for adding <b>im</b>a<b>g</b>es</p></li>
+        </ul>
+      <p>Here's an example of how to use these tags:</p>
+<pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My website has a title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello world!&lt;/h1&gt;
+    &lt;h3&gt;My favorite foods:&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Kale&lt;/li&gt;
+      &lt;li&gt;Pizza&lt;/li&gt;
+      &lt;li&gt;Romanesco, the most fractal brassica&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+      I was born under a full moon in a log cabin out in the woods...
+    &lt;/p&gt;
+    &lt;p&gt;
+      By the way, here's an image of the world's largest rodent, the 
+      &lt;a href="https://en.wikipedia.org/wiki/Capybara"&gt;capybara&lt;/a&gt;:
+      &lt;br&gt;
+      &lt;img src="https://sitbackandstarve.files.wordpress.com/2016/04/capybara-2.jpg?w=696"&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      <p>A few things to note about the above website:</p>
+      <ul>
+        <li>
+          <p>
+            <a href="https://en.wikipedia.org/wiki/Whitespace_character">Whitespace</a> 
+            is ignored in HTML--indent two or four spaces when opening a new tag and de-indent when closing, 
+            unless the opening and closing tags fit nicely on a line. This helps preserve your sanity when 
+            coding and emphasizes the structure of an HTML document, which is basically a bunch of smaller 
+            containers inside of larger containers.
+          </p>
+        </li>
+        <li>
+          <p>
+            Note that the <code>&lt;a&gt;</code> and <code>&lt;img&gt;</code> tags have a 
+            little bit of extra information inside of them (<code>href="..."</code> and <code>src="..."</code>,
+            respectively). These are called <i>attributes</i> or <i>properties</i>, which modify how the tag 
+            works.
+          </p>  
+        </li>
+        <li> 
+          <p>
+            <code>&lt;br&gt;</code> and <code>&lt;img&gt;</code> don't have closing tags. I guess
+            there are exceptions to every rule.
+          </p>
+        </li>
+      </ul>
+      <img alt="HTML is easy meme" style="margin: 10px 10px 10px 30px; float: right;" 
+        src="http://www.kappit.com/img/pics/201510_1728_aefec_sm.png">
+      <p>
+        You may be wondering: "where's the style/color/background?" 
+        Answer: that's the job of <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>, 
+        which we'll look at next week.
+      </p>
+      <p>
+        Cool trick: you can view the source of any webpage. See if you can figure it out for your 
+        browser/<a href="https://en.wikipedia.org/wiki/Operating_system">OS</a> (ask if you can't!). 
+        A lot of web pages are very complex (and possibly <a href="https://en.wikipedia.org/wiki/Minification_(programming)">
+        minified</a> and <a href="https://en.wikipedia.org/wiki/Obfuscation_(software)">obfuscated</a>), so don't be 
+        intimidated if it looks like a bunch of unreadable garble. Try checking the source on a 
+        simpler website, like this one!
+      </p>  
+      <p>
+        That's pretty much HTML in a nutshell! Let's make our first website, the <a href="agreements.html">
+        Community Agreements</a> page, which will contain our community agreements. Keep the agreements positive!
+      </p>
+      <hr style="clear: both;">
+      <h2 id="outro">See you next time</h2>
+      <p> 
+        Feel free to reach out after class if you have any concerns, suggestions, or comments you'd like to share with me!
+        Onward to <a href="../02/">Module 2: Make your first website</a>!
+      </p>
+      <img 
+        alt="Donut HTML meme" 
+        src="http://i0.kym-cdn.com/photos/images/newsfeed/000/225/075/html_jokes_0000.jpg"
+      />
+    </main>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../../js/global.js"></script>
+
+  </body>
+</html>

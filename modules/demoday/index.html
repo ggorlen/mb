@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Course page for Mission Bit at Gateway HS">
+    <meta name="author" content="Greg Gorlen">
+    <meta name="keywords" content="mission, bit, gateway">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <title>Mission Bit at Gateway HS</title>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+  </head>
+  <body>
+
+    <nav>
+      <a href="../../modules/">Modules</a>
+      <a href="../../resources/">Resources</a>
+      <a href="../../projects/">Projects</a>
+      <a href="../../about/">About</a>
+    </nav>
+
+    <main>
+
+                        <h1>Demo Day information</h1>
+                        <p>
+                          <a href="https://www.eventbrite.com/e/mission-bit-presents-demo-day-winter-2017-tickets-39883078361">Demo Day</a> 
+                          will be on <b>Wednesday, December 6th at 4 PM</b>
+                          at <a href="https://unity3d.com/company">Unity Technologies</a>, 30 Third Street in San Francisco. 
+                          Please clear your calendars
+                          in advance; this is the culmination of all Mission Bit courses throughout San Francisco.
+                          It's a celebration of all the hard work you've done throughout the semester. You'll show
+                          off your projects to peers and industry professionals, make
+                          connections, dinner will be served, and a few outstanding student projects will be selected 
+                          for cash prizes. Invite your friends and family! I will post more guidelines about 
+                          presentations and detailed information here when it becomes available. 
+                        </p>  
+                        <p>  
+                          There are <span style="font-weight: bold;" id="countdown">?</span> days left until Demo Day!
+                        </p>
+                        <img src="https://pbs.twimg.com/media/Cz2vB1EUQAIP79B.jpg" alt="Demo Day group photo" style="max-width: 600px;">
+    </main>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../../js/global.js"></script>
+
+    <script>
+      let difference = new Date("May 6, 2018 4:00:00").getTime() - new Date().getTime();
+      difference = (difference / (1000 * 60 * 60 * 24)) | 0;
+      document.getElementById("countdown").innerText = Math.max(difference, 0);
+    </script>
+
+  </body>
+</html>
