@@ -21,7 +21,7 @@
       }
 
       .projects td, th {
-        padding: 0.5em;
+        padding: 0.4em;
       }
 
       .projects td:first-child {
@@ -100,8 +100,10 @@
     <script>
       "use strict";
 
+
       function findAllLinks(elem) {
         if (elem && elem.nodeName === "A") { return [elem]; }
+        if (!elem) { return; }
 
         var links = [];
 
@@ -145,58 +147,6 @@
           });
         });
       }
-
-
-      /*
-      // newer:
-
-      function findAllLinks(elem) {
-        if (elem && elem.nodeName === "A") { return [elem]; }
-        if (!elem) { return; }
-
-        var links = [];
-
-        for (var i = 0; i < elem.children.length; i++) {
-          links = links.concat(findAllLinks(elem.children[i]));
-        }
-
-        return links;
-      }
-
-
-      var projs = document.getElementById("projects");
-
-      if (projs) {
-        findAllLinks(projs).forEach(function (e) {
-          var href = e.href.split("/");
-          var dir = href[href.length-1];
-          var thumb = document.createElement("div");
-          thumb.style.background = "url('./students/" + dir + "/" + dir + "-gameplay-sm.gif')";
-          thumb.style.position = "absolute";
-          thumb.style.opacity = 0;
-          thumb.style.transition = "all 0.16s";
-          thumb.style.display = "none";
-          document.body.appendChild(thumb);
-
-          e.addEventListener("mouseover", function (e) {
-            thumb.style.display = "block";
-            thumb.style.opacity = 1;
-            thumb.style.border = "1px solid #555";
-            thumb.style.width = "150px";
-            thumb.style.height = "150px";
-            thumb.style.top = e.pageY + "px";
-            thumb.style.left = e.pageX + 50 + "px";
-          });
-
-          e.addEventListener("mouseout", function (e) {
-            thumb.style.border = 0;
-            thumb.style.width = 0;
-            thumb.style.height = 0;
-            thumb.style.opacity = 0;
-          });
-        });
-      }
-      */
 
     </script>
 
