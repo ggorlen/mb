@@ -72,7 +72,7 @@
 
   </head>
 
-  <body style="background: url(https://i.pinimg.com/736x/5a/15/73/5a1573941b0c8ddec81aae6af935e753--wabi-sabi-beautiful-things.jpg); background-size: cover; background-position: center center; background-attachment: fixed;">
+  <body>
 
     <nav>
       <a href="modules/">Modules</a>
@@ -102,74 +102,170 @@
     <script>
       "use strict";
 
-      const rad = d => d * Math.PI / 180;
-      const deg = r => r / Math.PI * 180; /// TODO
       const canvas = document.createElement("canvas");
       canvas.width = parseInt(getComputedStyle(document.body).width);
-      const headerHeight = parseInt(getComputedStyle(document.getElementsByTagName("header")[0]).height);
-      canvas.height = innerHeight - headerHeight;
-      //document.body.appendChild(canvas);
+      canvas.height = parseInt(getComputedStyle(document.body).height);
+      document.body.appendChild(canvas);
+      canvas.style.position = "absolute";
+      canvas.style.top = 0;
+      canvas.style.zIndex = -1;
       const ctx = canvas.getContext("2d");
-      const size = (Math.min(canvas.width, canvas.height) / 80 | 0) || 5;
-      const ships = [];
-      const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+      ctx.fillStyle = "#d22";
+      ctx.lineWidth = 10;
+      let handles = [];
+      let handleQty = 17;
+      let handleSize = (Math.min(canvas.width, canvas.height) / 20) | 0;
+      let friction = 0.8;
+      let spring = 0.03;
+      let springLength = (Math.min(canvas.width, canvas.height) / handleQty * 3) | 0;
+      let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+      let draggingHandle;
+      let timeout;
 
-      const Ship = function (x, y, size, angle) {
-        this.x = x; 
+      const Handle = function (x, y, radius) {
+        this.x = x;
         this.y = y;
-        this.size = size;
-        this.angle = angle;
+        this.vx = 0;
+        this.vy = 0;
+        this.radius = radius;
       };
 
-      Ship.prototype.move = function (x, y) {
-        const angleRad = Math.atan2(y - this.y, x - this.x);
-//        console.log(angleRad);
-        const dx = x - this.x;
-        const dy = y - this.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        //this.x = this.x + Math.cos(angleRad) * d / 50;
-        //this.y = this.y + Math.sin(angleRad) * d / 50;
-        //this.angle = angleRad;
+      const springTo = (a, b) => {
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const angle = Math.atan2(dy, dx);
+        const targetX = b.x - Math.cos(angle) * springLength;
+        const targetY = b.y - Math.sin(angle) * springLength;
+
+        a.vx += (targetX - a.x) * spring;
+        a.vy += (targetY - a.y) * spring;
+        a.vx *= friction;
+        a.vy *= friction;
+        //a.vy += 0.05;
+        a.x += a.vx;
+        a.y += a.vy;
+
+        //if (a.y <= canvas.height) {
+       //   a.y += a.vy;
+        //}
+       // else {
+       //   a.y = canvas.height;
+       // }
       };
 
-      Ship.prototype.draw = function (ctx) {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(0, this.size);
-        ctx.moveTo(0, 0);
-        ctx.lineTo(0, -this.size);
-        ctx.lineTo(this.size * 3, 0);
-        ctx.lineTo(0, this.size);
+      const init = () => {
+        canvas.width = parseInt(getComputedStyle(document.body).width);
+        canvas.height = parseInt(getComputedStyle(document.body).height);
+        ctx.fillStyle = "#d22";
+        ctx.lineWidth = 10;
+        handles = [];
+        handleQty = 17;
+        handleSize = (Math.min(canvas.width, canvas.height) / 20) | 0;
+        friction = 0.4;
+        spring = 0.13;
+        springLength = (Math.min(canvas.width, canvas.height) / handleQty * 4) | 0;
+        mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+        draggingHandle = null;
 
-        ctx.stroke();
-        ctx.restore();
-      };
-
-      (function init() {
-        for (let i = 0; i < 1; i++) {
-          ships.push(new Ship(
+        for (let i = 0; i < handleQty; i++) {
+          handles.push(new Handle(
             Math.random() * canvas.width, 
             Math.random() * canvas.height, 
-            size, rad(Math.random() * 360))
-          );
+            handleSize
+          ));
         }
+      };
 
-        document.addEventListener("mousemove", e => {
-          mouse.x = e.pageX;
-          mouse.y = e.pageY;
-        });
-      })();
+      const orientation = (p, q, r) => {
+        const val = (q.y - p.y) * (r.x - q.x) - 
+                    (q.x - p.x) * (r.y - q.y);
+        return val === 0 ? 0 : ((val > 0) ? 1 : 2);
+      };
+      
+      const jarvis = points => {
+        const hull = [];
+        const leftMost = points.reduce((a, e, i) => points[a].x < points[i].x ? a : i, 0);
+        let q = 0;
+        let p = leftMost;
+        let endpoint;
+        
+        do {
+          hull.push(points[p]);
+          q = (p + 1) % points.length;
+          
+          for (let i = 0; i < points.length; i++) {
+             const o = orientation(points[p], points[i], points[q]);
+            
+             if (o === 2) {
+               q = i;
+             }
+          }
+          
+          p = q;
+        } while (p !== leftMost);
+        return hull;
+      };
+
+      window.addEventListener("resize", e => {
+        clearTimeout(timeout);
+        timeout = setTimeout(init, 500);
+      });
+      document.addEventListener("mousedown", e => {
+        for (let i = 0; i < handles.length; i++) {
+          if ((mouse.x - handles[i].x) * (mouse.x - handles[i].x) + 
+              (mouse.y - handles[i].y) * (mouse.y - handles[i].y) <= 
+               handles[i].radius * handles[i].radius) {
+             e.preventDefault();
+             draggingHandle = handles[i];
+             break;
+          }
+        }
+      });
+      document.addEventListener("mouseup", e => setTimeout(e => draggingHandle = null, 500)); 
+      document.addEventListener("mousemove", e => {
+        mouse.x = e.pageX;
+        mouse.y = e.pageY;
+        
+        if (draggingHandle) {
+          draggingHandle.x = mouse.x;
+          draggingHandle.y = mouse.y;
+        }
+      });
+
+      init();
+
 
       (function update() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // ctx.globalCompositeOperation = "source-over";
+        // ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+        // ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+        //ctx.shadowBlur = 5;
+        //ctx.shadowColor = "#999";
 
-        for (const ship of ships) {
-          ship.move(mouse.x, mouse.y);
-          ship.draw(ctx);
+        for (let i = 0; i < handles.length; i++) {
+          if (handles[i] !== draggingHandle) {
+            for (let j = 0; j < handles.length; j++) {
+              if (i !== j) {
+                springTo(handles[i], handles[j]);
+              }
+            }
+          }
         }
+
+        ctx.fillStyle = "#333";
+        handles.forEach(e => {
+          ctx.beginPath();
+          ctx.arc(e.x, e.y, 2, 0, Math.PI * 2);
+          ctx.fill(); 
+        });
+
+        ctx.fillStyle = "#d55";
+        ctx.beginPath();
+        jarvis(handles).forEach(e => ctx.lineTo(e.x, e.y));
+        ctx.closePath();
+        ctx.fill();
 
         requestAnimationFrame(update);
       })();
