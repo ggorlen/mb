@@ -267,6 +267,17 @@
         ctx.closePath();
         ctx.fill();
 
+        let inBounds = false;
+
+        for (let i = 0; i < handles.length; i++) {
+          if (handles[i].x > 0 && handles[i].y > 0 &&
+              handles[i].x < canvas.width && handles[i].y < canvas.height) {
+            inBounds = true;
+            break;
+          }
+        }
+
+        if (!inBounds) { init(); }
         requestAnimationFrame(update);
       })();
     </script>

@@ -11,7 +11,7 @@ body {
   margin: 0;
   padding: 0;
   color: #000;
-  font-size: 1.1em;
+  font-size: 1em;
   overflow-y: scroll;
   width: 100%;
   min-height: 100vh;
@@ -46,7 +46,7 @@ h3 {
 }
 
 hr {
-  border-top: 1px solid #888;
+  border-top: 1px solid #aaa;
   border-bottom: 0;
 }
 
@@ -72,7 +72,7 @@ pre {
   padding: 0;
   border-radius: 3px;
   font-family: "Source Code Pro", monospace;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 pre > code.hljs {
@@ -87,7 +87,7 @@ p > code.hljs {
   padding: 0.2em;
   border-radius: 3px;
   display: inline; 
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 ul.no-bullet {
@@ -133,7 +133,7 @@ nav > a:active {
   color: #fff;
   padding: 0.8em;
   padding-left: 20px;
-  font-size: 1.1em;
+  font-size: 1.2em;
   border: 0;
   transition: all 0.3s;
   text-align: right;
