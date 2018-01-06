@@ -32,6 +32,7 @@
 
       html, body {
         height: 100%;
+        user-select: none;
       }
 
       main {  
@@ -99,6 +100,7 @@
     <!-- Global JS script -->
     <script src="js/global.js"></script>
 
+<!--
     <script>
       "use strict";
 
@@ -110,15 +112,13 @@
       canvas.style.top = 0;
       canvas.style.zIndex = -1;
       const ctx = canvas.getContext("2d");
-      ctx.fillStyle = "#d22";
-      ctx.lineWidth = 10;
       let handles = [];
-      let handleQty = 17;
-      let handleSize = (Math.min(canvas.width, canvas.height) / 20) | 0;
-      let friction = 0.8;
-      let spring = 0.03;
-      let springLength = (Math.min(canvas.width, canvas.height) / handleQty * 3) | 0;
-      let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+      let handleQty;
+      let handleSize;
+      let friction;
+      let spring;
+      let springLength;
+      let mouse;
       let draggingHandle;
       let timeout;
 
@@ -156,14 +156,13 @@
       const init = () => {
         canvas.width = parseInt(getComputedStyle(document.body).width);
         canvas.height = parseInt(getComputedStyle(document.body).height);
-        ctx.fillStyle = "#d22";
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 2;
         handles = [];
-        handleQty = 17;
-        handleSize = (Math.min(canvas.width, canvas.height) / 20) | 0;
-        friction = 0.4;
-        spring = 0.13;
-        springLength = (Math.min(canvas.width, canvas.height) / handleQty * 4) | 0;
+        handleQty = 10;
+        handleSize = 60
+        friction = 0.52;
+        spring = 0.59;
+        springLength = 100;
         mouse = { x: canvas.width / 2, y: canvas.height / 2 };
         draggingHandle = null;
 
@@ -208,29 +207,21 @@
 
       window.addEventListener("resize", e => {
         clearTimeout(timeout);
-        timeout = setTimeout(init, 500);
+        timeout = setTimeout(init, 600);
       });
       document.addEventListener("mousedown", e => {
         for (let i = 0; i < handles.length; i++) {
           if ((mouse.x - handles[i].x) * (mouse.x - handles[i].x) + 
               (mouse.y - handles[i].y) * (mouse.y - handles[i].y) <= 
                handles[i].radius * handles[i].radius) {
-             e.preventDefault();
-             draggingHandle = handles[i];
-             break;
+            e.preventDefault();
+            draggingHandle = handles[i];
+            break;
           }
         }
       });
-      document.addEventListener("mouseup", e => setTimeout(e => draggingHandle = null, 500)); 
-      document.addEventListener("mousemove", e => {
-        mouse.x = e.pageX;
-        mouse.y = e.pageY;
-        
-        if (draggingHandle) {
-          draggingHandle.x = mouse.x;
-          draggingHandle.y = mouse.y;
-        }
-      });
+      document.addEventListener("mouseup", e => draggingHandle = null);
+      document.addEventListener("mousemove", e => mouse = { x: e.pageX, y: e.pageY });
 
       init();
 
@@ -245,39 +236,144 @@
         //ctx.shadowColor = "#999";
 
         for (let i = 0; i < handles.length; i++) {
-          if (handles[i] !== draggingHandle) {
-            for (let j = 0; j < handles.length; j++) {
-              if (i !== j) {
-                springTo(handles[i], handles[j]);
-              }
-            }
-          }
+          springTo(handles[i], handles[(i+1)%handles.length]);
+        }
+
+        if (draggingHandle) {
+          //const dx = mouse.x - draggingHandle.x;
+          //const dy = mouse.y - draggingHandle.y;
+          draggingHandle.x = mouse.x
+          draggingHandle.y = mouse.y
         }
 
         ctx.fillStyle = "#333";
         handles.forEach(e => {
           ctx.beginPath();
-          ctx.arc(e.x, e.y, 2, 0, Math.PI * 2);
+          ctx.arc(e.x, e.y, 30, 0, Math.PI * 2);
           ctx.fill(); 
         });
 
-        ctx.fillStyle = "#d55";
         ctx.beginPath();
         jarvis(handles).forEach(e => ctx.lineTo(e.x, e.y));
         ctx.closePath();
-        ctx.fill();
+        ctx.stroke();
 
         let inBounds = false;
 
         for (let i = 0; i < handles.length; i++) {
           if (handles[i].x > 0 && handles[i].y > 0 &&
-              handles[i].x < canvas.width && handles[i].y < canvas.height) {
+              handles[i].x < canvas.width && 
+              handles[i].y < canvas.height) {
             inBounds = true;
             break;
           }
         }
 
         if (!inBounds) { init(); }
+        requestAnimationFrame(update);
+      })();
+    </script>
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
+
+    <script>
+      "use strict";
+
+      const rad = d => d * Math.PI / 180;
+      const canvas = document.createElement("canvas");
+      canvas.width = parseInt(getComputedStyle(document.body).width);
+      canvas.height = parseInt(getComputedStyle(document.body).height);
+      canvas.style.position = "absolute";
+      canvas.style.top = 0;
+      canvas.style.zIndex = -1;
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext("2d");
+      ctx.lineWidth = 5;
+      
+      const Engine = Matter.Engine;
+      const World = Matter.World;
+      const Vector = Matter.Vector;
+      const Bodies = Matter.Bodies;
+      const engine = Engine.create();
+      const MouseConstraint = Matter.MouseConstraint;
+      const mouseConstraint = MouseConstraint.create(engine);
+      const setMouseOffset = () => {
+        const rect = canvas.getBoundingClientRect();
+        Matter.Mouse.setOffset(mouseConstraint.mouse, {
+          x: -rect.x, y: -rect.y
+        });
+      };
+      setMouseOffset();
+      document.addEventListener("mousemove", e => 
+        setTimeout(setMouseOffset, 500)
+      );
+      World.add(engine.world, mouseConstraint);
+      
+      // Create body arrays
+      const boxes = [];
+      const ledges = [
+        Bodies.rectangle(
+          canvas.width / 2, canvas.height, 
+          canvas.width / 1.5, canvas.height / 4, 
+          { isStatic: true }
+        )
+      ];
+      //Matter.Body.rotate(ledges[0], rad(35));
+      //Matter.Body.rotate(ledges[1], rad(-25));
+      
+      // Add bodies to the world
+      World.add(engine.world, ledges);
+      //Engine.run(engine); 
+      
+      const draw = (body, ctx) => {
+        ctx.fillStyle = body.color || "#fff";
+        ctx.beginPath();
+        body.vertices.forEach(e => ctx.lineTo(e.x, e.y));
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+      };
+      
+      const inBounds = (body, canvas) => {
+        for (let i = 0; i < body.vertices.length; i++) {
+          if (body.vertices[i].x < canvas.width &&
+            body.vertices[i].x > 0 &&
+            body.vertices[i].y < canvas.height //&&
+            /*body.vertices[i].y > 0*/) {
+            return true;
+          }
+        }
+      
+        return false;
+      };
+      
+      (function update() {
+        if ((boxes.length < 50 || Math.random() < 0.0001) && boxes.length < 500) {
+          boxes.unshift(Bodies.rectangle(
+            canvas.width / 2, -130, Math.random() * 50 + 5, 
+            Math.random() * 50 + 5,
+            { frictionAir: 0.01, friction: 0.1, restitution: 0.6 }
+          ));
+      
+          boxes[0].color = "hsl(" + (Math.random() * 200 + 160) + ", 90%, 50%)";
+          World.add(engine.world, [boxes[0]]);
+          Matter.Body.rotate(boxes[0], rad(Math.random() * 360));
+        }
+      
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+        for (let i = boxes.length - 1; i >= 0; i--) {
+          draw(boxes[i], ctx);
+      
+          if (!inBounds(boxes[i], canvas)) {
+            World.remove(engine.world, boxes[i]);
+            boxes.splice(i, 1);
+          }
+        }
+      
+        ledges.forEach(e => draw(e, ctx));
+        Engine.update(engine);  // instead of a single call to Engine.run(engine)
         requestAnimationFrame(update);
       })();
     </script>
