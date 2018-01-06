@@ -100,181 +100,7 @@
     <!-- Global JS script -->
     <script src="js/global.js"></script>
 
-<!--
-    <script>
-      "use strict";
-
-      const canvas = document.createElement("canvas");
-      canvas.width = parseInt(getComputedStyle(document.body).width);
-      canvas.height = parseInt(getComputedStyle(document.body).height);
-      document.body.appendChild(canvas);
-      canvas.style.position = "absolute";
-      canvas.style.top = 0;
-      canvas.style.zIndex = -1;
-      const ctx = canvas.getContext("2d");
-      let handles = [];
-      let handleQty;
-      let handleSize;
-      let friction;
-      let spring;
-      let springLength;
-      let mouse;
-      let draggingHandle;
-      let timeout;
-
-      const Handle = function (x, y, radius) {
-        this.x = x;
-        this.y = y;
-        this.vx = 0;
-        this.vy = 0;
-        this.radius = radius;
-      };
-
-      const springTo = (a, b) => {
-        const dx = b.x - a.x;
-        const dy = b.y - a.y;
-        const angle = Math.atan2(dy, dx);
-        const targetX = b.x - Math.cos(angle) * springLength;
-        const targetY = b.y - Math.sin(angle) * springLength;
-
-        a.vx += (targetX - a.x) * spring;
-        a.vy += (targetY - a.y) * spring;
-        a.vx *= friction;
-        a.vy *= friction;
-        //a.vy += 0.05;
-        a.x += a.vx;
-        a.y += a.vy;
-
-        //if (a.y <= canvas.height) {
-       //   a.y += a.vy;
-        //}
-       // else {
-       //   a.y = canvas.height;
-       // }
-      };
-
-      const init = () => {
-        canvas.width = parseInt(getComputedStyle(document.body).width);
-        canvas.height = parseInt(getComputedStyle(document.body).height);
-        ctx.lineWidth = 2;
-        handles = [];
-        handleQty = 10;
-        handleSize = 60
-        friction = 0.52;
-        spring = 0.59;
-        springLength = 100;
-        mouse = { x: canvas.width / 2, y: canvas.height / 2 };
-        draggingHandle = null;
-
-        for (let i = 0; i < handleQty; i++) {
-          handles.push(new Handle(
-            Math.random() * canvas.width, 
-            Math.random() * canvas.height, 
-            handleSize
-          ));
-        }
-      };
-
-      const orientation = (p, q, r) => {
-        const val = (q.y - p.y) * (r.x - q.x) - 
-                    (q.x - p.x) * (r.y - q.y);
-        return val === 0 ? 0 : ((val > 0) ? 1 : 2);
-      };
-      
-      const jarvis = points => {
-        const hull = [];
-        const leftMost = points.reduce((a, e, i) => points[a].x < points[i].x ? a : i, 0);
-        let q = 0;
-        let p = leftMost;
-        let endpoint;
-        
-        do {
-          hull.push(points[p]);
-          q = (p + 1) % points.length;
-          
-          for (let i = 0; i < points.length; i++) {
-             const o = orientation(points[p], points[i], points[q]);
-            
-             if (o === 2) {
-               q = i;
-             }
-          }
-          
-          p = q;
-        } while (p !== leftMost);
-        return hull;
-      };
-
-      window.addEventListener("resize", e => {
-        clearTimeout(timeout);
-        timeout = setTimeout(init, 600);
-      });
-      document.addEventListener("mousedown", e => {
-        for (let i = 0; i < handles.length; i++) {
-          if ((mouse.x - handles[i].x) * (mouse.x - handles[i].x) + 
-              (mouse.y - handles[i].y) * (mouse.y - handles[i].y) <= 
-               handles[i].radius * handles[i].radius) {
-            e.preventDefault();
-            draggingHandle = handles[i];
-            break;
-          }
-        }
-      });
-      document.addEventListener("mouseup", e => draggingHandle = null);
-      document.addEventListener("mousemove", e => mouse = { x: e.pageX, y: e.pageY });
-
-      init();
-
-
-      (function update() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // ctx.globalCompositeOperation = "source-over";
-        // ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
-        // ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-        //ctx.shadowBlur = 5;
-        //ctx.shadowColor = "#999";
-
-        for (let i = 0; i < handles.length; i++) {
-          springTo(handles[i], handles[(i+1)%handles.length]);
-        }
-
-        if (draggingHandle) {
-          //const dx = mouse.x - draggingHandle.x;
-          //const dy = mouse.y - draggingHandle.y;
-          draggingHandle.x = mouse.x
-          draggingHandle.y = mouse.y
-        }
-
-        ctx.fillStyle = "#333";
-        handles.forEach(e => {
-          ctx.beginPath();
-          ctx.arc(e.x, e.y, 30, 0, Math.PI * 2);
-          ctx.fill(); 
-        });
-
-        ctx.beginPath();
-        jarvis(handles).forEach(e => ctx.lineTo(e.x, e.y));
-        ctx.closePath();
-        ctx.stroke();
-
-        let inBounds = false;
-
-        for (let i = 0; i < handles.length; i++) {
-          if (handles[i].x > 0 && handles[i].y > 0 &&
-              handles[i].x < canvas.width && 
-              handles[i].y < canvas.height) {
-            inBounds = true;
-            break;
-          }
-        }
-
-        if (!inBounds) { init(); }
-        requestAnimationFrame(update);
-      })();
-    </script>
-    -->
-
+    <!-- Matter.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
 
     <script>
@@ -376,6 +202,24 @@
         Engine.update(engine);  // instead of a single call to Engine.run(engine)
         requestAnimationFrame(update);
       })();
+      
+      
+      let timeout;
+      window.addEventListener("resize", e => {
+        clearTimeout(timeout);
+        timeout = setTimeout(e => {
+          canvas.width = parseInt(getComputedStyle(document.body).width);
+          canvas.height = parseInt(getComputedStyle(document.body).height);
+          World.remove(engine.world, ledges[0]);
+          ledges[0] = Bodies.rectangle(
+            canvas.width / 2, canvas.height, 
+            canvas.width / 1.5, canvas.height / 4, 
+            { isStatic: true }
+          );
+          World.add(engine.world, ledges);
+          ctx.lineWidth = 5;
+        }, 500);
+      });
     </script>
   </body>
 </html>
