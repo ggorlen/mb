@@ -21,6 +21,7 @@
       <style>body { display: block; opacity: 1; }</style>
     </noscript>
 
+    <!-- Style for front page only -->
     <style>
 
       h1 {
@@ -40,6 +41,7 @@
       }
 
       footer i {
+        flex: 1 1 0;
         margin: 0.4em;
         color: #444;
       }
@@ -55,7 +57,10 @@
       }
 
       #wrapper {
-       display: flex; flex-direction: column; align-items: center; flex-wrap: wrap; height: 100%;
+        display: flex; 
+        flex-flow: column wrap; 
+        align-items: center;
+        height: 100%;
       }
 
       @media screen and (max-width: 900px) {
@@ -68,21 +73,20 @@
         }
       }
 
-
     </style>
 
   </head>
 
   <body>
 
-    <nav>
-      <a href="modules/">Modules</a>
-      <a href="resources/">Resources</a>
-      <a href="projects/">Projects</a>
-      <a href="about/">About</a>
-    </nav>
-
     <div id="wrapper">
+      <nav>
+        <a href="modules/">Modules</a>
+        <a href="resources/">Resources</a>
+        <a href="projects/">Projects</a>
+        <a href="about/">About</a>
+      </nav>
+
       <main style="background: transparent; margin: 0;"> 
         <h1 style="color: #444;">Mission Bit at Gateway HS</h1>
       </main>
@@ -140,8 +144,8 @@
       const boxes = [];
       const ledges = [
         Bodies.rectangle(
-          canvas.width / 2, canvas.height, 
-          canvas.width / 1.5, canvas.height / 4, 
+          canvas.width / 2, canvas.height + 25, 
+          canvas.width, 50, 
           { isStatic: true }
         )
       ];
@@ -153,11 +157,11 @@
       //Engine.run(engine); 
       
       const draw = (body, ctx) => {
-        ctx.fillStyle = body.color || "#fff";
+        ctx.fillStyle = body.color || "#999";
         ctx.beginPath();
         body.vertices.forEach(e => ctx.lineTo(e.x, e.y));
         ctx.closePath();
-        ctx.stroke();
+        //ctx.stroke();
         ctx.fill();
       };
       
@@ -175,9 +179,9 @@
       };
       
       (function update() {
-        if ((boxes.length < 50 || Math.random() < 0.0001) && boxes.length < 500) {
+        if ((boxes.length < 70 || Math.random() < 0.0001) && boxes.length < 500) {
           boxes.unshift(Bodies.rectangle(
-            canvas.width / 2, -130, Math.random() * 50 + 5, 
+            canvas.width / 2, -130, Math.random() * 150 + 5, 
             Math.random() * 50 + 5,
             { frictionAir: 0.01, friction: 0.1, restitution: 0.6 }
           ));
@@ -212,8 +216,8 @@
           canvas.height = parseInt(getComputedStyle(document.body).height);
           World.remove(engine.world, ledges[0]);
           ledges[0] = Bodies.rectangle(
-            canvas.width / 2, canvas.height, 
-            canvas.width / 1.5, canvas.height / 4, 
+            canvas.width / 2, canvas.height + 25, 
+            canvas.width, 50, 
             { isStatic: true }
           );
           World.add(engine.world, ledges);

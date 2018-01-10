@@ -34,7 +34,7 @@ blockquote footer {
 }
 
 h1 {
-  font-size: 2.3em;
+  font-size: 2.6em;
 }
 
 h2 {
@@ -56,8 +56,8 @@ img {
 
 a, a:link, a:visited, a:hover, a:active, a:focus {
   text-decoration: none;
-  color: #666;
-  border-bottom: 1px solid #666;
+  color: #0a3359;
+  border-bottom: 1px solid #1d63a3;
   transition: border-bottom 0.3s;
 }
 
@@ -99,7 +99,7 @@ main {
   background: #fff;
   display: block;
   padding: 0.3em 2em 0.3em 2em;
-  margin: 0 0 0 10em;
+  margin: auto;
   max-width: 900px;
 }
 
@@ -118,8 +118,11 @@ header > h1 {
 }
 
 nav {
-  display: block;
   transition: all 0.4s;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: stretch;
+  width: 100%;
 }
 
 nav > a,
@@ -127,16 +130,15 @@ nav > a:link,
 nav > a:visited,
 nav > a:hover, 
 nav > a:active {
-  display: block;
-  /*margin-left: -10px;*/
   font-weight: 700;
   color: #fff;
   padding: 0.8em;
-  /*padding-left: 20px;*/
   font-size: 1.2em;
   border: 0;
   transition: all 0.3s;
-  text-align: right;
+  margin: 0;
+  flex: 1 0 0;
+  text-align: center;
 }
 
 nav > a:hover {
@@ -146,8 +148,8 @@ nav > a:hover {
 }
 
 nav.sticky {
-  position: fixed;
-  z-index: 100;
+  /*position: fixed;
+  z-index: 100;*/
 }
 
 #projects table {
