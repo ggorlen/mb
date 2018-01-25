@@ -1,39 +1,30 @@
-// Create the main game state object
-myGame.game = function () { };
+// Create the main game state class
+const gameState = function () { };
 
-// Add the create/preload/update functions to the game object
-myGame.game.prototype = {
-    create: create,
-    preload: preload,
-    update: update
+// Add the create/preload/update functions to the game class
+gameState.prototype = {
+
+  // Phaser function to load assets (images, sounds, etc)
+  preload: function () {
+
+    /*** Load assets here ***/
+  
+  },
+
+  // Phaser function to initialize variables and instantiate objects
+  create: function () {
+
+    // Add some text
+    text = game.add.text(300, 280, '', { fontSize: '32px', fill: '#fff' });
+  },
+
+  // Phaser main game function to update the screen
+  update: function () {
+      
+    // Show mouse coordinates for debugging and placing objects
+    text.setText("X: " + game.input.mousePointer.x + "  Y: " + game.input.mousePointer.y);
+  }
 };
-
 
 // Global variables
 let text;
-
-
-// Phaser method to load assets (images, sounds, etc)
-function preload() {
-
-  /*** Load assets here ***/
-
-} // end preload
-
-
-// Phaser method to initialize variables and instantiate objects
-function create() {
-
-  // Add some text
-  text = game.add.text(300, 280, '', { fontSize: '32px', fill: '#fff' });
-
-} // end create
-
-
-// Phaser callback function to update the screen every few milliseconds
-function update() {
-    
-    // Show mouse coordinates for debugging and placing objects
-    text.setText("X: " + game.input.mousePointer.x + "  Y: " + game.input.mousePointer.y);
-
-} // end update

@@ -185,7 +185,7 @@
             { frictionAir: 0.01, friction: 0.1, restitution: 0.6 }
           ));
       
-          boxes[0].color = "hsl(" + (Math.random() * 200 + 100) + ", 30%, 50%)";
+          boxes[0].color = "hsl(" + (Math.random() * 200 + 100) + ", 20%, " + (Math.random() * 70) + "%)";
           World.add(engine.world, [boxes[0]]);
           Matter.Body.rotate(boxes[0], rad(Math.random() * 360));
         }
