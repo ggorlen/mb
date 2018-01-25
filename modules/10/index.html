@@ -48,20 +48,18 @@
                             <a href="#debugging">Debugging</a>
                           </li>
                           <li>
-                            <a href="#git">Git and terminal</a> (coming soon)
+                            <a href="#git">Git and terminal</a>
                           </li>
                         </ol>
                         <hr>
                         <h2 id="embarking-on-your-project">Embarking on your project</h2>
                         <p>
-                          A common scenario: you've learned something new and unfamiliar with guidance,
+                          A common scenario: you've learned something new and unfamiliar with some guidance,
                           then you're cut loose and asked to make a project! The big question is: how to move from that
                           structured environment and forge ahead under your own power? This module will hopefully
                           offer some guidance in that regard, but importantly, I (your instructor), your peers, and MB staff
                           and volunteers will be here to keep you on track, so as long as you're engaged, you'll be just fine!
                         </p>
-                        <img src="http://memeshappen.com/media/created/2017/05/morgan-freeman-says-you-can-do-it.jpg"
-                          alt="Morgan Freeman meme" style="max-width: 500px;">
                         <p>
                           Think back to the Choose Your Own Adventure game your group made at the beginning of the semester.
                           First, you planned out your game, then gathered necessary skills and resources, and coded it up.
@@ -101,9 +99,9 @@
                           to get connected with some ideas.
                         </p>
                         <p>
-                          I'd also like to speak frankly here: platformers and games with heavy physics components tend to be popular,
-                          but these can be <i>very</i> challenging first projects, so I try to discourage them.
-                          However, students tend to go for them anyway. One way to make a successful physics-based project
+                          I'd also like to speak frankly: platformers and games with heavy physics components tend to be popular,
+                          but these can be challenging first projects, so I try to discourage them.
+                          If you're set on it, warnings be damned, go for it. One way to make a successful physics-based project
                           is to use a game framework, so I'll introduce one later in this module. Either way, we'll make it 
                           happen, but know that platformer usually means serious coding ahead!
                         </p>
@@ -125,14 +123,15 @@
                         <img src="https://i.pinimg.com/originals/a5/51/d6/a551d685623508da950e55b76e2bdcfd.jpg" alt="Googling joke">
                         <hr>
                         <h2 id="writing-your-app">Writing your app</h2>
-                        <p>
-                          And now, the fun part! Dive into writing your app as soon as you're confident with your plan
-                          and have a few basic resources on hand. Getting started is the hardest part, and the key to getting ahead
-                          is getting started. And, of course, the key to getting started is breaking the large task into smaller 
-                          tasks and working on the easiest one.
-                        </p>
                         <img alt="Kobe meme" style="margin: 0 0 15px 15px; float: right;"
                           src="http://1.bp.blogspot.com/-kuMj0hhXYBg/UAdploozEPI/AAAAAAAAAPU/TdlIG27er-I/s1600/3ot0c0.jpg">
+                        <p>
+                          And now, the fun part! Dive into writing your app as soon as you're confident with your plan
+                          and have a few basic resources on hand. Getting started is the hardest part, and the 
+                          <a href="https://www.goodreads.com/quotes/219455-the-secret-of-getting-ahead-is-getting-started-the-secret">
+                          key to getting ahead is getting started</a>. And, of course, the key to getting started is 
+                          breaking the large task into smaller tasks and working on the easiest one.
+                        </p>
                         <p>
                           A very important part of this process is ensuring everyone in the group is contributing!
                           Remember, your group is counting on you to step up and offer to help out every day. If you're not able
@@ -189,7 +188,8 @@
                           statements in your code and re-running your program to see if the value of variables and conditionals matches
                           your expectations. Sometimes, entire blocks of code aren't even executing, and a simple 
                           <code class="js">console.log("Is this even working?");</code> call in the code block in question
-                          will tell you a lot about your program's state. The console also offers the ability to interactively type in a variable
+                          will tell you a lot about your program's <a href="https://en.wikipedia.org/wiki/State_(computer_science)">state</a>. 
+                          The console also offers the ability to interactively type in a variable
                           name that exists in your program's global scope (i.e. isn't inside a function) and see information about it or 
                           execute test code. The console also allows breakpoints to be set (for Chrome, this feature is in the Sources tab
                           under "Show debugger"). This means that your code will stop running on the line(s) you've told it to, and you can
@@ -201,33 +201,125 @@
                           as painless and educational as possible, so let a mentor or the instructor know if something is going
                           wrong, and we'll walk you through it!
                         </p>
-                        <img src="http://memeshappen.com/media/created/That-look-when-You-turn-debugging-on-meme-40316.jpg"
+                        <img src="https://www.taleas.com/images/memes/that-look-when-you-turn-debugging-on.png"
                           alt="Debugging meme" style="max-width: 500px;">
-                          <!--
                         <hr>
                         <h2 id="git">Git and terminal</h2>
+                        <h3>A little background</h3>
                         <p>
-                          Last topic: using Github and the command line. As with debugging, these are complex topics,
-                          so I'm only offering a small taste of these tools. You know by now that Github can
+                          Last topic: using <a href="https://en.wikipedia.org/wiki/GitHub">Github</a>, 
+                          <a href="https://en.wikipedia.org/wiki/Git">git</a> 
+                          and the <a href="https://en.wikipedia.org/wiki/Command-line_interface">command line</a>. 
+                          As with debugging, these are complex topics, so I'm only offering a small taste of these tools. 
+                          You know by now that Github can
                           host your website and store your code. You may also know that each time you upload code,
                           you've made something called a "commit," which is a version of a repository. Github is
-                          basically an interface for a tool called git, which is operated by typing commands on
-                          a text-only screen called a command prompt. This command prompt, without getting too technical,
-                          is based on Unix, a really old and powerful operating system that Mac's OS is built on top of.
+                          a repository host and interface for a tool called git, which is operated by typing commands on
+                          a text-only screen called a terminal and is the backbone of version control. This terminal, without getting too technical,
+                          is part of <a href="https://en.wikipedia.org/wiki/Unix">Unix</a>, a really old and powerful 
+                          operating system that Mac's <a href="https://en.wikipedia.org/wiki/Operating_system">OS</a> is built on top of. 
+                          All developers need to be familiar with Unix and git in addition to programming languages. 
+                          Staring for days on end at black screens with monospace text makes programmers feel cool.
+                        </p>
+                        <h3>Terminal basics</h3>
+                        <p>
+                          Using a terminal, you can navigate through folders and perform actions on files just like you do with 
+                          your mouse. To start a terminal session on Mac, click the magnifying glass in the top-right corner and type 
+                          "terminal," or click on the shortcut link in your dock. When the screen appears, you'll see a prompt
+                          which shows your current directory (folder). Type <code class="bash">pwd</code> to see a path to your current directory. 
+                          You can show a list of the files in your directory by typing 
+                          <code class="bash">ll</code> and you can change to another folder by typing 
+                          <code class="bash">cd foldername</code>. If there are 
+                          spaces in the folder name, use quotes. Type <code class="bash">cd ..</code> to go to the folder "above" the one you're 
+                          currently in. Feel free to check a 
+                          <a href="https://diyhacking.com/linux-commands-for-beginners/">basic list of terminal commands</a> to learn
+                          more useful things you can do on the command line. For now, <code class="bash">pwd</code>, <code class="bash">ll</code> and 
+                          <code class="bash">cd</code> should be sufficient.
+                        </p>
+                        <h3>Setting up git</h3>
+                        <p>
+                          OK, now that you're comfortable moving around directories in the terminal, let's learn how to set up git on your
+                          computer. From a prior semester, someone else may be logged in, so you'll want to 
+                          change users by typing in terminal:
+                        </p>
+<pre><code>$ git config --global user.name "Bob"
+$ git config --global user.email "bob@example.com"</code></pre>
+                        <p>
+                          and <a href="https://superuser.com/questions/1064197/how-to-switch-git-user-at-terminal/1064244#1064244">ensuring
+                          that your computer's keychain hasn't saved the password automatically</a>.
+                        </p>
+                        <h3>Creating and cloning a repository</h3>
+                        <p>
+                          After you've set up your git credentials, go ahead and 
+                          <a href="https://help.github.com/articles/create-a-repo/">create a repository</a> for your project. Choose 
+                          a simple repository name; long names with unusual characters or alternating capitalization may impact
+                          your (and your user's) ability to type it in correctly.
+                          It's a good idea to always initialize the repository with a readme. You may want to 
+                          <a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">add your teammates
+                          as collaborators</a> on your repository. This means they can edit the files directly without requiring your review.
+                        </p>  
+                        <p>
+                          The next step is to get a copy of your repository to your computer. This is called 
+                          <a href="https://help.github.com/articles/cloning-a-repository/">cloning</a> and involves
+                          using terminal.
+                          <ol>
+                            <li>
+                              <p>
+                                Open your repository in your browser and click the green button that says "Clone or download."
+                              </p>
+                            </li>
+                            <li>
+                              <p>
+                                Copy the repository name (example: <code class="bash">https://github.com/ggorlen/mb.git</code>) to the clipboard.
+                              </p>
+                            </li>
+                            <li>
+                              <p>
+                                Open terminal and navigate to the folder you'd like to clone the repo to, and type 
+                                <code class="bash">git clone https://github.com/ggorlen/mb.git</code> (or whatever your repo name is).
+                              </p>
+                            </li>
+                            <li>
+                              <p>
+                                Type <code class="bash">ll</code> to see your freshly cloned directory.
+                              </p>
+                            </li>
+                            <li>
+                              <p>
+                                Type <code class="bash">cd your-repo-name</code> to open your new project directory.
+                              </p>
+                            </li>
+                          </ol>
+                        </p>  
+                        <h3>Making a commit and pushing changes to Github</h3>
+                        <p>
+                          At this point, with the repository on your computer, you can start coding. When you finish making changes,
+                          it's time to commit them to the remote repository. Type <code class="bash">git add .</code> with
+                          the terminal open in the project directory. This
+                          collects all modified files to commit. Next, type <code class="bash">git commit -m "descriptive message"</code>.
+                          This message is important because it explains to your future self and your collaborators what modifications
+                          you made to the project. Lastly, type <code class="bash">git push origin master</code>. This will push your
+                          changes up to Github's cloud server.
                         </p>
                         <p>
-                          Using a prompt, you can navigate through folders and perform actions on files just like you can by clicking
-                          on folders. To start a terminal session on Mac, click the magnifying glass in the top-right corner and type 
-                          "terminal," or click on the shortcut link in your dock. When the screen appears, you'll see a command prompt
-                          which shows your current directory (folder). You can show a list of the files in your directory by typing 
-                          <code>ls</code> and you can change to another folder by typing <code>cd foldername</code>. If there are 
-                          spaces in the folder name, use quotes. Feel free to check a basic course on terminal commands to learn
-                          more useful things you can do on the command line.
+                          Once you're looking to get in a regular rhythm for your git coding projects, try finding a nice workflow.
+                          A typical git workflow uses <a href="https://help.github.com/articles/fork-a-repo/">forking</a>, 
+                          <a href="https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches">branches</a>, 
+                          <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">tags</a>, and 
+                          <a href="https://help.github.com/articles/creating-a-pull-request/">pull requests</a>. 
+                          The director of curriculum at MB has a great <a href="https://github.com/ggorlen/mb.git">suggested workflow outline</a> 
+                          which you can utilize, and is an expansion on the simplistic version I've offered here.
                         </p>
-                        https://github.com/juemura/summer17-android
-                        https://gist.github.com/juemura/c354421701cd9d8c1e934f4c0932f4cb
-                        https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/
-                        -->
+                        <p>
+                          As mentioned, git is an industrial strength tool, so it's important, but don't worry about going too deep or
+                          getting everything right. If
+                          you encounter any troubles, I'm here to help you sort them out. Commit often, because when you do, you can always
+                          rewind your project to that point in time should problems occur (for example, accidentally deleting your entire project).
+                          There are also plenty of resources online including
+                          <a href="https://www.youtube.com/watch?v=MJUJ4wbFm_A">videos like this</a> that are extremely informative.
+                          The best way to learn git, as with normal programming, is just to play around with it, looking up commands 
+                          and following tutorials as you go.
+                        </p>
     </main>
 
     <!-- jQuery -->
