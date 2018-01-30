@@ -162,6 +162,7 @@
         body.vertices.forEach(e => ctx.lineTo(e.x, e.y));
         ctx.closePath();
         ctx.fill();
+        ctx.stroke();
       };
       
       const inBounds = (body, canvas) => {
@@ -178,14 +179,15 @@
       };
       
       (function update() {
-        if ((boxes.length < 70 || Math.random() < 0.0001) && boxes.length < 500) {
+        if ((boxes.length < 40 || Math.random() < 0.0001) && boxes.length < 500) {
           boxes.unshift(Bodies.rectangle(
             canvas.width / 2, -130, Math.random() * 60 + 5, 
             Math.random() * 60 + 5,
             { frictionAir: 0.01, friction: 0.1, restitution: 0.6 }
           ));
       
-          boxes[0].color = "hsl(" + (Math.random() * 200 + 100) + ", 20%, " + (Math.random() * 70) + "%)";
+          boxes[0].color = "hsl(" + (Math.random() * 100 + 100) + 
+                     ", 50%, " + (Math.random() * 40 + 40) + "%)";
           World.add(engine.world, [boxes[0]]);
           Matter.Body.rotate(boxes[0], rad(Math.random() * 360));
         }
