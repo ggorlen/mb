@@ -16,15 +16,15 @@ $(document).ready(function () {
   }
 
   // Sticky nav
-  const nav = $("nav");
-  const navInitOffset = nav.offset().top;
-  const stickyNav = function () {
-    if ($(window).scrollTop() >= navInitOffset) { nav.addClass("sticky"); } 
-    else { nav.removeClass("sticky"); }
-  };
-  
-  stickyNav();
-  $(window).scroll(stickyNav);
+  //const nav = $("nav");
+  //const navInitOffset = nav.offset().top;
+  //const stickyNav = function () {
+  //  if ($(window).scrollTop() >= navInitOffset) { nav.addClass("sticky"); } 
+  //  else { nav.removeClass("sticky"); }
+  //};
+  //
+  //stickyNav();
+  //$(window).scroll(stickyNav);
 
   // Highlight code with HLJS
   $("code").each(function (i, block) { 
@@ -32,21 +32,21 @@ $(document).ready(function () {
   });
 
   // Animated scrolling effects
-  $(document).on("click", "a", function (e) {
-    let destination = $.attr(this, "href");
-  
-    if (destination.startsWith("#")) {
-      e.preventDefault();
-  
-      $("html, body").animate({
-        scrollTop: $(destination).offset().top
-      }, 300);
-    }
-  });
-
-  $("a[href='#top']").click(function () {
-    $("html, body").animate({ scrollTop: 0 }, "fast");
-    return false;
-  });
+  //$(document).on("click", "a", function (e) {
+  //  var destination = $.attr(this, "href");
+  //
+  //  if (destination.startsWith("#")) {
+  //    e.preventDefault();
+  //
+  //    $("html, body").animate({
+  //      scrollTop: $(destination).offset().top
+  //    }, 300);
+  //  }
+  //});
+  //
+  //$("a[href='#top']").click(function () {
+  //  $("html, body").animate({ scrollTop: 0 }, "fast");
+  //  return false;
+  //});
 
 });
