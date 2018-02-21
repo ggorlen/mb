@@ -219,7 +219,7 @@
          is part of <a href="https://en.wikipedia.org/wiki/Unix">Unix</a>, a really old and powerful 
          operating system that Mac's <a href="https://en.wikipedia.org/wiki/Operating_system">OS</a> is built on top of. 
          All developers need to be familiar with Unix and git in addition to programming languages. 
-         Staring for days on end at black screens with monospace text makes programmers feel cool.
+         Staring for days on end at black screens with monospace text makes programmers feel cool (it's a pretty useful tool, too).
        </p>
        <h3>Terminal basics</h3>
        <p>
@@ -254,9 +254,7 @@ $ git config --global user.email "bob@example.com"</code></pre>
          <a href="https://help.github.com/articles/create-a-repo/">create a repository</a> for your project. Choose 
          a simple repository name; long names with unusual characters or alternating capitalization may impact
          your (and your users') ability to type it in correctly.
-         It's a good idea to always initialize the repository with a readme. You may want to 
-         <a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">add your teammates
-         as collaborators</a> on your repository. This means they can edit the files directly without requiring your review.
+         It's a good idea to initialize the repository with a readme.
        </p>  
        <p>
          The next step is to get a copy of your repository to your computer. This is called 
@@ -272,35 +270,40 @@ $ git config --global user.email "bob@example.com"</code></pre>
              <p>
                Copy the repository name (example: <code class="bash">https://github.com/ggorlen/mb.git</code>) to the clipboard.
              </p>
+             <img alt="github cloning demo animation" src="gh-clone.gif" />
            </li>
            <li>
              <p>
-               Open terminal and navigate to the folder you'd like to clone the repo to, and type 
-               <code class="bash">git clone https://github.com/ggorlen/mb.git</code> (or whatever your repo name is).
+               Open terminal and navigate to the folder you'd like to clone the repo to, and enter
+               <code class="bash">git clone https://github.com/ggorlen/mb.git</code> (or whatever your repo name 
+               is--you can paste it from your clipbboard).  Optionally, type <code class="bash">ls</code> to see 
+               your freshly cloned directory.
              </p>
            </li>
            <li>
              <p>
-               Type <code class="bash">ls</code> to see your freshly cloned directory.
+               Type <code class="bash">cd your-repo-name</code> to open your new project directory and (optionally) 
+               type <code class="bash">ls</code> again to see the cloned files.
              </p>
-           </li>
-           <li>
-             <p>
-               Type <code class="bash">cd your-repo-name</code> to open your new project directory.
-             </p>
+             <img alt="git clone demo animation" src="git-clone.gif" />
            </li>
          </ol>
        </p>  
        <h3>Making a commit and pushing changes to Github</h3>
        <p>
-         At this point, with the repository on your computer, you can start coding. When you finish making changes,
+         At this point, I'll walk you through a very simple workflow that will work for solo projects. Once you master this,
+         you can choose a slightly more elaborate workflow that will allow you to collaborate on shared repositories.
+       </p>
+       <p>
+         With the repository on your computer, you can start coding. When you finish making changes,
          it's time to commit them to the remote repository. Type <code class="bash">git add .</code> with
          the terminal open in the project directory. This
-         collects all modified files to commit. Next, type <code class="bash">git commit -m "descriptive message"</code>.
+         collects all modified files for the commit. Next, type <code class="bash">git commit -m "descriptive message"</code>.
          This message is important because it explains to your future self and your collaborators what modifications
          you made to the project. Lastly, type <code class="bash">git push origin master</code>. This will push your
          changes up to Github's cloud server.
        </p>
+       <img alt="git commit demo animation" src="git-commit.gif" />
        <h3>Next steps</h3>
        <p>
          Once you're looking to get in a regular rhythm for your git coding projects, try finding a nice workflow.
@@ -312,10 +315,12 @@ $ git config --global user.email "bob@example.com"</code></pre>
          <a href="https://gist.github.com/juemura/f91ecd2b2e0ed8a77a84d25cdbe105ea">suggested workflow outline</a> 
          which you can utilize, and is an expansion on the simplistic version I've offered here.
        </p>
+         You may want to <a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">add your teammates
+         as collaborators</a> on your repository. This means they can edit the files directly without requiring your review.
        <p>
-         As mentioned, git is an industrial strength tool, so it's important, but don't worry about going too deep or
-         getting everything right. If
-         you encounter any troubles, I'm here to help you sort them out. Commit often, because when you do, you can always
+         As mentioned, git is an industrial strength tool, so don't worry about going too deep or
+         getting everything right. If you encounter any troubles, I'm here to help you sort them out. 
+         Commit often, because when you do, you can always
          rewind your project to that point in time should problems occur in the future (for example, accidentally deleting 
          your entire project). There are also plenty of resources online including
          <a href="https://www.youtube.com/watch?v=MJUJ4wbFm_A">videos like this</a> that are extremely informative.
