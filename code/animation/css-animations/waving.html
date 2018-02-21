@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Waving letters</title>
+
+    <!-- CSS -->
+    <style>
+
+      body {
+        font-size: 2.4em;
+        font-family: monospace;
+      }
+
+      /* @keyframes defines an animation behavior */
+      @keyframes wave {
+        0% { 
+          transform: translateY(0px) rotateY(0);      
+          background: #000;
+          color: #fff;
+        }
+        50% { 
+          transform: translateY(1em) rotateY(180deg); 
+          background: #fff;
+          color: #000;
+        }
+        100% { 
+          transform: translateY(0px) rotateY(360deg); 
+          background: #000;
+          color: #fff;
+        }
+      }
+
+      .waving-letter {
+        padding: 0.3em;
+        display: inline-block;
+        animation-name: wave;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+      }
+
+      #letter-1 {
+        animation-delay: 0s;
+      }
+
+      #letter-2 {
+        animation-delay: 0.1s;
+      }
+
+      #letter-3 {
+        animation-delay: 0.2s;
+      }
+
+      #letter-4 {
+        animation-delay: 0.3s;
+      }
+
+      #letter-5 {
+        animation-delay: 0.4s;
+      }
+
+      #letter-6 {
+        animation-delay: 0.5s;
+      }
+
+      #letter-7 {
+        animation-delay: 0.6s;
+      }
+
+      #letter-8 {
+        animation-delay: 0.7s;
+      }
+
+      #letter-9 {
+        animation-delay: 0.8s;
+      }
+
+      #letter-10 {
+        animation-delay: 0.9s;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <!-- each letter gets its own span container with unique 
+         ID, enabling a different delay time for each. -->
+    <span id="letter-1" class="waving-letter">M</span>
+    <span id="letter-2" class="waving-letter">I</span>
+    <span id="letter-3" class="waving-letter">S</span>
+    <span id="letter-4" class="waving-letter">S</span>
+    <span id="letter-5" class="waving-letter">I</span>
+    <span id="letter-6" class="waving-letter">O</span>
+    <span id="letter-7" class="waving-letter">N</span>
+    <span>&nbsp;</span>
+    <span id="letter-8" class="waving-letter">B</span>
+    <span id="letter-9" class="waving-letter">I</span>
+    <span id="letter-10" class="waving-letter">T</span>
+
+  </body>
+</html>
