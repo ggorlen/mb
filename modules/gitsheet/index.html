@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Course page for Mission Bit at Gateway HS">
+    <meta name="author" content="Greg Gorlen">
+    <meta name="keywords" content="mission, bit, gateway">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <title>Mission Bit at Gateway HS</title>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+  </head>
+  <body>
+
+    <nav>
+      <a href="../../modules/">Modules</a>
+      <a href="../../resources/">Resources</a>
+      <a href="../../projects/">Projects</a>
+      <a href="../../about/">About</a>
+    </nav>
+
+    <main>
+
+      <h1>git cheat sheet</h1>
+      <p>
+        Here's the rundown of my basic git workflow. Please note:
+      </p>
+      <ul>
+        <li>
+          This cheat sheet assumes you
+          <ol>
+            <li> 
+              signed up for GitHub and know how to make a repository (<a href="../02/">module 2</a>)
+            </li>
+            <li>  
+              understand terminal basics (<a href="../10/index.html#git">module 10</a>)
+            </li>  
+          </ol>
+        </li>
+        <li>
+          Code in <i>italics</i> is a placeholder and should be replaced with names or paths specific to your project. 
+        </li>
+        <li>
+          git is the command line (terminal) tool, while <a href="https://github.com/">GitHub</a> is the website that hosts your git repositories.
+        </li>
+        <li>
+          Don't type text following a <code>#</code> in the commands below. These are comments to explain each command.
+        </li>
+        <li>This page is in progress! Suggestions are welcome.</li>
+      </ul>  
+      <ol>
+        <li>
+          <a href="#cloning">Cloning</a>
+        </li>
+        <li>
+          <a href="#workflow">Workflow</a>
+        </li>
+        <li>
+          <a href="#pr">Pull requests and merge conflicts</a>
+        </li>
+        <li>
+          <a href="#merge">Merge conflicts</a>
+        </li>
+      </ol>
+      <hr>
+      <h2 id="cloning">Cloning</h2>
+      <p>
+        Start by <a href="https://help.github.com/articles/create-a-repo/">creating a repository</a> or
+        <a href="https://help.github.com/articles/fork-a-repo/">forking an existing repo</a> on GitHub.
+        Below, <i>repo</i> refers to your forked repository, while <i>original_repo</i> refers
+        to the original repository you forked from. If you didn't fork a repository, it refers to the
+        original repository you created.
+      </p>
+<pre><code>git clone https://github.com/<i>username</i>/<i>repo</i>.git # copy the repository
+cd <i>repo</i>                                        # change directory to the repository
+git remote add upstream <i>original_repo</i>          # set the upstream to the original repository
+</code></pre>
+      <hr>
+      <h2 id="workflow">Workflow</h2>
+      <p>
+        After you've cloned a repository, here's a workflow to use as you code.
+      </p>
+<pre><code>git pull upstream master    # merge changes from upstream repository into master branch
+git push origin master      # push the latest changes to your forked repository
+git checkout -b <i>branch</i>      # checkout a branch and begin coding   
+git add <i>filename</i>            # when you're ready to commit your changes to a file
+git commit -m "<i>description</i>" # create a commit
+git push origin <i>branch</i>      # if you didn't checkout to a branch, your branch is master
+</code></pre>
+      <p>
+        At this point, your changes were pushed to origin (your version of the repository), but 
+        if you forked the repository from another source, that source (upstream) doesn't have your changes.
+        To ask the owner of that repository to merge your changes into the upstream repository, open a 
+        <a href="https://help.github.com/articles/creating-a-pull-request/">pull request</a> and wait
+        for the repository owner to merge your changes (or ask you to make modifications). If the owner
+        adds you as a collaborator, you can push your code directly to the upstream repository or 
+        merge your pull request.
+      </p>
+      <hr>
+      <h2 id="pr">Pull requests</h2>
+      <p>
+        If you're an owner of a repository, people who fork your repository may submit pull requests, or 
+        proposed changes to the files in the repository. If you trust the person submitting the pull request
+        (and there are no merge conflicts--more on this below),
+        you can simply <a href="https://help.github.com/articles/merging-a-pull-request/">merge the changes on GitHub</a> 
+        after taking a look at their proposal. However, in many cases, you'll want to 
+        <a href="https://help.github.com/articles/checking-out-pull-requests-locally/">run and test the code locally</a> 
+        before merging.
+      </p>
+      <hr>
+      <h2 id="merge">Merge conflicts</h2>
+      <p>
+        It often happens that a pull attempts to modify a file that has since been changed in the same
+        location: there are two mutually exclusive versions and a decision has to be made about which will remain. 
+        This scenario is called a
+        <a href="https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/">merge conflict</a>. 
+        Resolving a merge conflict involves choosing between the two versions, modifying the code accordingly, then
+        staging changes as normal with <code>git add .</code> and making a commit.
+      </p>
+
+    </main>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Global JS script -->
+    <script src="../../js/global.js"></script>
+
+  </body>
+</html>

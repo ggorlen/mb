@@ -15,7 +15,7 @@ body {
   overflow-y: scroll;
   width: 100%;
   min-height: 100vh;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s;
   /*line-height: 1.4em;*/
 }
