@@ -82,10 +82,10 @@
       <div id="attendance-box">
         <form id="attendance-form" onsubmit="addAttendee(this);">
           <div>
-            <input name="name" placeholder="your name" type="text" class="input form-control" />
+            <input name="name" placeholder="your name" type="text" maxlength=30 class="input form-control" />
           </div>
           <div>
-            <input name="notes" placeholder="remarks (optional)" type="text" class="input form-control" />
+            <input name="notes" placeholder="remarks (optional)" maxlength=50 type="text" class="input form-control" />
           </div>
           <div id="attendance-form-btn">
             <button type="submit" form="attendance-form" value="sign in" title="Sign the attendance sheet">
