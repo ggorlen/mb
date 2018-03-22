@@ -77,9 +77,9 @@
         to the original repository you forked from. If you didn't fork a repository, it refers to the
         original repository you created. This is a one-time set up procedure.
       </p>
-<pre><code>git clone https://github.com/<i>username</i>/<i>repo</i>.git # copy the repository
-cd <i>repo</i>                                        # change directory to the repository
-git remote add upstream <i>original_repo</i>          # set the upstream to the original repository
+<pre><code>git clone https://github.com/<i>username</i>/<i>repo</i>.git               # copy the repository
+cd <i>repo</i>                                                      # change directory to the repository
+git remote add upstream https://github.com/<i>username</i>/<i>repo</i>.git # set the upstream repository
 </code></pre>
       <hr>
       <h2 id="workflow">Workflow</h2>
@@ -96,13 +96,13 @@ git push origin <i>branch</i>      # if you didn't checkout to a branch, your br
 </code></pre>
 -->
 <pre><code>git pull upstream master    # merge changes from upstream repository into master branch
-git push origin master      # push the latest changes to your forked repository
+git push origin master      # push the latest changes to your repo
 
-## code away! ##
+#### code away! ####
 
 git add <i>filename</i>            # or use 'git add . ' to add all modified files
 git commit -m "<i>description</i>" # create a commit
-git push origin master      # push your changes to your forked repo
+git push origin master      # push your changes to your repo
 </code></pre>
       <p>
         At this point, your changes were pushed to origin (your version of the repository), but 
