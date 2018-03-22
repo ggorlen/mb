@@ -61,7 +61,7 @@
                         <h2 id="vars">Variables</h2>
                         <p>
                           Variables are used to store pieces of data in your program. Some types of data that can be stored in
-                          variables include numbers, strings, functions, objects, and booleans (true or false).
+                          variables include numbers, strings, functions, objects, and booleans (true or false). 
                         </p>
 <pre><code class="js">// Declare an undefined variable
 let firstName;
@@ -91,7 +91,7 @@ let sum = 5 + 7;
 console.log(sum);  // 12
 
 
-// Perform an operation in a parameter 
+// Perform an operation in a function parameter 
 console.log(6 / 2);  // 3
 
 
@@ -174,11 +174,16 @@ console.log(xLocation);  // some random number between 4 and 30</code></pre>
 let user = {
   name: "rocky456",
   password: "tortoise",
-  email: "rocky@gmail.com"
+  speak: function () {
+    console.log("Hi, I'm " + this.name);
+  }
 };
 
 // Display information about the user object
 console.log(user);
+
+// Call a function on an object
+user.speak();
 
 // Display the user's password in two different ways
 console.log(user["password"]);
@@ -186,25 +191,26 @@ console.log(user.password);
 
 
 // Declare an object constructor function for making Users
+// "this" is a keyword that refers to the current object scope
 let User = function (name, password, email) {
   this.name = name;
   this.password = password;
   this.email = email;
 };
 
-// Instantiate an object using the above object constructor function
-let rocky = new User("rocky456", "tortoise", "rocky@gmail.com");
-console.log(rocky);
-
 // Add a function to the User object prototype
 User.prototype.changePassword = function (password) {
   this.password = password;
 }
 
-// Call the new function
+// Create an object using the above object constructor function
+let rocky = new User("rocky456", "tortoise", "rocky@gmail.com");
+console.log(rocky);
+
+// Call the object's function
 rocky.changePassword("hare");
 
-// Change a property directly
+// Set a property directly
 rocky.email = "rocky@hotmail.com";
 
 // See the updated user

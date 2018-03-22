@@ -52,7 +52,6 @@
         <li>
           Don't type text following a <code>#</code> in the commands below. These are comments to explain each command.
         </li>
-        <li>This page is in progress! Suggestions are welcome.</li>
       </ul>  
       <ol>
         <li>
@@ -71,14 +70,15 @@
       <hr>
       <h2 id="setup">Setting up a project</h2>
       <p>
-        Start by <a href="https://help.github.com/articles/create-a-repo/">creating a repository</a> or
+        The below is a one-time setup procedure. Start by 
+        <a href="https://help.github.com/articles/create-a-repo/">creating a repository</a> or
         <a href="https://help.github.com/articles/fork-a-repo/">forking an existing repo</a> on GitHub.
-        Below, <i>repo</i> refers to your forked repository, while <i>original_repo</i> refers
-        to the original repository you forked from. If you didn't fork a repository, it refers to the
-        original repository you created. This is a one-time set up procedure.
+        git clone should refer to your fork of someone else's repo or an original repository you created.
+        add upstream should refer to someone else's original repository (not your fork), or your original repo if
+        you created it.
       </p>
 <pre><code>git clone https://github.com/<i>username</i>/<i>repo</i>.git               # copy the repository
-cd <i>repo</i>                                                      # change directory to the repository
+cd <i>repo</i>                                                      # open the repository directory
 git remote add upstream https://github.com/<i>username</i>/<i>repo</i>.git # set the upstream repository
 </code></pre>
       <hr>
@@ -103,6 +103,8 @@ git push origin master      # push the latest changes to your repo
 git add <i>filename</i>            # or use 'git add . ' to add all modified files
 git commit -m "<i>description</i>" # create a commit
 git push origin master      # push your changes to your repo
+
+#### open a pull request if necessary (see below) ####
 </code></pre>
       <p>
         At this point, your changes were pushed to origin (your version of the repository), but 
