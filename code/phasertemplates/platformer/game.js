@@ -31,9 +31,9 @@ const game = new Phaser.Game(
 
 // Phaser function to load assets and set up the game
 function preload() {
-  game.load.image("player", "box.png");
-  game.load.image("platform", "platform.png");
-  game.load.image("floor", "floor.png");
+  game.load.image("player", "assets/box.png");
+  game.load.image("platform", "assets/platform.png");
+  game.load.image("floor", "assets/floor.png");
   kbd = game.input.keyboard.createCursorKeys();
 }
 
