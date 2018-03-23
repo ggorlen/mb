@@ -1,0 +1,9 @@
+<game.add.sprite>
+<script src="//cdn.jsdelivr.net/npm/phaser@3.2.0/dist/phaser.js"></script>
+console.log("Taiga Aisaka")
+var human ={
+race : 'Japanese'
+age : '23'
+hair color : 'light brown'
+eye color : 'hazel'
+skin tone : 'light'
