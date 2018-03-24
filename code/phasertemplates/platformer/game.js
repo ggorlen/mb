@@ -5,6 +5,8 @@
 
 const height = 400;
 const width = 400;
+const worldHeight = 400;
+const worldWidth = 800;
 const platformHeight = 15;
 const platformWidth = 50;
 const platformLocations = [
@@ -12,6 +14,11 @@ const platformLocations = [
   { x: 200, y: 300 },
   { x: 130, y: 100 },
   { x: 290, y: 150 },
+  { x: 590, y: 200 },
+  { x: 420, y: 350 },
+  { x: 360, y: 300 },
+  { x: 690, y: 250 },
+  { x: 500, y: 180 },
 ];
 const playerProps = {
   vx: 200, // "v" for velocity
@@ -51,13 +58,16 @@ function create() {
 
   // Gentlefolk, start your physics engines
   game.physics.startSystem(Phaser.Physics.ARCADE);
+  game.world.setBounds(0, 0, worldWidth, worldHeight);
 
   // Make the platforms group array
   platforms = game.add.group();
   platforms.enableBody = true;
-  platforms.create(
-    0, game.world.height - platformHeight, "floor"
-  ).body.immovable = true;
+  const floor = platforms.create(
+    0, game.world.height - 1, "floor"
+  );
+  floor.body.immovable = true;
+  floor.scale.setTo(2, 0);
 
   // Make all the ledges and set them to be immovable
   platformLocations.forEach(e => 
@@ -74,6 +84,9 @@ function create() {
   game.physics.enable(player, Phaser.Physics.ARCADE);
   player.body.gravity.y = playerProps.gravity;
   player.body.collideWorldBounds = true;
+
+  // Have the camera follow the player
+  game.camera.follow(player);
 }
 
 /********************************/
@@ -83,6 +96,12 @@ function update() {
 
   // Collide the player and platforms
   game.physics.arcade.collide(player, platforms);
+
+  // Handle player jumps
+  if (kbd.up.isDown && player.body.touching.down) {
+    player.body.velocity.y = -playerProps.vy;
+    player.angle = 270;
+  }
 
   // Handle player horizontal movement
   if (kbd.left.isDown) {
@@ -95,11 +114,5 @@ function update() {
   }
   else {
     player.body.velocity.x = 0;
-  }
-
-  // Handle player jumps
-  if (kbd.up.isDown && player.body.touching.down) {
-    player.body.velocity.y = -playerProps.vy;
-    player.angle = 270;
   }
 }
