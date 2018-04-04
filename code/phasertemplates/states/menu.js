@@ -9,15 +9,15 @@ const menuState = {
    * Loads game assets (images, sounds, tilemaps, etc)
    */
   preload : function () {
-
-    // Enable mouse
-    game.input.mouse.capture = true;
   },
 
   /**
    * Initializes variables and instantiates objects
    */
   create: function () {
+
+    // Enable mouse
+    game.input.mouse.capture = true;
 
     // Add some text
     game.add.text(
