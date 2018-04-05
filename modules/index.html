@@ -94,6 +94,7 @@
           </div>
         </form>
       </div>
+      <div id="laptop-cart-organizers"></div>
 
       <h3>Introduction</h3>
       <ul>
@@ -132,6 +133,45 @@
     
     <!-- Highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Seed random -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js"></script>
+    <script>
+
+      (function () {
+
+        // Sets Math.random to a PRNG initialized using the given explicit seed.
+        Math.seedrandom(Date().substr(4, 6));
+
+        var students = [
+          "Jillian",
+          "Caelum",
+          "Christine",
+          "Edison",
+          "Emi",
+          "Ivan",
+          "Kanin",
+          "Mary",
+          "Nikolaj",
+          "Otto",
+          "Rowin",
+          "Wendy",
+          "Aidan",
+          "Elvin",
+          "Russell",
+          "Oscar"
+        ];
+
+        var rIdx = Math.random() * students.length | 0;
+        var firstOrganizer = students.splice(rIdx, 1);
+        var secondOrganizer = students[Math.random()*students.length|0];
+
+        document.getElementById("laptop-cart-organizers").innerHTML = 
+          "<i>Today's laptop cart organizers are " + firstOrganizer + 
+          " and " + secondOrganizer + "</i>";
+      })();
+
+    </script>
 
     <!-- Global JS script -->
     <script src="../js/global.js"></script>
