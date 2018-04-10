@@ -9,13 +9,13 @@ const worldHeight = 400;
 const worldWidth = 800;
 const platformHeight = 15;
 const platformWidth = 50;
-const platformLocations = [
-  { x: 50, y: 200 },
-  { x: 200, y: 300 },
-  { x: 130, y: 100 },
-  { x: 290, y: 150 },
-  { x: 590, y: 200 },
-  { x: 420, y: 350 },
+const platformLocations = [ // Alternately, use a 2d array of level data, .e.g:
+  { x: 50, y: 200 },        // [["#############"],
+  { x: 200, y: 300 },       //  ["#      ##   #"],
+  { x: 130, y: 100 },       //  ["# ##        #"],
+  { x: 290, y: 150 },       //  ["#      ##   #"],
+  { x: 590, y: 200 },       //  ["# @       ###"],
+  { x: 420, y: 350 },       //  ["#############"]]
   { x: 360, y: 300 },
   { x: 690, y: 250 },
   { x: 500, y: 180 },

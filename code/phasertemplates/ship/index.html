@@ -36,9 +36,9 @@
       const height = 400;
       const width = 400;
       const dragAmount = 0.95;
-      const playerRotationSpeed = 5;
       const playerAccelerationAmount = 150;
       const playerRotationAmount = 600;
+      const playerRotationDrag = 0.7;
       
       let kbd;
       let player;
@@ -94,7 +94,7 @@
         }
         else {
           player.body.angularAcceleration = 0;
-          player.body.angularVelocity *= 0.7;
+          player.body.angularVelocity *= playerRotationDrag;
         }
 
         // Player forward/reverse movement
