@@ -32,7 +32,7 @@ const menuState = {
    */
   update: function () {
 
-    // Check for mouse click and switch state to the game state when
+    // Check for mouse click to switch state to the game state
     if (game.input.activePointer.leftButton.isDown) {
       game.state.start("game");
     }

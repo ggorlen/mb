@@ -55,7 +55,6 @@
       // Phaser function to load assets and set up the game
       function preload() {
         game.load.image("player", "box.png");
-        kbd = game.input.keyboard.createCursorKeys();
       }
 
       /********************************/
@@ -76,6 +75,9 @@
           20, 20, "Try the arrow keys :)", 
           { fontSize: "16px", fill: "#fff", font: "monospace" }
         );
+
+        // Listen for cursor keypresses
+        kbd = game.input.keyboard.createCursorKeys();
       }
 
       /********************************/
