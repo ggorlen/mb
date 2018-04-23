@@ -40,7 +40,7 @@ var enemy = {
         this.shape.body.width = this.width
         this.shape.body.height = this.height
         this.game = game;
-        this.xvelocity = (Math.random()* 200 -130);
+        this.xvelocity = (Math.random()* 225 -120);
     },
     update: function(){
         // this.shape.y = this.shape.y + this.speed;
@@ -250,7 +250,6 @@ function death () {
     enemies = [];
 
     //update score
-    score = 0;
     scoreText.text = score;
     if (score > highScore) {
         highScore = score;
@@ -258,7 +257,10 @@ function death () {
         highScoreText.text = 'High Score: ' + highScore;
         scoreText.text = score;
 
-    };
+    }
+    else{
+        score = 0;
+    }   
 
 }
 
