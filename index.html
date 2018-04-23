@@ -108,6 +108,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
 
     <script>
+    
       "use strict";
 
       const rad = d => d * Math.PI / 180;
@@ -179,15 +180,15 @@
       };
       
       (function update() {
-        if ((boxes.length < 16 || Math.random() < 0.0001) && boxes.length < 50) {
-          const side = Math.random() * 80 + 25;
+        if ((boxes.length < 25 || Math.random() < 0.0001) && boxes.length < 100) {
           boxes.unshift(Bodies.rectangle(
-            canvas.width / 2, -100, side, side,
-            { frictionAir: 0.01, friction: 0.3, restitution: 0.9 }
+            canvas.width / 2, -130, Math.random() * 60 + 5, 
+            Math.random() * 60 + 5,
+            { frictionAir: 0.01, friction: 0.1, restitution: 0.6 }
           ));
       
-          boxes[0].color = "hsl(" + (Math.random() * 220 + 100) + 
-                           ", 60%, " + (Math.random() * 40 + 40) + "%)";
+          boxes[0].color = "hsl(" + (Math.random() * 100 + 100) + 
+                     ", 50%, " + (Math.random() * 40 + 40) + "%)";
           World.add(engine.world, [boxes[0]]);
           Matter.Body.rotate(boxes[0], rad(Math.random() * 360));
         }
