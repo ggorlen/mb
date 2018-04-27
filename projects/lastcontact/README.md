@@ -1,10 +1,14 @@
 hi this is our game
 
 ## TODOs
-- ~~switch levels with exit tile(nikolaj)~~
-- move enemy and exitdoor location to specific level
-- start enemies sprites (edison)
+- rotate sprite when moving
+- bullets
+- design maps / new spritesheet
+- health bar 
+- exit door keys
+- power ups
+- sounds
+- enemy AI
+- sprite animations
+- 
 
-- ~~Implement camera: https://phaser.io/examples/v2/camera/moving-the-camera~~
-- ~~put site live on github.io~~
-- ~~Make map~~

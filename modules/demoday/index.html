@@ -39,7 +39,7 @@
                           presentations and detailed information here when it becomes available. 
                         </p>  
                         <p>  
-                          There are <span style="font-weight: bold;" id="countdown">?</span> days left until Demo Day!
+                         <span id="countdown"></span>
                         </p>
                         <img src="https://pbs.twimg.com/media/Cz2vB1EUQAIP79B.jpg" alt="Demo Day group photo" style="max-width: 600px;">
     </main>
@@ -56,7 +56,12 @@
     <script>
       var difference = new Date("May 9, 2018 17:00:00").getTime() - new Date().getTime();
       difference = (difference / (1000 * 60 * 60 * 24)) | 0;
-      document.getElementById("countdown").innerText = Math.max(difference, 0);
+
+      if (difference > 0) {
+        document.getElementById("countdown").innerHTML = 
+          'There are <span style="font-weight: bold;">' + 
+          Math.max(difference, 0) + '</span> days left until Demo Day!';
+      }
     </script>
 
   </body>
