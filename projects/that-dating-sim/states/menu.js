@@ -9,16 +9,20 @@ const menuState = {
    * Loads game assets (images, sounds, tilemaps, etc)
    */
   preload : function () {
-    game.load.image('intro_background','assets/game_background.jpg');
-    game.load.image('button_1','assets/button_1.png')
-    // Enable mouse
-    game.input.mouse.capture = true;
+    game.load.image('text_button', 'assets/text_button.jpeg');
+    game.load.image('button_1','assets/button_1.png');
+    game.load.image('intro_background', 'assets/game_background.jpg');
+ 
+
   },
 
   /**
    * Initializes variables and instantiates objects
    */
   create: function () {
+    // Enable mouse
+    game.input.mouse.capture = true;
+      
     var i = game.add.image(game.world.centerX, game.world.centerY, 'intro_background')
     i.anchor.set(0.5)
     

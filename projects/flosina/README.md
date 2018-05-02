@@ -15,13 +15,11 @@ a Mission Bit Group Project for the 2018 Spring Semester
 
 ### A list of things for anyone to work on:
 
-* Figure Out How To Make Phaser Run Responsively (in Fullscreen)
+~~* Work on Oceana State~~
 
-* Work on Oceana State
+~~* Make Fullscreen / Larger Map Window~~
 
-* Make Fullscreen / Larger Map Window
-
-* Add Sprites to States
+~~* Add Sprites to States~~
 
 * 
 
@@ -29,14 +27,14 @@ a Mission Bit Group Project for the 2018 Spring Semester
 
 * Color-Code Parts Explored
 
-* Panning Around to Explore Map
+~~* Panning Around to Explore Map~~
 
 *
 
 
 ### Aidan
 
-* Help Emi w/ Mapping Out The Land
+~~* Help Emi w/ Mapping Out The Land~~
 
 * Work on Sky State
 
@@ -48,11 +46,11 @@ a Mission Bit Group Project for the 2018 Spring Semester
 
 * ~~Side Task: Sprites~~ ~~(and Decide How to Animate Them)~~
 
-* Design Map
+~~* Design Map~~
 
 * ~~Look Into Utilizing Example Code w/ Mary~~
 
-* Crop Blank Space of Sprite Images
+~~* Crop Blank Space of Sprite Images~~
 
 * Work on Forest State
 

@@ -30,6 +30,7 @@ const blurpiaState = {
         map.anchor.set(0.5);
         map.inputEnabled = true;
         map.input.useHandCursor = true;  // Change cursor style on mouseover
+        map.fixedToCamera = true;
         
         // Add Mellie animations
         const mellieFrames = [];

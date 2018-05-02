@@ -1,7 +1,7 @@
 /**
- * game.js 
+ * school.js 
  *
- * This state represents the in-game action
+ * This state represents the start of the game and where the love story began
  */
 const schoolState = {
 
@@ -9,9 +9,10 @@ const schoolState = {
    * Loads game assets (images, sounds, tilemaps, etc)
    */
   preload: function () {
-    game.load.image('school_background','assets/school_background.jpg')
-    game.load.image('button', 'assets/button.png');
-    game.load.image('button_1', 'assets/button_1.png');
+      
+    game.load.image('text_button', 'assets/text_button.jpeg');
+    game.load.image('button_1','assets/button_1.png');
+    game.load.image('school_background','assets/school_background.jpg');   
   },
 
   /**
@@ -38,11 +39,11 @@ const schoolState = {
       game.state.start('menu');
     }, this);*/
       
-    const button_1 = game.add.sprite(400,45, 'button_1');
-    button_1.anchor.set(0.5);
-    button_1.inputEnabled = true;
-    button_1.input.useHandCursor = true;  // Change cursor style on mouseover
-    button_1.scale.setTo(1.2,0.5);
+    const text_button = game.add.sprite(400,45, 'text_button');
+    text_button.anchor.set(0.5);
+    text_button.inputEnabled = true;
+    text_button.input.useHandCursor = true;  // Change cursor style on mouseover
+    text_button.scale.setTo(1.4,1);
       
         game.add.text(
       125, 25,  // x, y position
@@ -54,7 +55,7 @@ const schoolState = {
       game.state.start('confession');
     }, this);
     
-    button_1.events.onInputDown.add(function () {
+    text_button.events.onInputDown.add(function () {
       game.state.start('confession');   
     }, this);
   },

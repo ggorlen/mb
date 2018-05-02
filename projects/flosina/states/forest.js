@@ -1,6 +1,8 @@
 // The Forest in the Outskirts of Blurpia
 // Home to Emi's Character
 
+//add scroling feature
+
 var lily;
 
 const forestState = {
@@ -14,21 +16,33 @@ const forestState = {
     },
     
     create: function () {
-        
+            
         game.world.setBounds(0, 0, 1042, 666);
         
         // Set backdrop
         game.add.sprite(0, 0, 'backdrop');
         console.log("Forest!");
         
+         // Add some text
+    game.add.text(
+    325, 150,  // x, y position
+      "Hi, my name is Lily.", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
         // Add lily character
-        lily = game.add.sprite(100, 320, 'lily');
+        lily = game.add.sprite(225, 100, 'lily');
+        
+        //hello my name is lily. I like to 
+        
+        lily.scale.setTo(0.6);
         
         // Add button to go to back to Map
         const map = game.add.sprite(50, 50, 'map');
         map.anchor.set(0.5);
         map.inputEnabled = true;
         map.input.useHandCursor = true;  // Change cursor style on mouseover
+        map.fixedToCamera = true;
         
         // Add Lily animations
         const lilyFrames = [];

@@ -10,7 +10,7 @@ const confessionState = {
    */
   preload: function () {
     game.load.image('conf', 'assets/confession_background.jpg');
- 
+    game.load.image('taiga', 'assets/Taiga.png'); 
   },
 
   /**
@@ -20,14 +20,16 @@ const confessionState = {
       var i = game.add.image(game.world.centerX, game.world.centerY, 'conf')
     i.anchor.set(0.5)
       
-      const button_1 = game.add.sprite(400, 45, 'button_1');
-    button_1.anchor.set(0.5);
+      const text_button = game.add.sprite(400, 45, 'text_button');
+    text_button.anchor.set(0.5);
     /*button_1.inputEnabled = true;*/
     /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
-    button_1.scale.setTo(1.2,0.5);
+    text_button.scale.setTo(1.4,1);
       
+      const taiga = game.add.sprite(275, 298.5, 'taiga');
+ 
       game.add.text(
-      125, 25,  // x, y position
+      100, 25,  // x, y position
       "The next day passed by and after school...a girl confessed to me", 
       { fontSize: "20px", fill: "#fff" }
             );

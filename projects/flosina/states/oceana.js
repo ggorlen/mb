@@ -22,7 +22,9 @@ const oceanaState = {
         console.log("Oceana!");
         
         // Add Mia character
-        mia = game.add.sprite(100, 320, 'mia');
+        mia = game.add.sprite(550, 360, 'mia');
+        
+        mia.scale.setTo(0.8);
         
         // Add button to go to back to Map
         
@@ -30,6 +32,7 @@ const oceanaState = {
         map.anchor.set(0.5);
         map.inputEnabled = true;
         map.input.useHandCursor = true;  // Change cursor style on mouseover
+        map.fixedToCamera = true;
         
         // Add Mia animations
         const miaFrames = [];

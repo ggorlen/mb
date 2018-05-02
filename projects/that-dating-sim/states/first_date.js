@@ -1,15 +1,18 @@
 /**
- * confession.js 
+ * first_date.js 
  *
- * This state represents the start of a relationship
+ * This state represents the first date
  */
-const confessionState = {
+const firstDateState = {
 
   /**
    * Loads game assets (images, sounds, tilemaps, etc)
    */
   preload: function () {
-    game.load.image('conf', 'assets/confession_background.jpg');
+    game.load.image('text_button', 'assets/text_button.jpeg');
+    game.load.image('button_1','assets/button_1.png');
+
+    game.load.image('date', 'assets/park.jpg');
  
   },
 
@@ -17,18 +20,18 @@ const confessionState = {
    * Initializes variables and instantiates objects
    */
   create: function () {
-      var i = game.add.image(game.world.centerX, game.world.centerY, 'conf')
+      var i = game.add.image(game.world.centerX, game.world.centerY, 'date')
     i.anchor.set(0.5)
       
-      const button_1 = game.add.sprite(400, 45, 'button_1');
-    button_1.anchor.set(0.5);
+      const text_button = game.add.sprite(400, 45, 'text_button');
+    text_button.anchor.set(0.5);
     /*button_1.inputEnabled = true;*/
     /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
-    button_1.scale.setTo(1.2,0.5);
+    text_button.scale.setTo(1.4,1);
       
       game.add.text(
       125, 25,  // x, y position
-      "The next day passed by and after school...a girl confessed to me", 
+      "It was our first date. Taiga asked, \"What should we do?\"", 
       { fontSize: "20px", fill: "#fff" }
             );
       
@@ -39,8 +42,8 @@ const confessionState = {
     button_2.scale.setTo(0.4,0.5);
       
       game.add.text(
-      125,470,  // x, y position
-      "I'm sorry but can\n we just be friends?", 
+      125,475,  // x, y position
+      "Uhhhh,we could\n watch a movie", 
       { fontSize: "20px", fill: "#fff" }
             );
       
@@ -51,17 +54,17 @@ const confessionState = {
     button_3.scale.setTo(0.4,0.5);
       
       game.add.text(
-      450,480,  // x, y position
-      "I guess we can try?", 
+      435,480,  // x, y position
+      "Let's go get ice cream", 
       { fontSize: "20px", fill: "#fff" }
             );
       
      button_2.events.onInputDown.add(function () {
-      game.state.start('justFriends');
+      game.state.start('movie');
     }, this);
       
        button_3.events.onInputDown.add(function () {
-      game.state.start('firstDate');
+      game.state.start('iceCream');
     }, this);
 
     /*// Add some text

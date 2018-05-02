@@ -18,8 +18,10 @@ game.state.add("menu", menuState);
 game.state.add("school", schoolState);
 game.state.add("confession", confessionState);
 game.state.add("justFriends", justFriendsState);
-game.state.add("firstDate", justFriendsState);
-
+game.state.add("firstDate", firstDateState);
+game.state.add("iceCream", iceCreamState);
+game.state.add("movie", movieState);
 
 // Start the menu state
 game.state.start("menu");
+

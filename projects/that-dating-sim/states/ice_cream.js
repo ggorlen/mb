@@ -1,18 +1,18 @@
 /**
- * justFriends.js 
+ * ice_cream.js 
  *
- * This state represents if you don't choose the choice that gets you in a relationship
+ * This state represents if you choose to go get ice cream
  */
-const justFriendsState   = {
+const iceCreamState   = {
 
   /**
    * Loads game assets (images, sounds, tilemaps, etc)
    */
-  preload: function () {
+  preload: function () {   
     game.load.image('text_button', 'assets/text_button.jpeg');
     game.load.image('button_1','assets/button_1.png');
 
-    game.load.image('walk', 'assets/walk_home.jpg');
+    game.load.image('icecream', 'assets/ice_cream.jpg');
  
   },
 
@@ -20,36 +20,28 @@ const justFriendsState   = {
    * Initializes variables and instantiates objects
    */
   create: function () {
-      console.log("justFriends")
+      console.log("iceCream")
       
-      var i = game.add.image(game.world.centerX, game.world.centerY, 'walk')
-    i.anchor.set(0.5)
+      const icecream= game.add.sprite(400, 45, 'icecream');
+    icecream.anchor.set(0.5);
+    /*button_1.inputEnabled = true;*/
+    /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
+    icecream.scale.setTo(1.2,3.4);
       
       const text_button = game.add.sprite(400, 45, 'text_button');
     text_button.anchor.set(0.5);
-    text_button.inputEnabled = true;
-    text_button.input.useHandCursor = true;  // Change cursor style on mouseover*/
+    /*button_1.inputEnabled = true;*/
+    /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
     text_button.scale.setTo(1.4,1);
       
-      game.add.text(
+    game.add.text(
       125, 9.5,  // x, y position
-      "I walked home by myself, but I hope we end up becoming\n friends a least. You friendzoned her.. GAME OVER!!!", 
-      { fontSize: "20px", fill: "#fff" }
-            );
-       const justFriendsBtn = game.add.sprite(397,320, 'button_1');
-    justFriendsBtn.anchor.set(0.5);
-    justFriendsBtn.inputEnabled = true;
-    justFriendsBtn.input.useHandCursor = true;  // Change cursor style on mouseover*/
-    justFriendsBtn.scale.setTo(0.4,0.5);
-       
-      game.add.text(
-      325,300,  // x, y position
-      "Return to Menu", 
+      "We got ice cream and seeing her smile\n was a beautiful sight", 
       { fontSize: "20px", fill: "#fff" }
             );
 
-    justFriendsBtn.events.onInputDown.add(function () {
-      game.state.start('menu');
+    text_button.events.onInputDown.add(function () {
+      game.state.start('');
     }, this);
 
     /*// Add some text
@@ -75,6 +67,9 @@ const justFriendsState   = {
   update: function () {
       
     // Show mouse coordinates for debugging and placing objects
-    
+    text.setText(
+      'x: ' + game.input.mousePointer.x + 
+      '  y: ' + game.input.mousePointer.y
+    );
   }
 }; // end confessionState

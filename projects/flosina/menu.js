@@ -1,6 +1,8 @@
 // This is the menu state
 
 var logo;
+var text1;
+var text2;
 
 const menuState = {
 
@@ -20,16 +22,26 @@ const menuState = {
 
     // Enable mouse
     game.input.mouse.capture = true;
-
-    // Add some text
-    game.add.text(
-      80, 260,  // x, y position
-      "Welcome to the Magickal Kingdom of Flosina!\nPress space to enter.", 
-      { fontSize: "32px", fill: "#fff" }
-    );
       
     // Add logo
-    logo = game.add.sprite(200, 200, 'logo');
+    logo = game.add.sprite(157, -28, 'logo');
+
+    var style = { font: "bold 26px Courier", fill: "#fff", boundsAlignH: "center", boundAlignV: "middle" };
+      
+    // Add some text
+    text1 = game.add.text(
+      0, 0,  // x, y position
+      "Welcome to the Magickal Kingdom of Flosina!", style
+    );
+      
+    text2 = game.add.text(
+      0, 0,  // x, y position
+      "Press Space to Enter", style
+    );
+      
+    text1.setTextBounds(0, game.world.centerX + 40, 800, 100);
+      
+    text2.setTextBounds(0, game.world.centerX + 85, 800, 100);
       
     const logoFrames = [];
         
