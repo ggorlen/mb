@@ -1,6 +1,52 @@
 var map;
 var cursors;
 
+var upA;
+var downA;
+var leftA;
+var rightA;
+
+var moved = false;
+
+function fade(sprite) {
+            
+    game.add.tween(sprite).to({alpha: 0}, 175, Phaser.Easing.Linear.None, true);
+            
+}
+        
+function fadeArrows() {
+            
+    fade(upA);
+    fade(downA);
+    fade(leftA);
+    fade(rightA);
+    
+    moved = true;
+            
+}
+
+function fadeIn(sprite) {
+            
+    game.add.tween(sprite).to({alpha: 1}, 175, Phaser.Easing.Linear.None, true);
+            
+}
+        
+function fadeInArrows() {
+            
+    fadeIn(upA);
+    fadeIn(downA);
+    fadeIn(leftA);
+    fadeIn(rightA);
+            
+}
+
+function fullArrows() {
+    upA.alpha = 1;
+    downA.alpha = 1;
+    leftA.alpha = 1;
+    rightA.alpha = 1;
+}
+
 // Create the main game state class
 const gameState = {
 
@@ -12,6 +58,11 @@ const gameState = {
         game.load.image('forest', 'img/forest.png');
         game.load.image('sky', 'img/sky.png');
         
+        game.load.image('upA', 'img/ShroooomsUp.gif');
+        game.load.image('downA', 'img/ShroooomsDown.gif');
+        game.load.image('leftA', 'img/ShroooomsLeft.gif');
+        game.load.image('rightA', 'img/ShroooomsRight.gif');
+        
     },
 
     create: function () {
@@ -19,7 +70,26 @@ const gameState = {
         game.world.setBounds(0, 0, 1920, 1080);
 
         game.add.sprite(0, 0, 'backdrop');
+        
 
+        // Game: 800x600
+        upA = game.add.sprite(365, 20, 'upA');
+        upA.scale.setTo(0.25);
+        upA.fixedToCamera = true;
+        
+        downA = game.add.sprite(365, 520, 'downA');
+        downA.scale.setTo(0.25);
+        downA.fixedToCamera = true;
+        
+        leftA = game.add.sprite(20, 275, 'leftA');
+        leftA.scale.setTo(0.25);
+        leftA.fixedToCamera = true;
+        
+        rightA = game.add.sprite(715, 275, 'rightA');
+        rightA.scale.setTo(0.25);
+        rightA.fixedToCamera = true;
+        
+        fullArrows();
         
         
         
@@ -135,22 +205,41 @@ const gameState = {
             return;
         }
         
-        if ((x <= 100)) {
+        if (x <= 100) {
             // left
             game.camera.x -= 4;
+            fadeArrows();
         }
-        else if ((x >= 700)) {
+        else if (x >= 700) {
             // right
             game.camera.x += 4;
+            fadeArrows();
         }
 
-        if ((y <= 100)) {
+        else if (y <= 100) {
             // up
             game.camera.y -= 4;
+            fadeArrows();
         }
-        else if ((y >= 500)) {
+        else if (y >= 500) {
             // down
             game.camera.y += 4;
+            fadeArrows();
+        } else {
+            game.time.events.add(3000,
+                                 
+                function () {
+                    
+                    if (moved) {
+                        fadeInArrows();
+                    }
+                    else if (!moved) {
+                        fullArrows();
+                    }
+                
+                }
+                                 
+            );
         }
         
     }

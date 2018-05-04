@@ -23,12 +23,75 @@ const forestState = {
         game.add.sprite(0, 0, 'backdrop');
         console.log("Forest!");
         
-         // Add some text
+        // Add some text
     game.add.text(
-    325, 150,  // x, y position
+    325, 135,  // x, y position
       "Hi, my name is Lily.", 
       { fontSize: "16px", fill: "#fff" }
         );
+        
+        // Add some more text
+    game.add.text(
+    325, 150,  // x, y position
+      "I'm a wolf hybrid and I live in this little cottage.", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+        // Even more text
+    game.add.text(
+    325, 165, // x, y position
+        "I like to make butter and bake.",
+        { fontSize: "16px", fill: "#fff"}
+    );
+        
+        // Even more text
+    game.add.text(
+    325, 178, // x, y position
+        "I also enjoy gardening.",
+        { fontSize: "16px", fill: "#fff"}
+    );
+      
+        // Even moooore text
+    game.add.text(
+    725, 560, // x, y position
+        "I'm generally a shy person but when",
+        { fontSize: "16px", fill: "#fff"}
+    );
+        
+        // Even moooore text
+    game.add.text(
+    700, 580, // x, y position
+        " someone messing with something dear to",
+        { fontSize: "16px", fill: "#fff"}
+    );
+      
+        // Even moooore text
+    game.add.text(
+    725, 600, // x, y position
+        " me I can get angry quickly.",
+        { fontSize: "16px", fill: "#fff"}
+    );
+        
+        // TEXT
+    game.add.text(
+    160, 600, // x, y position
+        "Fun fact about me:",
+        { fontSize: "16px", fill: "#fff"}
+    );
+        
+        // TEXT
+    game.add.text(
+    160, 615, // x, y position
+        "I have Heterochromia.",
+        { fontSize: "16px", fill: "#fff"}
+    );
+        
+        // TEXT
+    game.add.text(
+    160, 630, // x, y position
+        "My left eye is yellow and my right is blue.",
+        { fontSize: "16px", fill: "#fff"}
+    );
         
         // Add lily character
         lily = game.add.sprite(225, 100, 'lily');

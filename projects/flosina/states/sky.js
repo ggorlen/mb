@@ -32,7 +32,6 @@ const skyState = {
         map.anchor.set(0.5);
         map.inputEnabled = true;
         map.input.useHandCursor = true;  // Change cursor style on mouseover
-        map.fixedToCamera = true;
         
         // Add AngelW animations
         const angelwFrames = [];

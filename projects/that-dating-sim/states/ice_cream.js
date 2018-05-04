@@ -24,24 +24,33 @@ const iceCreamState   = {
       
       const icecream= game.add.sprite(400, 45, 'icecream');
     icecream.anchor.set(0.5);
-    /*button_1.inputEnabled = true;*/
-    /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
+    icecream.inputEnabled = true;
+    icecream.input.useHandCursor = true;  // Change cursor style on mouseover*/
     icecream.scale.setTo(1.2,3.4);
       
       const text_button = game.add.sprite(400, 45, 'text_button');
     text_button.anchor.set(0.5);
-    /*button_1.inputEnabled = true;*/
-    /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
+    text_button.inputEnabled = true;
+    text_button.input.useHandCursor = true;  // Change cursor style on mouseover*/
     text_button.scale.setTo(1.4,1);
       
-    game.add.text(
+      game.add.text(
       125, 9.5,  // x, y position
       "We got ice cream and seeing her smile\n was a beautiful sight", 
       { fontSize: "20px", fill: "#fff" }
             );
+      game.add.text(
+      600, 543,  // x, y position
+      "Continue --->", 
+      { fontSize: "32px", fill: "#41f4ee" }
+    );
 
     text_button.events.onInputDown.add(function () {
-      game.state.start('');
+      game.state.start('walkingHome');
+    }, this);
+      
+    icecream.events.onInputDown.add(function () {
+      game.state.start('walkingHome');
     }, this);
 
     /*// Add some text

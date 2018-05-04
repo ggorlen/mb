@@ -21,6 +21,42 @@ const oceanaState = {
         game.add.sprite(0, 0, 'backdrop');
         console.log("Oceana!");
         
+         // Add some text
+    game.add.text(
+    350, 400,  // x, y position
+      "Hi, my name is Mia.", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+        // Add some more text
+    game.add.text(
+    250, 425,  // x, y position
+      "I'm a siren who lives in the ocean!", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+        // Add some more text
+    game.add.text(
+    700, 560,  // x, y position
+      "My hobbies include:", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+        // Add some more text
+    game.add.text(
+    700, 580,  // x, y position
+      "- Singing", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+        // Add some more text
+    game.add.text(
+    700, 600,  // x, y position
+      "- Luring people to thier death", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+
         // Add Mia character
         mia = game.add.sprite(550, 360, 'mia');
         

@@ -22,6 +22,20 @@ const blurpiaState = {
         game.add.sprite(0, 0, 'backdrop');
         console.log("Blurple!");
         
+        // TEXT
+    game.add.text(
+    50, 600, // x, y position
+        "My name is Mellie, and I am the Queen",
+        { fontSize: "16px", fill: "#fff"}
+    );
+        
+        // TEXT
+    game.add.text(
+    50, 620, // x, y position
+        " of Blurpia!",
+        { fontSize: "16px", fill: "#fff"}
+    );
+        
         // Add Mellie character
         mellie = game.add.sprite(100, 320, 'mellie');
         

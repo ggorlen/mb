@@ -40,7 +40,7 @@ const menuState = {
     game.add.text(
       180, 25,  // x, y position
       "Mr. Ambiguous's Love Story", 
-      { fontSize: "32px", fill: "#fff" }
+      { fontSize: "32px", fill: "#e841f4" }
     );
 
     game.add.text(

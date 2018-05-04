@@ -10,9 +10,7 @@ const movieState   = {
    */
   preload: function () {    
     game.load.image('text_button', 'assets/text_button.jpeg');
-    game.load.image('button_1','assets/button_1.png');
-
-    game.load.image('walk', 'assets/walk_home.jpg');
+    game.load.image('movie_time', 'assets/movie_theater.jpg');
     
  
   },
@@ -21,32 +19,31 @@ const movieState   = {
    * Initializes variables and instantiates objects
    */
   create: function () {
-      console.log("justFriends")
+      console.log("movie")
       
-      var i = game.add.image(game.world.centerX, game.world.centerY, 'walk')
+      var i = game.add.image(game.world.centerX, game.world.centerY, 'movie_time')
     i.anchor.set(0.5)
       
       const text_button = game.add.sprite(400, 45, 'text_button');
     text_button.anchor.set(0.5);
     /*button_1.inputEnabled = true;*/
     /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
-    text_button.scale.setTo(1.6,0.5);
+    text_button.scale.setTo(1.4,1);
       
       game.add.text(
       125, 9.5,  // x, y position
-      "I walked home by myself, but I hope we end up becoming\n friends a least", 
+      "In the theater, you cried badly in front of Taiga \n in which she found humorous. You saw her smile.", 
       { fontSize: "20px", fill: "#fff" }
             );
       
-      const button_1 = game.add.sprite(210, 500, 'button_1');
-    button_1.anchor.set(0.5);
-    button_1.inputEnabled = true;
-    button_1.input.useHandCursor = true;  // Change cursor style on mouseover
-    button_1.scale.setTo(0.4,0.5);
-      
-    button_1.events.onInputDown.add(function () {
-      game.state.start('');
+      text_button.events.onInputDown.add(function () {
+      game.state.start('walking_home');
     }, this);
+      
+      movie_time.events.onInputDown.add(function () {
+      game.state.start('walking_home');
+    }, this);
+      
 
     /*// Add some text
     text = game.add.text(300, 80, '', { fontSize: '32px', fill: '#fff' });

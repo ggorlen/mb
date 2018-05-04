@@ -14,7 +14,14 @@ const gameState = {
     game.load.image('exitdoor', 'assets/exitdoor.png');
     game.load.tilemap('level' + (levelNum + 1), './levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('gameTiles', 'assets/spritesheet2.png');
-    game.load.image('background', 'assets/dirt.png')
+    game.load.image('background', 'assets/dirt.png');
+<<<<<<< HEAD
+    game.load.image('key', 'assets/key.jpg');
+    //todo
+    game.load.image('bullet', 'assets/key.jpg');
+=======
+    game.load.image('key', 'assets/key.png');
+>>>>>>> e2a2b3e7eca45b6863c7a7a20f7f8095ee1ad34d
   },
 
   create: function () {
@@ -31,6 +38,16 @@ const gameState = {
     enemies = game.add.group();
     enemies.enableBody = true;
 
+    bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.scale.setTo(0.1, 0.1);
+
+    bullets.createMultiple(50, 'bullet');
+
+    key = game.add.sprite(keyLocations[levelNum].x * gridSize, keyLocations[levelNum].y * gridSize, 'key');
+    key.scale.setTo(0.05, 0.05);
+    hasKey = false;
+
     // make all the ledges and set them to be immovable
     enemyLocations[levelNum].forEach(e =>
       enemies.create(e.x * gridSize, e.y * gridSize, 'enemy')
@@ -38,8 +55,11 @@ const gameState = {
 
     // size of player sprite
     player.scale.setTo(0.65, 0.65);
+    
     game.physics.enable(player, Phaser.Physics.ARCADE);
     game.physics.enable(exitdoor, Phaser.Physics.ARCADE);
+    game.physics.enable(key, Phaser.Physics.ARCADE);
+    
     exitdoor.body.immovable = true;
 
     // add tilemap to game
@@ -65,7 +85,12 @@ const gameState = {
     
     game.physics.arcade.collide(game.blockedLayer, player);
     
-    game.physics.arcade.collide(exitdoor, enemies)
+    game.physics.arcade.collide(exitdoor, enemies);
+
+    if(game.physics.arcade.collide(player, key)){
+      hasKey = true;
+      key.kill();
+    }
           
      // collide the player and enemy
     if (game.physics.arcade.collide(enemies, player)) {
@@ -79,7 +104,7 @@ const gameState = {
       } 
     }
 
-    if (game.physics.arcade.collide(exitdoor, player)) {
+    if (game.physics.arcade.collide(exitdoor, player) && hasKey){
 
       // move to the next level
       levelNum++;
@@ -150,6 +175,14 @@ const gameState = {
       game.lockRender = false;
       levelNum = 0;
       game.state.restart();
+    }
+    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+      let bullet = bullets.getFirstDead();
+      console.log(bullet);
+      bullet.reset(player.x, player.y);
+      bullet.rotation = player.rotation;
+      game.physics.arcade.velocityFromRotation(player.rotation, 400, bullet.body.velocity);
+
     }
   }
 };

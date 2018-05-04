@@ -11,7 +11,6 @@ const firstDateState = {
   preload: function () {
     game.load.image('text_button', 'assets/text_button.jpeg');
     game.load.image('button_1','assets/button_1.png');
-
     game.load.image('date', 'assets/park.jpg');
  
   },
