@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1|Press+Start+2P');
+
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Gothic A1", sans-serif;
+  font-size: 1.1em;
+}
+
+h1 {  
+  font-family: "Press Start 2P";
+  font-size: 1.7em;
+}
+
+#main {
+  padding: 1em;
+  border: 1px solid #999;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  margin: 1em;
+  font-style: italic;
+}
+
+#names {
+  margin: 1em;
+  font-size: 1.3em;
+}
+
+#conway-container { }
+#conway-container > canvas { 
+  max-width: 100%; 
+}
+
+#quotes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.quote {
+  max-width: 20%;
+  border: 1px solid #333;
+  padding: 1em;
+  margin: 0.5em;
+  box-shadow: 1px 1px 1px #ccc;
+}
+.quote-name {
+  font-style: italic;
+  text-align: right;
+  padding: 0.3em;
+}
+.quote-name:before {
+  content: "- ";
+}
+.quote-content {
+  font-size: 1.1em;
+}
+
+@media (max-width: 800px) {
+  #main, #quotes, .quote {
+    display: block;
+    max-width: 100%;
+  }
+  
+  h1 {
+    font-size: 1.3em;
+    line-height: 1.5em;
+  }
+}
