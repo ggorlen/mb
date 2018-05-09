@@ -1,17 +1,17 @@
 {
     "platforms": [
         {"image": "ground", "x": 0, "y": 546},
-        {"image": "grass:8x1", "x": 50, "y": 100},
         {"image": "grass:2x1", "x": 525, "y": 50},
         {"image": "grass:8x1", "x": 475, "y": 450},
         {"image": "grass:4x1", "x": 125, "y": 250},
         {"image": "grass:6x1", "x": 525, "y": 170},
         {"image": "grass:2x1", "x": 870, "y": 85},
         {"image": "grass:1x1", "x": 567, "y": 8},
-        {"image": "grass:1x1", "x": 100, "y": 504}
+        {"image": "grass:1x1", "x": 100, "y": 504},
+        {"image": "grass:8x1", "x": 205, "y": 100}
     ],
     "decoration": [
-        {"frame": 0, "x": 84, "y": 504}, {"frame": 1, "x": 420, "y": 504},
+        {"frame": 0, "x": 84, "y": 504}, {"frame": 1, "x": z420, "y": 504},
         {"frame": 3, "x": 672, "y": 504}, {"frame": 4, "x": 595, "y": 462},
         {"frame": 2, "x": 142, "y": 378}, {"frame": 1, "x": 168, "y": 378},
         {"frame": 0, "x": 714, "y": 336},

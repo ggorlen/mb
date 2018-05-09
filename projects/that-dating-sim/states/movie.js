@@ -10,7 +10,7 @@ const movieState   = {
    */
   preload: function () {    
     game.load.image('text_button', 'assets/text_button.jpeg');
-    game.load.image('movie_time', 'assets/movie_theater.jpg');
+    game.load.image('movie', 'assets/movie_theater.jpg');
     
  
   },
@@ -19,15 +19,21 @@ const movieState   = {
    * Initializes variables and instantiates objects
    */
   create: function () {
-      console.log("movie")
+      //console.log("movie");
       
-      var i = game.add.image(game.world.centerX, game.world.centerY, 'movie_time')
+      var i = game.add.image(game.world.centerX, game.world.centerY, 'movie');
     i.anchor.set(0.5)
+      
+      const movie_button = game.add.sprite(400, 45, 'movie');
+    movie_button.anchor.set(0.5);
+    movie_button.inputEnabled = true;
+    movie_button.input.useHandCursor = true;  // Change cursor style on mouseover*/
+    /*movie_button.scale.setTo(1.4,1);*/
       
       const text_button = game.add.sprite(400, 45, 'text_button');
     text_button.anchor.set(0.5);
-    /*button_1.inputEnabled = true;*/
-    /*button_1.input.useHandCursor = true;  // Change cursor style on mouseover*/
+    text_button.inputEnabled = true;
+    text_button.input.useHandCursor = true;  // Change cursor style on mouseover*/
     text_button.scale.setTo(1.4,1);
       
       game.add.text(
@@ -37,11 +43,11 @@ const movieState   = {
             );
       
       text_button.events.onInputDown.add(function () {
-      game.state.start('walking_home');
+      game.state.start('walkingHome');
     }, this);
       
-      movie_time.events.onInputDown.add(function () {
-      game.state.start('walking_home');
+      movie_button.events.onInputDown.add(function () {
+      game.state.start('walkingHome');
     }, this);
       
 

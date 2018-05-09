@@ -4,6 +4,7 @@
 //add scroling feature
 
 var lily;
+var music;
 
 const forestState = {
 
@@ -13,6 +14,8 @@ const forestState = {
         game.load.image('map', 'img/main.png');
         
         game.load.spritesheet('lily', 'img/Lily.png', 256, 256, 12);
+        
+        game.load.audio('forestStream', ['music/forestStream.mp3', 'music/forestStream.ogg']);
     },
     
     create: function () {
@@ -23,33 +26,17 @@ const forestState = {
         game.add.sprite(0, 0, 'backdrop');
         console.log("Forest!");
         
+        game.sound.stopAll();
+        music = game.add.audio('forestStream');
+        music.loop = true;
+        music.play();
+        
         // Add some text
     game.add.text(
-    325, 135,  // x, y position
-      "Hi, my name is Lily.", 
+    328, 135,  // x, y position
+      "Hi, my name is Lily.\nI'm a wolf hybrid and I live in this little cottage.\nI like to make butter and bake.\nI also enjoy gardening.", 
       { fontSize: "16px", fill: "#fff" }
         );
-        
-        // Add some more text
-    game.add.text(
-    325, 150,  // x, y position
-      "I'm a wolf hybrid and I live in this little cottage.", 
-      { fontSize: "16px", fill: "#fff" }
-        );
-        
-        // Even more text
-    game.add.text(
-    325, 165, // x, y position
-        "I like to make butter and bake.",
-        { fontSize: "16px", fill: "#fff"}
-    );
-        
-        // Even more text
-    game.add.text(
-    325, 178, // x, y position
-        "I also enjoy gardening.",
-        { fontSize: "16px", fill: "#fff"}
-    );
       
         // Even moooore text
     game.add.text(
@@ -74,22 +61,8 @@ const forestState = {
         
         // TEXT
     game.add.text(
-    160, 600, // x, y position
-        "Fun fact about me:",
-        { fontSize: "16px", fill: "#fff"}
-    );
-        
-        // TEXT
-    game.add.text(
-    160, 615, // x, y position
-        "I have Heterochromia.",
-        { fontSize: "16px", fill: "#fff"}
-    );
-        
-        // TEXT
-    game.add.text(
-    160, 630, // x, y position
-        "My left eye is yellow and my right is blue.",
+    160, 580, // x, y position
+        "Fun fact about me:\nI have Heterochromia.\nMy left eye is yellow and my right is blue.",
         { fontSize: "16px", fill: "#fff"}
     );
         
@@ -121,14 +94,14 @@ const forestState = {
             game.state.start('game');
         }, this);
 
+        // Animate char: Lily
+        lily.animations.play('play');
+
     },
 
     update: function () {
         
         game.world.setBounds(0, 0, 1042, 666);
-
-        // Animate char: Lily
-        lily.animations.play('play');
         
         var x = game.input.mousePointer.x;
         var y = game.input.mousePointer.y;

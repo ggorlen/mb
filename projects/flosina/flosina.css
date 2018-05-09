@@ -1,4 +1,13 @@
-* {
+body {
     background: black;
+    display: flex;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+canvas {
     margin: auto;
 }

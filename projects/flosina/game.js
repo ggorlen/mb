@@ -1,5 +1,6 @@
 var map;
 var cursors;
+var music;
 
 var upA;
 var downA;
@@ -53,15 +54,17 @@ const gameState = {
     preload: function () {
 
         game.load.image('backdrop', 'img/flosina.png');
-        game.load.image('blurpia', 'img/blurpia.png');
-        game.load.image('oceana', 'img/oceana.png');
-        game.load.image('forest', 'img/forest.png');
-        game.load.image('sky', 'img/sky.png');
+        game.load.image('blurpia', 'img/Asighnn.png');
+        game.load.image('oceana', 'img/asighns.png');
+        game.load.image('forest', 'img/Aasighn.png');
+        game.load.image('sky', 'img/Asighn.png');
         
         game.load.image('upA', 'img/ShroooomsUp.gif');
         game.load.image('downA', 'img/ShroooomsDown.gif');
         game.load.image('leftA', 'img/ShroooomsLeft.gif');
         game.load.image('rightA', 'img/ShroooomsRight.gif');
+	    
+	game.load.audio('endlessJourney', ['music/endlessJourney.mp3', 'music/endlessJourney.ogg']);
         
     },
 
@@ -70,6 +73,11 @@ const gameState = {
         game.world.setBounds(0, 0, 1920, 1080);
 
         game.add.sprite(0, 0, 'backdrop');
+    
+	game.sound.stopAll();
+	music = game.add.audio('endlessJourney');
+	music.loop = true;
+	music.play();
         
 
         // Game: 800x600
@@ -100,13 +108,17 @@ const gameState = {
         // Add button to go to Blurpia game state
         
         
-        const blurpia = game.add.sprite(400, 400, 'blurpia');
+        const blurpia = game.add.sprite(200, 475, 'blurpia');
+        blurpia.scale.setTo(0.5);
         blurpia.anchor.set(0.5);
         blurpia.inputEnabled = true;
         blurpia.input.useHandCursor = true;  // Change cursor style on mouseover
 
         // Add a function to the button to be called when the button is clicked
         blurpia.events.onInputDown.add(function () {
+		musicTime = music.markers.currentTime;
+		returned = true;
+		music.pause();
             game.state.start('blurpia');
         }, this);
         
@@ -123,13 +135,16 @@ const gameState = {
         // Add button to go to Oceana game state
         
         
-        const oceana = game.add.sprite(100, 100, 'oceana');
+        const oceana = game.add.sprite(1425, 1025, 'oceana');
+        oceana.scale.setTo(0.45);
         oceana.anchor.set(0.5);
         oceana.inputEnabled = true;
         oceana.input.useHandCursor = true;  // Change cursor style on mouseover
 
         // Add a function to the button to be called when the button is clicked
         oceana.events.onInputDown.add(function () {
+		returned = true;
+		music.pause();
             game.state.start('oceana');
         }, this);
         
@@ -146,13 +161,16 @@ const gameState = {
         // Add button to go to Forest game state
         
         
-        const forest = game.add.sprite(100, 400, 'forest');
+        const forest = game.add.sprite(100, 825, 'forest');
+        forest.scale.setTo(0.4);
         forest.anchor.set(0.5);
         forest.inputEnabled = true;
         forest.input.useHandCursor = true;  // Change cursor style on mouseover
 
         // Add a function to the button to be called when the button is clicked
         forest.events.onInputDown.add(function () {
+		returned = true;
+		music.pause();
             game.state.start('forest');
         }, this);
         
@@ -169,13 +187,16 @@ const gameState = {
         // Add button to go to Sky game state
         
         
-        const sky = game.add.sprite(600, 100, 'sky');
+        const sky = game.add.sprite(1400, 500, 'sky');
+        sky.scale.setTo(0.2);
         sky.anchor.set(0.5);
         sky.inputEnabled = true;
         sky.input.useHandCursor = true;  // Change cursor style on mouseover
 
         // Add a function to the button to be called when the button is clicked
         sky.events.onInputDown.add(function () {
+		returned = true;
+		music.pause();
             game.state.start('sky');
         }, this);
         
@@ -226,7 +247,7 @@ const gameState = {
             game.camera.y += 4;
             fadeArrows();
         } else {
-            game.time.events.add(3000,
+            game.time.events.add(5000,
                                  
                 function () {
                     

@@ -2,6 +2,7 @@
 // Home to Mia the Mermaid / Siren
 
 var mia;
+var music;
 
 const oceanaState = {
 
@@ -12,6 +13,8 @@ const oceanaState = {
         
         game.load.spritesheet('mia', 'img/MermaidHelen.png', 256, 256, 13);
         
+        game.load.audio('ocean', ['music/oceana.mp3', 'music/oceana.ogg']);
+        
     },
 
     create: function () {
@@ -20,6 +23,32 @@ const oceanaState = {
         
         game.add.sprite(0, 0, 'backdrop');
         console.log("Oceana!");
+        
+        game.sound.stopAll();
+		music = game.add.audio('ocean');
+	   	music.loop = true;
+		music.play();
+        
+        // Add some text
+    game.add.text(
+    200, 100,  // x, y position
+      "Come with me...", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+        // Add some text
+    game.add.text(
+    450, 200,  // x, y position
+      "...and you'll be...", 
+      { fontSize: "16px", fill: "#fff" }
+        );
+        
+        // Add some text
+    game.add.text(
+    600, 150,  // x, y position
+      "...in a world of pure imagination.", 
+      { fontSize: "16px", fill: "#fff" }
+        );
         
          // Add some text
     game.add.text(
@@ -37,22 +66,8 @@ const oceanaState = {
         
         // Add some more text
     game.add.text(
-    700, 560,  // x, y position
-      "My hobbies include:", 
-      { fontSize: "16px", fill: "#fff" }
-        );
-        
-        // Add some more text
-    game.add.text(
-    700, 580,  // x, y position
-      "- Singing", 
-      { fontSize: "16px", fill: "#fff" }
-        );
-        
-        // Add some more text
-    game.add.text(
-    700, 600,  // x, y position
-      "- Luring people to thier death", 
+    750, 560,  // x, y position
+      "My hobbies include:\n- Singing\n- Luring People to Their Deaths", 
       { fontSize: "16px", fill: "#fff" }
         );
         
@@ -84,12 +99,12 @@ const oceanaState = {
             game.state.start('game');
         }, this);
 
+        // Animate char: Mia
+        mia.animations.play('play');
+
     },
 
     update: function () {
-
-        // Animate char: Mia
-        mia.animations.play('play');
         
         var x = game.input.mousePointer.x;
         var y = game.input.mousePointer.y;

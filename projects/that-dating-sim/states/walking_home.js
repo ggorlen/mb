@@ -26,16 +26,17 @@ const walkingHomeState   = {
       
       const text_button = game.add.sprite(400, 45, 'text_button');
     text_button.anchor.set(0.5);
-    text_button.inputEnabled = true;
-    text_button.input.useHandCursor = true;  // Change cursor style on mouseover*/
     text_button.scale.setTo(1.4,1);
       
       game.add.text(
       125, 9.5,  // x, y position
-      "You and taiga walk home and she walks up ahead and stops\n in front of you...?", 
+      "You and Taiga walk home and she walks up ahead and stops\n in front of you...?", 
       { fontSize: "20px", fill: "#fff" }
             );
-       const hug_button = game.add.sprite(210, 500, 'button_1');
+      
+      const taiga = game.add.sprite(275, 298.5, 'taiga');
+       
+      const hug_button = game.add.sprite(210, 500, 'button_1');
     hug_button.anchor.set(0.5);
     hug_button.inputEnabled = true;
     hug_button.input.useHandCursor = true;  // Change cursor style on mouseover*/
@@ -59,11 +60,11 @@ const walkingHomeState   = {
             );
 
     hug_button.events.onInputDown.add(function () {
-      game.state.start('');
+      game.state.start('hug_1');
     }, this);
     
     kiss_button.events.onInputDown.add(function () {
-      game.state.start('');
+      game.state.start('kiss_1');
     }, this);
   },
 

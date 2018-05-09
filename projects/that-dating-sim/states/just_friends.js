@@ -27,8 +27,7 @@ const justFriendsState   = {
       
       const text_button = game.add.sprite(400, 45, 'text_button');
     text_button.anchor.set(0.5);
-    text_button.inputEnabled = true;
-    text_button.input.useHandCursor = true;  // Change cursor style on mouseover*/
+   // Change cursor style on mouseover*/
     text_button.scale.setTo(1.4,1);
       
       game.add.text(

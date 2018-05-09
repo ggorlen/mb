@@ -2,7 +2,23 @@
     text-align: center;
 }
 
-.game-area canvas {
-    border: 0px;
-    margin: 0 auto;
+body {
+    height: 100%;
+    background: url("background6.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    margin: 0; 
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    
+    border: 10px solid rgba(255,255,255,0.3);
+    border-radius: 5px;
+}
+
+html {
+    height: 100%;
 }

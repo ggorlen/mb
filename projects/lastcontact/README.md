@@ -2,10 +2,10 @@ hi this is our game
 
 ## TODOs
 - ~~rotate sprite when moving~~
-- bullets
+- ~~bullets~~
 - ~~design maps / new spritesheet~~
 - health bar 
-- exit door keys
+- ~~exit door keys~~
 - power ups
 - sounds
 - enemy AI

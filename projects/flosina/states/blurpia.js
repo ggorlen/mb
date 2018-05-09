@@ -2,6 +2,7 @@
 // Home to Queen Melynda (a.k.a. Mellie)
 
 var mellie;
+var music;
 
 const blurpiaState = {
 
@@ -12,6 +13,8 @@ const blurpiaState = {
         
         game.load.spritesheet('mellie', 'img/Mellie.png', 250, 250, 13);
         
+        game.load.audio('royal', ['music/stormholtsTears.mp3', 'music/stormholtsTears.ogg']);
+        
     },
 
     create: function () {
@@ -21,20 +24,32 @@ const blurpiaState = {
         // Set backdrop
         game.add.sprite(0, 0, 'backdrop');
         console.log("Blurple!");
+	    
+		game.sound.stopAll();
+		music = game.add.audio('royal');
+	   	music.loop = true;
+		music.play();
         
         // TEXT
     game.add.text(
     50, 600, // x, y position
-        "My name is Mellie, and I am the Queen",
+        "My name is Mellie, and I am the Queen\nof Blurpia!",
         { fontSize: "16px", fill: "#fff"}
     );
-        
-        // TEXT
-    game.add.text(
-    50, 620, // x, y position
-        " of Blurpia!",
-        { fontSize: "16px", fill: "#fff"}
-    );
+	    
+	// TEXT
+   	 game.add.text(
+  	  600, 200, // x, y position
+     	   "My favorite color is, in fact,\nthat of the lengendary blurple.",
+      	  { fontSize: "16px", fill: "#fff"}
+    	);
+	    
+	// TEXT
+	    game.add.text(
+	    500, 400, // x, y position
+		"If you ask me, life is most \ninteresting when traveling the world.\nHave you ever been to Oceana?",
+		{ fontSize: "16px", fill: "#fff"}
+	    );
         
         // Add Mellie character
         mellie = game.add.sprite(100, 320, 'mellie');
@@ -57,15 +72,18 @@ const blurpiaState = {
 
         // Add a function to the button to be called when the button is clicked
         map.events.onInputDown.add(function () {
+		music.stop();
             game.state.start('game');
         }, this);
+        
+        returned = true;
+
+        // Animate char: Mellie
+        mellie.animations.play('play');
 
     },
 
     update: function () {
-
-        // Animate char: Mellie
-        mellie.animations.play('play');
         
         var x = game.input.mousePointer.x;
         var y = game.input.mousePointer.y;

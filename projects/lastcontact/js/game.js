@@ -15,17 +15,13 @@ const gameState = {
     game.load.tilemap('level' + (levelNum + 1), './levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('gameTiles', 'assets/spritesheet2.png');
     game.load.image('background', 'assets/dirt.png');
-<<<<<<< HEAD
-    game.load.image('key', 'assets/key.jpg');
     //todo
-    game.load.image('bullet', 'assets/key.jpg');
-=======
+    //game.load.image('bullet', 'assets/key.jpg');
     game.load.image('key', 'assets/key.png');
->>>>>>> e2a2b3e7eca45b6863c7a7a20f7f8095ee1ad34d
   },
 
   create: function () {
-    document.getElementById('levelName').innerHTML = 'Level ' + (levelNum + 1);
+    document.getElementById('levelName').innerText = 'Level ' + (levelNum + 1);
     // game.stage.backgroundColor = '#fff';
     game.add.tileSprite(0, 0, 640, 480, 'background')
 
@@ -38,11 +34,11 @@ const gameState = {
     enemies = game.add.group();
     enemies.enableBody = true;
 
-    bullets = game.add.group();
-    bullets.enableBody = true;
-    bullets.scale.setTo(0.1, 0.1);
+    //bullets = game.add.group();
+    //bullets.enableBody = true;
+    //bullets.scale.setTo(0.1, 0.1);
 
-    bullets.createMultiple(50, 'bullet');
+    //bullets.createMultiple(50, 'bullet');
 
     key = game.add.sprite(keyLocations[levelNum].x * gridSize, keyLocations[levelNum].y * gridSize, 'key');
     key.scale.setTo(0.05, 0.05);
@@ -79,6 +75,13 @@ const gameState = {
 
     // have the camera follow the player
     game.camera.follow(player);
+
+    // show the phaser game in case it is hidden
+    document.getElementsByTagName('canvas')[0].style.display = "block";
+
+    // reset health and initialize the health element in the DOM
+    health = 1000;
+    healthElem.innerText = "health: " + health;
   },
 
   update: function() {
@@ -95,12 +98,12 @@ const gameState = {
      // collide the player and enemy
     if (game.physics.arcade.collide(enemies, player)) {
       health -= 20;
+      healthElem.innerText = "health: " + health;
       //player.body.velocity.x *= -1000
       //player.body.velocity.y *= -1000
       //console.log('hit it')
       if(health <= 0){
         game.state.start('gameState');
-        health = 1000;
       } 
     }
 
@@ -109,15 +112,20 @@ const gameState = {
       // move to the next level
       levelNum++;
 
+      // show win message if game over
+      if (levelNum >= numLevels) {
+          levelElem.innerText = 'You win!';
+          document.getElementsByTagName('canvas')[0].style.display = "none";
 
-      if (levelNum >= lastLevel) {
-          document.getElementById('winmessage').style.opacity = 1;
+          // return to the first level after a short pause
           setTimeout(function () { 
-            game.lockRender = true; 
-          }, 1000);
-          return;
-      };
-      game.state.start('gameState');
+            levelNum = 0;
+            game.state.start('gameState');
+          }, 2500);
+      }
+      else {
+        game.state.start('gameState');
+      }
     }
 
     // move enemies
@@ -149,8 +157,7 @@ const gameState = {
       player.scale.x = Math.abs(player.scale.x) * -1 
       player.body.velocity.x = -playerVelocity;
       
-      
-      console.log(player.scale.x);
+      //console.log(player.scale.x);
     }
 
     if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) ||
@@ -170,19 +177,19 @@ const gameState = {
       player.body.velocity.y = playerVelocity;
     }
 
-    if(game.input.keyboard.isDown(Phaser.Keyboard.R)){
-      document.getElementById('winmessage').style.opacity = 0;
-      game.lockRender = false;
-      levelNum = 0;
-      game.state.restart();
-    }
-    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-      let bullet = bullets.getFirstDead();
-      console.log(bullet);
-      bullet.reset(player.x, player.y);
-      bullet.rotation = player.rotation;
-      game.physics.arcade.velocityFromRotation(player.rotation, 400, bullet.body.velocity);
-
-    }
+    //if(game.input.keyboard.isDown(Phaser.Keyboard.R)){
+    //  document.getElementById('winmessage').style.opacity = 0;
+    //  game.lockRender = false;
+    //  levelNum = 0;
+    //  game.state.restart();
+    //}
+    //if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+    //  //let bullet = bullets.getFirstDead();
+    //  //console.log(bullet);
+    //  bullet.reset(player.x, player.y);
+    //  bullet.rotation = player.rotation;
+    //  game.physics.arcade.velocityFromRotation(player.rotation, 400, bullet.body.velocity);
+    //
+    //}
   }
 };

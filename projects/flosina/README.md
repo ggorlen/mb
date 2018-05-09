@@ -86,3 +86,9 @@ https://phaser.io/examples/v2/input/keyboard-hotkeys
 ## Example Code: Moving Around a Map
 
 http://phaser.io/examples/v2/world/world-wrap
+
+## If You Guys Want to Move to the Next Line of Text:
+
+Just input "\n" wherever you would like to break the line.
+
+ex) console.log("Line break here.\nNow I'm on the next line.");

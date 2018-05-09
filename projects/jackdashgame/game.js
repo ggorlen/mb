@@ -20,6 +20,7 @@ var level = 1;
 var alive = true;
 var highScore = 0;
 var bass;
+var explodesound;
 var mainState = {
     preload: preload,
     create: create,
@@ -68,8 +69,12 @@ var enemy = {
 
 function preload(){
     game.load.audio('bass', 'mp3audio/jackdashdrums.mp3');
-    // game.load.image('circle', 'assets/images/particle3.png');
-    // game.load.image('enemy', 'assets/images/particle2.png');
+
+    game.load.audio('explode', 'mp3audio/DJ-Lazer-2.mp3');
+
+    game.load.image('enemy1', 'img/enemy1.png');
+    game.load.image('circle', 'img/circle.png');
+
 
 }
 
@@ -80,7 +85,9 @@ function create(){
 
     //set the sound for jackdash
     bass = game.add.audio('bass');
-    sounds = [ bass]
+    explodesound = game.add.audio('explode')
+    explodesound.loop = false;
+    sounds = [ bass, explodesound];
     game.sound.setDecodedCallback(sounds, startsound, this);
 
     //add text that gives instructions to the user
@@ -111,10 +118,10 @@ function create(){
     player.body.offset.y = -25;
 
     //Draw a 2px wide line, red, fully transparent
-    player.lineStyle(2.0, 0xff0000, 1.0);
+    player.lineStyle(2.0, 0xdd00ff, 1.0);
 
     //Fill our shape with a medium red
-    player.beginFill(0x660000,0.5);
+    player.beginFill(0xf09eff,0.5);
 
     //Draw a circle
     circle = player.drawCircle(0, 0, 50);
@@ -123,7 +130,7 @@ function create(){
     //for the particles for the collision
     emitter = game.add.emitter(0, 0, 100);
 
-    emitter.makeParticles('circle');
+    emitter.makeParticles('enemy1');
     emitter.gravity = 800;
     emitter.minParticleAlpha = 0.1;
     emitter.maxParticleAlpha = 0.8;
@@ -132,16 +139,7 @@ function create(){
     emitter.minParticleScale = 2.0;
     emitter.minParticleSpeed = new Phaser.Point(-400, -400);
     emitter.maxParticleSpeed = new Phaser.Point(300, 300);
-
-
-    emitter2 = game.add.emitter(0, 0, 100);
-    emitter2.makeParticles('enemy');
-    emitter2.gravity = -200;
-    emitter2.minParticleAlpha = 0.1;
-    emitter2.maxParticleAlpha = 0.5;
-    emitter2.minParticleScale = 2.0;
-    emitter2.minParticleScale = 5.0;
-
+    
     //add the text for the score
     scoreText = game.add.text(285, 16, '0', { fontSize: '64px', fill: '#00ff00'});
     highScoreText = game.add.text (15, 16, 'High Score: 0', { fontSize: '25px', fill: '#00ff00', font: 'georgia',});
@@ -265,6 +263,7 @@ function update(){
 }
 
 function collisionHandler (){
+    explodesound.play();
     alive = false;
     emitter.x = player.x;
     emitter.y = player.y;
