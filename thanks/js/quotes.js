@@ -7,7 +7,7 @@ function onSuccess(responseText) {
   // Make a div for each quote
   responseText.split("\n").forEach(function (e) {
     var quoteElem = document.createElement("div");
-    var quote = e.split(":");
+    var quote = e.split("#");
     quoteElem.innerHTML = 
       "<div class=\"quote-content\">" + quote[1] + "</div>" +
       "<div class=\"quote-name\">" + quote[0] + "</div>" 
